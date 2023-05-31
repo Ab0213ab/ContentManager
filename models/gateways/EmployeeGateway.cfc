@@ -73,7 +73,7 @@
           vcRegion = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcRegion()#">,
           vcPostalCode = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcPostalCode()#">,
           vcCountry = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcCountry()#">,
-          vcHomePhone = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcHomePhone()#">,
+          vcHomePhone = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcHomePhone()#">,
           vcExtension = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcExtension()#">,
           vcNotes = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcNotes()#">,
           intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
