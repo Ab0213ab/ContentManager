@@ -7,7 +7,7 @@ component extends="coldbox.system.EventHandler" {
 
     function index() {
 
-        prc.welcomeMessage = "Welcome, #session.userName#!";
+        prc.welcomeMessage = "Welcome, #session.vcUserName#!";
         prc.allEmployees = EmployeeService.getAllEmployees();
 
         // For post CRUD action from employee/save()

@@ -5,7 +5,7 @@ component extends="coldbox.system.EventHandler" {
 	/**
 	 * Default Action
 	 */
-	function index( event, rc, prc ) {
+	function index(event, rc, prc) {
 
 		// Exit Handlers
 		prc.xeh.index = "main/index";
@@ -15,38 +15,42 @@ component extends="coldbox.system.EventHandler" {
 		event.setView( "main/index" );
 	}
 
+	function test(event, rc, prc) {
+		event.setView( "main/error" );
+	}
+
 	 // Checks user credentials input and then routes to home page
 	 function validateLogin( event, rc, prc ){
 
         // For when arriving at the handler from the login screen
         if (structKeyExists(rc, "isFormSubmission") && rc.isFormSubmission == "true") {
 
-            if (trim(rc.userName) != "andrew" && trim(rc.password) != "schaefer") {
-        
-                prc.errorMessage = 3;
+            if (trim(rc.vcUserName) != "andrew" && trim(rc.vcPassword) != "schaefer") {
+
+                prc.errorMessage = "Please enter a valid User Name and Password.";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
-        
-            } else if (trim(rc.userName) != "andrew") {
-        
-                prc.errorMessage = 1;
+
+            } else if (trim(rc.vcUserName) != "andrew") {
+
+                prc.errorMessage = "Please enter a valid User Name.";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
-        
-            } else if (trim(rc.password) != "schaefer") {
-        
-                prc.errorMessage = 2;
+
+            } else if (trim(rc.vcPassword) != "schaefer") {
+
+                prc.errorMessage = "Please enter a valid Password.";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
-        
-            } 
-            session.userName = trim(rc.userName); 
+
+            }
+            session.vcUserName = trim(rc.vcUserName);
         }
 
-		relocate(event="employee/index");   
+		relocate(event="employee/index");
     }
 
 	/**
