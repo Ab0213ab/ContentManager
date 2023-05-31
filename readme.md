@@ -8,17 +8,7 @@
 
 ## Functionality Screenshots
 
-Calculation                 |  Exception Handling             
-:-------------------------:|:-------------------------:
-![ScreenShot](/images/pch1.PNG)  |  ![ScreenShot](/images/pch2.PNG) 
-
-Stored User Settings       |  ...             
-:-------------------------:|:-------------------------:
-![ScreenShot](/images/pch3.PNG)  |  ![ScreenShot](/images/pch4.PNG)
-
-XML Serialization/Deserialization  |             
-:-------------------------:|
-<img src="images/pch5.PNG" width="50%"> 
+Coming Soon...
 
 [Back to Table of Contents](#table-of-contents)
 
