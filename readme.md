@@ -1,4 +1,4 @@
-# PaycheckHelper
+# ContentManager
 
 ## Table of Contents
 1. [Functionality Screenshots](#functionality-screenshots)
@@ -26,24 +26,22 @@ XML Serialization/Deserialization  |
 
 ## Application Description
 
-This is a small, but growing personal project software application. Paycheck Helper was designed to 
-help Flight Attendants calculate their notoriously complicated paychecks each month. The application 
-provides fields for user input based on pay period data and runs calculations to determine an estimated 
-paycheck amount. Each paycheck amount is Serialized and logged in a .txt file on the user's machine 
-to assist with tracking accuracy, budgeting needs, etc. The paycheck amount is then Deserialized and displayed 
-to the user. The application also allows for stored user settings which can be changed by the user based on pay 
-increases, tax changes, etc. All field data is checked and exceptions are handled. Potential future features for 
-this application include an interface for reading previously logged paychecks, GUI improvements, and 
-database connectivity. 
+This is a small, but growing CRUD web application. ContentManager was designed as an interface to perform CRUD 
+(create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates advanced
+enterprise development techniques like responsiveness, OOP, session management, utilization of services, gateways, 
+and domains, datatables, and user privilege managment. 
 
 [Back to Table of Contents](#table-of-contents)
 
 <hr>
 
 ## Technologies Used
-- C#/.NET
-- Visual Studio Community IDE
-- XML
+- CFML
+- HTML, CSS, JavaScript
+- Bootstrap, jQuery
+- ColdBox MVC framework
+- SQL/Micorsoft SQL Server Management Studio
+- Visual Studio Code IDE
 
 [Back to Table of Contents](#table-of-contents)
 
