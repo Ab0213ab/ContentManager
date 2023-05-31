@@ -1,0 +1,8 @@
+{
+    "name":"ContentManager",
+    "web":{
+        "rewrites":{
+            "enable":"true"
+        }
+    }
+}
