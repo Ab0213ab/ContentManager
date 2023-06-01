@@ -22,21 +22,21 @@ component extends="coldbox.system.EventHandler" {
         // For when arriving at the handler from the login screen
         if (structKeyExists(rc, "isFormSubmission") && rc.isFormSubmission == "true") {
 
-            if (trim(rc.vcUserName) != "andrew" && trim(rc.vcPassword) != "schaefer") {
+            if (trim(rc.vcUserName) != "a" && trim(rc.vcPassword) != "s") {
 
                 prc.errorMessage = "Please enter a valid User Name and Password.";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
 
-            } else if (trim(rc.vcUserName) != "andrew") {
+            } else if (trim(rc.vcUserName) != "a") {
 
                 prc.errorMessage = "Please enter a valid User Name.";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
 
-            } else if (trim(rc.vcPassword) != "schaefer") {
+            } else if (trim(rc.vcPassword) != "s") {
 
                 prc.errorMessage = "Please enter a valid Password.";
                 event.noLayout();
