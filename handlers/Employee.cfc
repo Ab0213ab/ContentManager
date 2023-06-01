@@ -104,7 +104,7 @@ component extends="coldbox.system.EventHandler" {
         // For action button
         prc.btnEnabled = "";
         prc.btnLabel = " Delete";
-        prc.btnIcon = "bi bi-person-x";
+        prc.btnIcon = "bi bi-person-x-fill";
 
         prc.crudAction = "delete";
         prc.formTitle = "Delete Employee";

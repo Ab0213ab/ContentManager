@@ -29,7 +29,7 @@
                                 <div class="form-group col-md-6">
 
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="crudAction" value="#prc.crudAction ?: ''#">
+                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
                                     <input type="hidden" name="intEmployeeID" value="#prc.intEmployeeID ?: ''#">
                                     
                                     <label for="vcLastName">Last Name</label>
@@ -41,7 +41,7 @@
                                     <label for="vcFirstName">First Name</label>
                                     <input type="text" name="vcFirstName" class="form-control" id="vcFirstName" #prc.fieldsEnabled# 
                                     value="#prc.oneEmployee.vcFirstName ?: ''#">
-                                    <p id="vcfirstNameMessage" style="color: red"></p>
+                                    <p id="vcFirstNameMessage" style="color: red"></p>
                                 </div>
                             </div>
                             <div class="form-row">
