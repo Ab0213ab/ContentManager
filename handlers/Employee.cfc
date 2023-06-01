@@ -32,9 +32,9 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "disabled";
         // For action button
         prc.btnEnabled = "disabled";
-        prc.btnLabel = " Submit";
-        prc.btnIcon = "bi bi-person-plus";
+        prc.btnIcon = "bi bi-book";
 
+        prc.crudAction = "Read Only";
         prc.formTitle = "View Employee";
 
         // Populates the company dropdown in the add form
@@ -56,10 +56,9 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "";
         // For action button
         prc.btnEnabled = "";
-        prc.btnLabel = " Submit";
         prc.btnIcon = "bi bi-person-plus";
 
-        prc.crudAction = "create";
+        prc.crudAction = "Create";
         prc.formTitle = "Add Employee";
 
         // Populates the company dropdown in the add form
@@ -78,10 +77,9 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "";
         // For action button
         prc.btnEnabled = "";
-        prc.btnLabel = " Update";
         prc.btnIcon = "bi bi-pen";
 
-        prc.crudAction = "update";
+        prc.crudAction = "Update";
         prc.formTitle = "Edit Employee";
 
         // Populates the company dropdown in the add form
@@ -103,10 +101,9 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "disabled";
         // For action button
         prc.btnEnabled = "";
-        prc.btnLabel = " Delete";
         prc.btnIcon = "bi bi-person-x-fill";
 
-        prc.crudAction = "delete";
+        prc.crudAction = "Delete";
         prc.formTitle = "Delete Employee";
 
         // Populates the company dropdown in the add form
@@ -138,7 +135,7 @@ component extends="coldbox.system.EventHandler" {
             prc.anEmployee.setIntEmployeeID(rc.intEmployeeID);
         }
 
-        if (rc.crudAction == "create" || rc.crudAction == "update") {
+        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
             if (validateEmpFormReqFields(trim(rc.vcLastName), trim(rc.vcFirstName)) == false) {
 

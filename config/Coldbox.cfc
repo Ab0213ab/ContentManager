@@ -123,8 +123,17 @@ component {
 		 * Application Interceptors
 		 * --------------------------------------------------------------------------
 		 * Remember that the order of declaration is the order they will be registered and fired
+		 * 
+		 * 
+		 * 
+		 * 
+		 * //Register interceptors
+		interceptors = [
+    		{class="interceptors.SecurityInterceptor", name="SecurityInterceptor"}
+		];
 		 */
-		interceptors = [];
+		
+
 
 		/**
 		 * --------------------------------------------------------------------------

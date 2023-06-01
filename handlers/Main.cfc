@@ -11,10 +11,11 @@ component extends="coldbox.system.EventHandler" {
 		prc.xeh.index = "main/index";
 		prc.xeh.validateLogin = "main/validateLogin";
 
+		session.isLoggedIn = false;
 		event.noLayout()
 		event.setView( "main/index" );
 
-	} // end index
+	}
 
 	 // Checks user credentials input and then routes to home page
 	 function validateLogin( event, rc, prc ) {
@@ -43,7 +44,9 @@ component extends="coldbox.system.EventHandler" {
                 event.setView( "main/index" );
                 return;
 
-            }
+            } else {
+				session.isLoggedIn = true;
+			}
             session.vcUserName = trim(rc.vcUserName);
         }
 		relocate(event="employee/index");
@@ -86,4 +89,4 @@ component extends="coldbox.system.EventHandler" {
 		// Place exception handler below:
 	}
 
-} // end component
+}

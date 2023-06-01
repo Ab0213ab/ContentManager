@@ -28,9 +28,9 @@ component name="EmployeeService"singleton accessors="true"{
 	// Function chain will run insert query
 	function save(anEmployee, crudAction) {
 
-		if (crudAction == "create") {
+		if (crudAction == "Create") {
 			EmployeeGateway.create(anEmployee);
-		} else if (crudAction == "update") {
+		} else if (crudAction == "Update") {
 			EmployeeGateway.update(anEmployee);
 		} else {
 			EmployeeGateway.delete(anEmployee);
