@@ -17,16 +17,11 @@
                         <center>
                             <h3>#prc.formTitle#</h3>
                         </center>
-
-                        <!---REMOVED:
                         <p style="float: right">
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
                             <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
-                        </p>--->
-
-                        <!---TODO: Why won't this display in notes field?
-                        <cfdump var="#prc.oneEmployee.vcNotes#">--->
-
+                        </p>
+                        
                         <form id="addEmployeeForm" action="#event.buildLink(prc.xeh.save)#" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">

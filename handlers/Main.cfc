@@ -15,7 +15,9 @@ component extends="coldbox.system.EventHandler" {
 		event.setView( "main/index" );
 	}
 
+	// TODO: Remove this when done testing
 	function test(event, rc, prc) {
+		event.noLayout()
 		event.setView( "main/error" );
 	}
 
