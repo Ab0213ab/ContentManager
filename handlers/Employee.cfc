@@ -32,6 +32,8 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "disabled";
         // For action button
         prc.btnEnabled = "disabled";
+        prc.btnLabel = " Submit";
+        prc.btnIcon = "bi bi-person-plus";
 
         prc.formTitle = "View Employee";
 
@@ -54,8 +56,10 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "";
         // For action button
         prc.btnEnabled = "";
-        prc.crudAction = "create";
+        prc.btnLabel = " Submit";
+        prc.btnIcon = "bi bi-person-plus";
 
+        prc.crudAction = "create";
         prc.formTitle = "Add Employee";
 
         // Populates the company dropdown in the add form
@@ -74,8 +78,10 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "";
         // For action button
         prc.btnEnabled = "";
-        prc.crudAction = "update";
+        prc.btnLabel = " Update";
+        prc.btnIcon = "bi bi-pen";
 
+        prc.crudAction = "update";
         prc.formTitle = "Edit Employee";
 
         // Populates the company dropdown in the add form
@@ -97,8 +103,10 @@ component extends="coldbox.system.EventHandler" {
         prc.fieldsEnabled = "disabled";
         // For action button
         prc.btnEnabled = "";
-        prc.crudAction = "delete";
+        prc.btnLabel = " Delete";
+        prc.btnIcon = "bi bi-person-x";
 
+        prc.crudAction = "delete";
         prc.formTitle = "Delete Employee";
 
         // Populates the company dropdown in the add form

@@ -13,16 +13,11 @@ component extends="coldbox.system.EventHandler" {
 
 		event.noLayout()
 		event.setView( "main/index" );
-	}
 
-	// TODO: Remove this when done testing
-	function test(event, rc, prc) {
-		event.noLayout()
-		event.setView( "main/error" );
-	}
+	} // end index
 
 	 // Checks user credentials input and then routes to home page
-	 function validateLogin( event, rc, prc ){
+	 function validateLogin( event, rc, prc ) {
 
         // For when arriving at the handler from the login screen
         if (structKeyExists(rc, "isFormSubmission") && rc.isFormSubmission == "true") {
@@ -51,7 +46,6 @@ component extends="coldbox.system.EventHandler" {
             }
             session.vcUserName = trim(rc.vcUserName);
         }
-
 		relocate(event="employee/index");
     }
 
@@ -92,4 +86,4 @@ component extends="coldbox.system.EventHandler" {
 		// Place exception handler below:
 	}
 
-}
+} // end component
