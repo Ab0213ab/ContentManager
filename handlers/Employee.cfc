@@ -118,6 +118,16 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "employee/employeeCrud" );
     }
 
+    // Ensures required fields have data
+    function validateEmpFormReqFields(vcLastName, vcFirstName) {
+
+        isValid = true;
+        if (vcLastName == "" || vcFirstName == "") {
+            isValid = false;
+        }
+        return isValid;
+    }
+
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
@@ -130,24 +140,31 @@ component extends="coldbox.system.EventHandler" {
 
         if (rc.crudAction == "create" || rc.crudAction == "update") {
 
-            prc.anEmployee.setVcLastName(trim(rc.vcLastName));
-            prc.anEmployee.setVcFirstName(trim(rc.vcFirstName));
-            prc.anEmployee.setVcTitle(trim(rc.vcTitle));
-            prc.anEmployee.setVcTitleOfCourtesy(trim(rc.vcTitleOfCourtesy));
-            prc.anEmployee.setDtBirthDate(trim(rc.dtBirthDate));
-            prc.anEmployee.setDtHireDate(trim(rc.dtHireDate));
-            prc.anEmployee.setVcAddress(trim(rc.vcAddress));
-            prc.anEmployee.setVcCity(trim(rc.vcCity));
-            prc.anEmployee.setVcRegion(trim(rc.vcRegion));
-            if (IsNumeric(rc.vcPostalCode)){
-                prc.anEmployee.setVcPostalCode(rc.vcPostalCode);
+            if (validateEmpFormReqFields(trim(rc.vcLastName), trim(rc.vcFirstName)) == false) {
+
+                prc.message = "First Name and Last Name fields are required."
+                relocate('employee/index/message/' & prc.message);
+
+            } else {
+                prc.anEmployee.setVcLastName(trim(rc.vcLastName));
+                prc.anEmployee.setVcFirstName(trim(rc.vcFirstName));
+                prc.anEmployee.setVcTitle(trim(rc.vcTitle));
+                prc.anEmployee.setVcTitleOfCourtesy(trim(rc.vcTitleOfCourtesy));
+                prc.anEmployee.setDtBirthDate(trim(rc.dtBirthDate));
+                prc.anEmployee.setDtHireDate(trim(rc.dtHireDate));
+                prc.anEmployee.setVcAddress(trim(rc.vcAddress));
+                prc.anEmployee.setVcCity(trim(rc.vcCity));
+                prc.anEmployee.setVcRegion(trim(rc.vcRegion));
+                if (IsNumeric(rc.vcPostalCode)){
+                    prc.anEmployee.setVcPostalCode(rc.vcPostalCode);
+                }
+                prc.anEmployee.setVcCountry(trim(rc.vcCountry));
+                prc.anEmployee.setVcHomePhone(trim(rc.vcHomePhone));
+                prc.anEmployee.setVcExtension(trim(rc.vcExtension));
+                prc.anEmployee.setVcNotes(trim(rc.vcNotes));
+                prc.anEmployee.setIntCompanyKey(rc.intCompanyKey);
             }
-            prc.anEmployee.setVcCountry(trim(rc.vcCountry));
-            prc.anEmployee.setVcHomePhone(trim(rc.vcHomePhone));
-            prc.anEmployee.setVcExtension(trim(rc.vcExtension));
-            prc.anEmployee.setVcNotes(trim(rc.vcNotes));
-            prc.anEmployee.setIntCompanyKey(rc.intCompanyKey);
-    }
+        }
 
         // Function chain will run insert query
         EmployeeService.save(prc.anEmployee, rc.crudAction);

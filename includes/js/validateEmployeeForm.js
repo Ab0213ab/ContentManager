@@ -39,7 +39,7 @@ function validateEmployeeForm() {
         }
 
         if (!noLettersRegEx.test(vcHomePhone.value)) {
-            document.getElementById('vcHomePhoneMessage').innerHTML = "This field only allows letters.";
+            document.getElementById('vcHomePhoneMessage').innerHTML = "This field only allows numbers.";
             isValid = false;
         }
     }
