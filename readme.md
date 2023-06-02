@@ -30,6 +30,7 @@ enterprise development techniques like user input validation, responsiveness, OO
 - Bootstrap, jQuery
 - ColdBox MVC framework
 - SQL/Micorsoft SQL Server Management Studio
+- CommandBox/Lucee server
 - Visual Studio Code IDE
 
 [Back to Table of Contents](#table-of-contents)
