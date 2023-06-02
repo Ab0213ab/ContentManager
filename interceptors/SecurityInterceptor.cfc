@@ -1,6 +1,6 @@
 component extends="coldbox.system.Interceptor" cache="false" {
 
-    function configure(){}
+    function configure() {}
 
     function preEvent(event, interceptData, rc, prc) {
 

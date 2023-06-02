@@ -18,7 +18,6 @@
 					<div class="card p-3">
                         <center>
                             <h3>#prc.formTitle#</h3>
-                            <cfdump var = "#session.isLoggedIn#">
                         </center>
                         <p style="float: right">
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
