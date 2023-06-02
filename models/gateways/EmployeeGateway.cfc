@@ -11,6 +11,17 @@
   </cffunction>
 
 
+  <cffunction name="getAllEmployeesFirstNames">
+
+    <cfquery name="employeesFirstNameQuery" datasource="contentManager">
+        SELECT vcFirstName 
+        FROM tblEmployee;
+      </cfquery>
+      <cfreturn employeesFirstNameQuery>
+
+</cffunction>
+
+
   <cffunction name="getOneEmployee">
     <cfargument name="intEmployeeID" required="true">
   
@@ -21,11 +32,11 @@
     </cfquery>
     <cfreturn getOneEmployeeQuery>
 
-</cffunction>
+  </cffunction>
 
 
-<cffunction name="create">
-  <cfargument name="Employee" required="true">
+  <cffunction name="create">
+    <cfargument name="Employee" required="true">
 
     <cfquery name="addNewEmployeeQuery" datasource="contentManager">
 

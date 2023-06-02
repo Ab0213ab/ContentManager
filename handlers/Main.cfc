@@ -14,7 +14,6 @@ component extends="coldbox.system.EventHandler" {
 
 		event.noLayout()
 		event.setView( "main/index" );
-
 	}
 
 	 // Checks user credentials input and then routes to home page
@@ -69,6 +68,7 @@ component extends="coldbox.system.EventHandler" {
 		prc.xeh.validateLogin = "main/validateLogin";
 		prc.xeh.createEmployee = "employee/createEmployee";
 		prc.xeh.index = "main/index";
+		prc.xeh.getCnnContent = "employee/getCnnContent";
 	}
 
 	function onRequestEnd( event, rc, prc ){

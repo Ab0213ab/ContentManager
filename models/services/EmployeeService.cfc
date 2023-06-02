@@ -18,6 +18,12 @@ component name="EmployeeService"singleton accessors="true"{
         return getAllEmployees;
     }
 
+	function getAllEmployeesFirstNames() {
+		
+		 var getAllEmployeesFirstNames = EmployeeGateway.getAllEmployeesFirstNames();
+		 return getAllEmployeesFirstNames;
+	}
+
 	// Selects a single employee
 	function getOneEmployee(intEmployeeID){
 

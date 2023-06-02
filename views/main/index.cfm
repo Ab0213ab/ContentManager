@@ -1,5 +1,3 @@
-<!-- Andrew Schaefer -->
-
 <cfoutput>
 
 	<!DOCTYPE html>

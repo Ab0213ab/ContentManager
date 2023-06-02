@@ -180,6 +180,37 @@ component extends="coldbox.system.EventHandler" {
         prc.message = "Your action was successful."
         relocate('employee/index/message/' & prc.message);
 
-    }    
+    } 
+    
+    // Replaces all employees' first names that appear on cnn.com with "MOD" 
+    function getCnnContent(event, rc, prc) {
+
+        // Exit handlers
+        prc.xeh.validateLogin = "main/validateLogin";
+
+        // Function chain will run select query
+        prc.allEmployeesFirstNames = EmployeeService.getAllEmployeesFirstNames();
+
+        // Gets cnn.com and saves the response in a var
+        http url = "https://www.cnn.com/" method = "get" result = "httpResponse" {}
+        prc.modifiedContent = httpResponse.fileContent;
+
+        // Replaces names in query results
+        for (var name in prc.allEmployeesFirstNames) {
+            prc.modifiedContent = replace(prc.modifiedContent, prc.allEmployeesFirstNames.vcFirstName, "MOD", "all");
+        }
+
+        emailCnnContent(prc.modifiedContent);
+        
+        event.noLayout()
+        event.setView( "employee/cnn" );
+    }
+
+    function emailCnnContent(modifiedContent) {
+
+        mail to="email@gmail.com" from="email@gmail.com" subject="CNN" type="html" {
+            writeOutput(modifiedContent);
+        }
+    }
   
 }
