@@ -4,7 +4,7 @@ component {
 	 * Configure the ColdBox App For Production
 	 * https://coldbox.ortusbooks.com/getting-started/configuration
 	 */
-	function configure(){
+	function configure() {
 		/**
 		 * --------------------------------------------------------------------------
 		 * ColdBox Directives
@@ -127,12 +127,18 @@ component {
 		 * 
 		 * 
 		 * 
-		 * //Register interceptors
-		interceptors = [
-    		{class="interceptors.SecurityInterceptor", name="SecurityInterceptor"}
-		];
+		 * *****************************************************************************************************************************************
 		 */
-		
+		 // Register interceptors ******************************************************************************************************************
+		 interceptors = [
+    		{
+				class="interceptors.SecurityInterceptor", 
+				name="SecurityInterceptor",
+				properties = {
+				// Configuration
+				}
+			}
+		];
 
 
 		/**
@@ -166,16 +172,19 @@ component {
 		};
 
 		/**
-		 * --------------------------------------------------------------------------
+		 * -------------------------------------------------------------------------- **************************************************************
 		 * App Conventions
-		 * --------------------------------------------------------------------------
+		 * -------------------------------------------------------------------------- **************************************************************
 		 */
 		conventions = {
 			handlersLocation : "handlers",
 			viewsLocation    : "views",
 			layoutsLocation  : "layouts",
 			modelsLocation   : "models",
-			eventAction      : "index"
+			eventAction      : "index",
+			// handlers : {
+			// 	preHandler : "preHandler"
+			// }
 		};
 	}
 

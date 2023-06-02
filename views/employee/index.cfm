@@ -30,6 +30,8 @@
    						</div>
 					</cfif>
 
+					<cfdump var = "#session.isLoggedIn#">
+
 					<div class="card p-3">
 						<center>
 							<a href="#event.buildLink(prc.xeh.createEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#" 

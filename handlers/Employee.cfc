@@ -4,6 +4,17 @@ component extends="coldbox.system.EventHandler" {
     property name="EmployeeGateway" inject="model:EmployeeGateway";
     property name="CompanyService" inject="model:CompanyService";
 
+    // IS CURRENTLY USING INTERCEPTOR, BUT THIS ALSO WORKS.
+    // TODO: ASK PAUL WHICH IS THE BEST METHOD
+    // Checks if the user is logged in 
+    function preHandler(event,rc,prc) {
+
+		if (NOT session.keyExists("isLoggedIn") OR NOT session.isLoggedIn) {
+			
+			// Redirect the user to the login page
+			event.overrideEvent("main.index");
+		}
+	 }
 
     function index() {
 

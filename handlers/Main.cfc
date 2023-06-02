@@ -10,8 +10,8 @@ component extends="coldbox.system.EventHandler" {
 		// Exit Handlers
 		prc.xeh.index = "main/index";
 		prc.xeh.validateLogin = "main/validateLogin";
-
 		session.isLoggedIn = false;
+
 		event.noLayout()
 		event.setView( "main/index" );
 
