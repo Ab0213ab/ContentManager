@@ -26,10 +26,11 @@ enterprise development techniques like user input validation, responsiveness, OO
 
 ## Technologies Used
 - CFML
-- HTML, CSS, JavaScript
+- Some custom HTML, CSS, JavaScript
 - Bootstrap, jQuery
 - ColdBox MVC framework
 - SQL/Micorsoft SQL Server Management Studio
+- CommandBox/Lucee server
 - Visual Studio Code IDE
 
 [Back to Table of Contents](#table-of-contents)
