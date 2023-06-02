@@ -19,7 +19,7 @@ component name="EmployeeService"singleton accessors="true"{
     }
 
 	function getAllEmployeesFirstNames() {
-		
+
 		 var getAllEmployeesFirstNames = EmployeeGateway.getAllEmployeesFirstNames();
 		 return getAllEmployeesFirstNames;
 	}
@@ -38,7 +38,7 @@ component name="EmployeeService"singleton accessors="true"{
 			EmployeeGateway.create(anEmployee);
 		} else if (crudAction == "Update") {
 			EmployeeGateway.update(anEmployee);
-		} else {
+		} else if (crudAction == "Delete") {
 			EmployeeGateway.delete(anEmployee);
 		}
         return;

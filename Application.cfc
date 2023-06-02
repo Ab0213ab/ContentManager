@@ -95,6 +95,10 @@ component {
 			COLDBOX_APP_KEY,
 			COLDBOX_APP_MAPPING
 		);
+
+		// Loads environment variables from .env file
+        loadDotEnv(path=".env");
+
 		application.cbBootstrap.loadColdbox();
 		return true;
 	}

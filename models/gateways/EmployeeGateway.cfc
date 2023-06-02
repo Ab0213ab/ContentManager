@@ -19,7 +19,7 @@
       </cfquery>
       <cfreturn employeesFirstNameQuery>
 
-</cffunction>
+  </cffunction>
 
 
   <cffunction name="getOneEmployee">

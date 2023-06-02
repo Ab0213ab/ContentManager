@@ -12,6 +12,7 @@ component extends="coldbox.system.EventHandler" {
 		if (NOT session.keyExists("isLoggedIn") OR NOT session.isLoggedIn) {
 			
 			// Redirect the user to the login page
+            // Should use relocate instead of this ->
 			event.overrideEvent("main.index");
 		}
 	 }
@@ -51,8 +52,7 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        prc.intEmployeeID = event.getValue("intEmployeeID", "");
-        prc.oneEmployee = EmployeeService.getOneEmployee(prc.intEmployeeID);
+        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
 
         event.setView( "employee/employeeCrud" );
     }
@@ -96,8 +96,9 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        prc.intEmployeeID = event.getValue("intEmployeeID", "");
-        prc.oneEmployee = EmployeeService.getOneEmployee(prc.intEmployeeID);
+        if (structKeyExists(rc, "intEmployeeID")) {
+            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        } 
 
         event.setView( "employee/employeeCrud" );
 
@@ -142,7 +143,7 @@ component extends="coldbox.system.EventHandler" {
         prc.anEmployee = new models.domains.Employee();
 
         // Sets properties with form values
-        if (IsNumeric(rc.intEmployeeID)){
+        if (IsNumeric(rc.intEmployeeID)) {
             prc.anEmployee.setIntEmployeeID(rc.intEmployeeID);
         }
 
@@ -208,9 +209,13 @@ component extends="coldbox.system.EventHandler" {
 
     function emailCnnContent(modifiedContent) {
 
-        mail to="email@gmail.com" from="email@gmail.com" subject="CNN" type="html" {
+        session.email = getSystemSetting( "EMAIL", "" );
+
+        mail to="#session.email#" from="#session.email#" subject="CNN" type="html" {
             writeOutput(modifiedContent);
         }
+
+        return session.email;
     }
   
 }

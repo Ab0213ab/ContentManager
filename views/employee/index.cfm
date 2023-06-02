@@ -32,7 +32,7 @@
 
 					<div class="card p-3">
 						<center>
-							<a href="#event.buildLink(prc.xeh.createEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#" 
+							<a href="#event.buildLink(prc.xeh.createEmployee)#" 
 							class="btn btn-primary" style="width: 50%;"
 							><i class="bi bi-person-plus" style="color: white"></i> Add Employee</a>
 						</center>
