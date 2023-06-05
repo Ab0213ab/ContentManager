@@ -3,7 +3,9 @@
     <cffunction name="getAllCompanies">
   
         <cfquery name="companyQuery" datasource="contentManager">
-            SELECT * 
+            SELECT intCompanyKey,
+            vcCompanyName,
+            bitIsActive 
             FROM tblCompany;
           </cfquery>
           <cfreturn companyQuery>

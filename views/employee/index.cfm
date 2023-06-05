@@ -25,6 +25,7 @@
 
 					<!-- Display messages -->
 					<cfif structKeyExists(prc, "message") AND prc.message NEQ "">
+						<!-- <div class="alert alert-success text-center"> -->
     					<div class="alert alert-success text-center">
         					#prc.message#
    						</div>
@@ -40,15 +41,15 @@
 							<cfloop query="prc.allEmployees">
 								<div>
 									<a href="#event.buildLink(prc.xeh.updateEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#" 
-									style="margin: 10px">
+									style="margin: 2px" class="btn btn-primary btn-sm">
 										Edit
+									</a>
+									<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#" 
+									class="btn btn-danger btn-sm">
+										Delete
 									</a>
 									<a class="ms-4" href="#event.buildLink(prc.xeh.readEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#">
 										#prc.allEmployees.vcFirstName# #prc.allEmployees.vcLastName#
-									</a>
-									<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#" 
-									style="float: right; color: red">
-										Delete
 									</a>
 								</div>
 							</cfloop>

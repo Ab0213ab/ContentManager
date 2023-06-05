@@ -119,33 +119,73 @@ component extends="coldbox.system.EventHandler" {
     }
 
     // Ensures required fields have data
-    function validateEmpFormReqFields(vcLastName, vcFirstName) {
+    function validateEmpFormReqFields(
+        crudAction, 
+        vcLastName, 
+        vcFirstName, 
+        vcCity, 
+        vcRegion, 
+        vcHomePhone) {
 
-        isValid = true;
-        if (vcLastName == "" || vcFirstName == "") {
-            isValid = false;
+        var isValid = true;
+
+        // Form validation unecessary if Delete
+        if (crudAction == " Delete") {
+            isValid = true;
+
+            // If no matches
+        } else {
+            if (REFind("^(?!$)[A-Za-z\s]+$", vcLastName) == 0) {
+                isValid = false;
+
+            }
+            if (REFind("^(?!$)[A-Za-z\s]*$", vcFirstName) == 0) {
+                isValid = false;
+
+            }
+            if (REFind("^[A-Za-z\s]*$", vcRegion) == 0) {
+                isValid = false;
+
+            }
+            if (REFind("^[A-Za-z\s]*$", vcCity) == 0) {
+                isValid = false;
+
+            }
+            if (REFind("^[0-9\s]*$", vcHomePhone) == 0) {
+                isValid = false;
+
+            }
         }
         return isValid;
     }
 
     // Determines which CRUD action to take
+    // ORIGINAL FUNCTION
     function save(event, rc, prc) {
 
         prc.anEmployee = new models.domains.Employee();
 
-        // Sets properties with form values
+        // Only sets var if it exists (update or delete)
         if (IsNumeric(rc.intEmployeeID)) {
             prc.anEmployee.setIntEmployeeID(rc.intEmployeeID);
         }
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
-            if (validateEmpFormReqFields(trim(rc.vcLastName), trim(rc.vcFirstName)) == false) {
+            if (validateEmpFormReqFields(rc.crudAction, 
+            trim(rc.vcLastName), 
+            trim(rc.vcFirstName), 
+            trim(rc.vcCity), 
+            trim(rc.vcRegion), 
+            trim(rc.vcHomePhone)) == false) {
 
-                prc.message = "First Name and Last Name fields are required."
+                prc.message = "Your action was unsuccessful. Invalid data was entered into 
+                one or more required fields."
                 relocate('employee/index/message/' & prc.message);
 
             } else {
+                
+                // Sets properties with form values
                 prc.anEmployee.setVcLastName(trim(rc.vcLastName));
                 prc.anEmployee.setVcFirstName(trim(rc.vcFirstName));
                 prc.anEmployee.setVcTitle(trim(rc.vcTitle));
@@ -182,7 +222,6 @@ component extends="coldbox.system.EventHandler" {
 
         // Function chain will run select query
         prc.allEmployeesFirstNames = EmployeeService.getAllEmployeesFirstNames();
-
         // Gets cnn.com and saves the response in an http var
         http url = "https://www.cnn.com/" method = "get" result = "httpResponse" {}
         prc.modifiedContent = httpResponse.fileContent;
@@ -200,8 +239,8 @@ component extends="coldbox.system.EventHandler" {
 
     function emailCnnContent(modifiedContent) {
 
-        session.email = getSystemSetting( "EMAIL", "" );
-        mail to="#session.email#" from="#session.email#" subject="CNN" type="html" {
+        prc.email = getSystemSetting( "EMAIL", "" );
+        mail to="#prc.email#" from="#prc.email#" subject="CNN" type="html" {
             writeOutput(modifiedContent);
         }
 

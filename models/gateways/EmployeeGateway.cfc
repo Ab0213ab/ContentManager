@@ -3,7 +3,21 @@
   <cffunction name="getAllEmployees">
 
       <cfquery name="employeeQuery" datasource="contentManager">
-          SELECT * 
+          SELECT vcLastName, 
+          vcFirstName, 
+          vcTitle, 
+          vcTitleOfCourtesy, 
+          dtBirthDate, 
+          dtHireDate, 
+          vcAddress, 
+          vcCity, 
+          vcRegion, 
+          vcPostalCode,
+          vcCountry, 
+          vcHomePhone, 
+          vcExtension, 
+          vcNotes, 
+          intCompanyKey 
           FROM tblEmployee;
         </cfquery>
         <cfreturn employeeQuery>
@@ -26,7 +40,21 @@
     <cfargument name="intEmployeeID" required="true">
   
     <cfquery name="getOneEmployeeQuery" datasource="contentManager">
-        SELECT * 
+        SELECT vcLastName, 
+          vcFirstName, 
+          vcTitle, 
+          vcTitleOfCourtesy, 
+          dtBirthDate, 
+          dtHireDate, 
+          vcAddress, 
+          vcCity, 
+          vcRegion, 
+          vcPostalCode,
+          vcCountry, 
+          vcHomePhone, 
+          vcExtension, 
+          vcNotes, 
+          intCompanyKey  
         FROM tblEmployee
         WHERE intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">;
     </cfquery>
@@ -42,8 +70,21 @@
 
       INSERT INTO tblEmployee 
         (
-            vcLastName, vcFirstName, vcTitle, vcTitleOfCourtesy, dtBirthDate, dtHireDate, vcAddress, vcCity, vcRegion, vcPostalCode,
-            vcCountry, vcHomePhone, vcExtension, vcNotes, intCompanyKey
+            vcLastName, 
+            vcFirstName, 
+            vcTitle, 
+            vcTitleOfCourtesy, 
+            dtBirthDate, 
+            dtHireDate, 
+            vcAddress, 
+            vcCity, 
+            vcRegion, 
+            vcPostalCode,
+            vcCountry, 
+            vcHomePhone, 
+            vcExtension, 
+            vcNotes, 
+            intCompanyKey
         )
         VALUES ( 
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcLastName()#">,

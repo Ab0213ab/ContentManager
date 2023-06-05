@@ -96,6 +96,11 @@ component {
 			COLDBOX_APP_MAPPING
 		);
 
+		
+		// Needed this to get it working, but might no 
+		// longer be needed; ColdBox is now recognizing 
+		// the system property ->
+
 		// Loads environment variables from .env file
         //loadDotEnv(path=".env");
 

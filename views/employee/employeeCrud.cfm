@@ -129,8 +129,9 @@
                             </div>
                                 <div class="d-flex mt-3">
                                     <div>
-                                        <button id="addEmployeeBtn" #prc.btnEnabled# type="submit" class="#prc.btnClass#" onclick="return validateEmployeeForm();"
-                                        ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#</button>
+                                        <button id="addEmployeeBtn" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                        onclick="return validateEmployeeForm();" ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                        </button>
                                     </div>
                                 </div> 
                         </form>

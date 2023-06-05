@@ -58,7 +58,7 @@
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="navbar-nav">
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.createEmployee)#">Add Employee</a>
-                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN.com</a>
+                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN</a>
                           </div>
                         <div class="navbar-nav ms-auto"> 
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.index)#"
