@@ -32,13 +32,13 @@
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
                                     <input type="hidden" name="intEmployeeID" value="#prc.oneEmployee.intEmployeeID ?: ''#">
                                     
-                                    <label for="vcLastName">Last Name</label>
+                                    <label for="vcLastName"><span style="color: red;">* </span>Last Name</label>
                                     <input type="text" name="vcLastName" class="form-control" id="vcLastName" #prc.fieldsEnabled# 
                                     value="#prc.oneEmployee.vcLastName ?: ''#">
                                     <p id="vcLastNameMessage" style="color: red"></p>
                                 </div>
                                 <div class="form-group col-md-6">
-                                    <label for="vcFirstName">First Name</label>
+                                    <label for="vcFirstName"><span style="color: red;">* </span>First Name</label>
                                     <input type="text" name="vcFirstName" class="form-control" id="vcFirstName" #prc.fieldsEnabled# 
                                     value="#prc.oneEmployee.vcFirstName ?: ''#">
                                     <p id="vcFirstNameMessage" style="color: red"></p>
@@ -75,13 +75,13 @@
                             </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                    <label for="vcCity">City</label>
+                                    <label for="vcCity"><span style="color: red;">* </span>City</label>
                                     <input type="text" name="vcCity" class="form-control" id="vcCity" #prc.fieldsEnabled# 
                                     value="#prc.oneEmployee.vcCity ?: ''#">
                                     <p id="vcCityMessage" style="color: red"></p>
                                 </div>
                                 <div class="form-group col-md-6">
-                                        <label for="vcRegion">Region</label>
+                                        <label for="vcRegion"><span style="color: red;">* </span>Region</label>
                                         <input type="text" name="vcRegion" class="form-control" id="vcRegion" #prc.fieldsEnabled# 
                                         value="#prc.oneEmployee.vcRegion ?: ''#">
                                         <p id="vcRegionMessage" style="color: red"></p>
@@ -101,7 +101,7 @@
                                 </div>
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-                                        <label for="vcHomePhone">Home Phone</label>
+                                        <label for="vcHomePhone"><span style="color: red;">* </span>Home Phone</label>
                                         <input type="text" name="vcHomePhone" class="form-control" id="vcHomePhone" #prc.fieldsEnabled# 
                                         value="#prc.oneEmployee.vcHomePhone ?: ''#">
                                         <p id="vcHomePhoneMessage" style="color: red"></p>

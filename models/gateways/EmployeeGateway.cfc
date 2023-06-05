@@ -3,7 +3,8 @@
   <cffunction name="getAllEmployees">
 
       <cfquery name="employeeQuery" datasource="contentManager">
-          SELECT vcLastName, 
+          SELECT intEmployeeID,
+          vcLastName, 
           vcFirstName, 
           vcTitle, 
           vcTitleOfCourtesy, 
@@ -40,7 +41,8 @@
     <cfargument name="intEmployeeID" required="true">
   
     <cfquery name="getOneEmployeeQuery" datasource="contentManager">
-        SELECT vcLastName, 
+        SELECT intEmployeeID,
+          vcLastName, 
           vcFirstName, 
           vcTitle, 
           vcTitleOfCourtesy, 
