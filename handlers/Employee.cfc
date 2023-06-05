@@ -183,7 +183,7 @@ component extends="coldbox.system.EventHandler" {
         // Function chain will run select query
         prc.allEmployeesFirstNames = EmployeeService.getAllEmployeesFirstNames();
 
-        // Gets cnn.com and saves the response in a var
+        // Gets cnn.com and saves the response in an http var
         http url = "https://www.cnn.com/" method = "get" result = "httpResponse" {}
         prc.modifiedContent = httpResponse.fileContent;
 
@@ -201,7 +201,6 @@ component extends="coldbox.system.EventHandler" {
     function emailCnnContent(modifiedContent) {
 
         session.email = getSystemSetting( "EMAIL", "" );
-
         mail to="#session.email#" from="#session.email#" subject="CNN" type="html" {
             writeOutput(modifiedContent);
         }

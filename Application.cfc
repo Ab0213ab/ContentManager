@@ -97,7 +97,7 @@ component {
 		);
 
 		// Loads environment variables from .env file
-        loadDotEnv(path=".env");
+        //loadDotEnv(path=".env");
 
 		application.cbBootstrap.loadColdbox();
 		return true;
