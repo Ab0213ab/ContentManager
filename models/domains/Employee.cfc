@@ -10,7 +10,7 @@ component name="Employee" accessors="true" {
     property type="String" name="vcAddress" getter=true;
     property type="String" name="vcCity" getter=true;
     property type="String" name="vcRegion" getter=true;
-    property type="Numeric" name="vcPostalCode" getter=true;
+    property type="String" name="vcPostalCode" getter=true;
     property type="String" name="vcCountry" getter=true;
     property type="String" name="vcHomePhone" getter=true;
     property type="String" name="vcExtension" getter=true;

@@ -24,9 +24,15 @@
 
 				<!-- Display messages -->
 				<cfif structKeyExists(prc, "message") AND prc.message NEQ "">
-					<!-- <div class="alert alert-success text-center"> -->
 					<div class="alert alert-success text-center">
 						#prc.message#
+					</div>
+				</cfif>
+
+				<!-- Display messages -->
+				<cfif structKeyExists(prc, "errorMessages")>
+					<div class="alert alert-danger text-center">
+						<cfdump var="#prc.errorMessages#">
 					</div>
 				</cfif>
 				
@@ -36,7 +42,9 @@
 
 						<form id="companiesForm" action="#event.buildLink(prc.xeh.employeeIndex)#" method="post">
 							<div class="form-group">
-								<center><h5>Companies</h5></center>
+								<center>
+									<h5>Companies</h5>
+								</center>
 								<select class="form-control" onchange="this.form.submit()" name="intCompanyKey" id="companiesSelect">
 									<option value="">Select a Company</option>
 									<cfloop query="prc.allCompanies">
@@ -52,11 +60,11 @@
 						  <cfif structKeyExists(prc, "employeesByCompanyKey")>
 							<cfloop query="#prc.employeesByCompanyKey#">
 							  <div class="d-flex align-items-center">
-								<a href="#event.buildLink(prc.xeh.updateEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#"
+								<a href="#event.buildLink(prc.xeh.updateEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
 								  class="btn btn-primary btn-sm m-2">
 								  Edit
 								</a>
-								<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#"
+								<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
 								  class="btn btn-danger btn-sm">
 								  Delete
 								</a>
@@ -73,46 +81,27 @@
 				</div>
 
 				<!--- User Card --->
-				<div class="col-md-6">
+				<!---<div class="col-md-6">
 					<div class="card p-3">
-						<form id="companiesForm" action="#event.buildLink(prc.xeh.employeeIndex)#" method="post">
-							<div class="form-group">
-								<center><h5>Users</h5></center>
-								<select class="form-control" onchange="this.form.submit()" name="intCompanyKey" id="companiesSelect">
-									<option value="">Select a User</option>
-									<cfloop query="prc.allCompanies">
-									<option value="#prc.allCompanies.intCompanyKey#">#prc.allCompanies.vcCompanyName#</option>
-									</cfloop>
-							  	</select>
+						<cfloop query="prc.allUsers">
+							<div class="d-flex align-items-center">
+								<a href="#event.buildLink(prc.xeh.updateUser, {intUserID = prc.allUsers.intUserID})#"
+								class="btn btn-primary btn-sm m-2">
+								Edit
+								</a>
+								<a href="#event.buildLink(prc.xeh.deleteUser, {intUserID = prc.allUsers.intUserID})#"
+									class="btn btn-danger btn-sm">
+									Delete
+								</a>
+								<a href="#event.buildLink(prc.xeh.readUser, {intUserID = prc.allUsers.intUserID})#"
+									class="m-2">
+									#prc.allUsers.vcUserName#
+								</a>
 							</div>
-							<!-- Hidden field -->
-							<input type="hidden" name="isCompanyFormSubmission" id="isCompanyFormSubmission" value="true">
-						  </form>
-						  <br>
-						  
-						  <cfif structKeyExists(prc, "employeesByCompanyKey")>
-							<cfloop query="#prc.employeesByCompanyKey#">
-							  <div class="d-flex align-items-center">
-								<a href="#event.buildLink(prc.xeh.updateEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#"
-								  class="btn btn-primary btn-sm m-2">
-								  Edit
-								</a>
-								<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.allEmployees.intEmployeeID})#"
-								  class="btn btn-danger btn-sm">
-								  Delete
-								</a>
-								<a href="#event.buildLink(prc.xeh.readEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
-								  class="m-2">
-								  #prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#
-								</a>
-							  </div>
-							</cfloop>
-						  </cfif>
-						  
-						<br> 
-                    </div>
-				</div>
-				
+						</cfloop>
+					</div>
+				</div>--->
+
 			</div>
 		</div>
 		<!-- jQuery -->

@@ -4,6 +4,7 @@ component extends="coldbox.system.EventHandler" {
     property name="EmployeeGateway" inject="model:EmployeeGateway";
     property name="CompanyService" inject="model:CompanyService";
 
+
     function index() {
 
         prc.welcomeMessage = "Welcome, #session.vcUserName#!";
@@ -12,22 +13,12 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        //prc.employeesByCompanyKey = event.getValue("employeesByCompanyKey", "");
         if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
         }
 
-        // For post CRUD action from employee/save()
-        // TODO: Remove this!!!! Just use prc scope
-        prc.message = event.getValue("messageCode", "");
-
-        // TODO: Refactor this
-        if (prc.message == "1") {
-            prc.message = "Your action was successful."
-        }
-        if (prc.message == "2") {
-            prc.message = "Your action was unsuccessful. Invalid data was entered into 
-            one or more required fields.";
+        if (structKeyExists(prc, "errorMessage")) {
+            prc.errorMessages = prc.errorMessage;
         }
 
         // Exit Handlers
@@ -85,6 +76,10 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
+        if (structKeyExists(rc, "intEmployeeID")) {
+            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        } 
+
         event.setView( "employee/employeeCrud" );
     }
 
@@ -115,6 +110,7 @@ component extends="coldbox.system.EventHandler" {
 
     }
 
+
     function deleteEmployee(event, rc, prc) {
 
         // Exit Handlers
@@ -133,107 +129,32 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        prc.intEmployeeID = event.getValue("intEmployeeID", "");
-        prc.oneEmployee = EmployeeService.getOneEmployee(prc.intEmployeeID);
+        //prc.intEmployeeID = prc.allEmployees.intEmployeeID;
+        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
 
         event.setView( "employee/employeeCrud" );
     }
 
-    // Ensures required fields have data
-    // TODO: MOVE THIS TO SERVICE
-    function validateEmpFormReqFields(
-        crudAction, 
-        vcLastName, 
-        vcFirstName, 
-        vcCity, 
-        vcRegion, 
-        vcHomePhone) {
-
-        var isValid = true;
-
-        // Form validation unecessary if Delete
-        if (crudAction == " Delete") {
-            isValid = true;
-
-            // If no matches
-        } else {
-            if (REFind("^(?!$)[A-Za-z\s]+$", vcLastName) == 0) {
-                isValid = false;
-
-            }
-            if (REFind("^(?!$)[A-Za-z\s]*$", vcFirstName) == 0) {
-                isValid = false;
-
-            }
-            if (REFind("^[A-Za-z\s]*$", vcRegion) == 0) {
-                isValid = false;
-
-            }
-            if (REFind("^[A-Za-z\s]*$", vcCity) == 0) {
-                isValid = false;
-
-            }
-            if (REFind("^[0-9\s]*$", vcHomePhone) == 0) {
-                isValid = false;
-
-            }
-        }
-        return isValid;
-    }
 
     // Determines which CRUD action to take
-    // ORIGINAL FUNCTION
     function save(event, rc, prc) {
 
-        prc.anEmployee = new models.domains.Employee();
-
-        // Only sets var if it exists (update or delete)
-        if (IsNumeric(rc.intEmployeeID)) {
-            prc.anEmployee.setIntEmployeeID(rc.intEmployeeID);
-        }
+        prc.anEmployee = populateModel( "Employee" );
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
-            if (validateEmpFormReqFields(rc.crudAction, 
-            trim(rc.vcLastName), 
-            trim(rc.vcFirstName), 
-            trim(rc.vcCity), 
-            trim(rc.vcRegion), 
-            trim(rc.vcHomePhone)) == false) {
-
-                prc.messageCode = "2";
-                relocate('employee/index/messageCode/' & prc.messageCode);
-
-            } else {
-                
-                // Sets properties with form values
-                prc.anEmployee.setVcLastName(trim(rc.vcLastName));
-                prc.anEmployee.setVcFirstName(trim(rc.vcFirstName));
-                prc.anEmployee.setVcTitle(trim(rc.vcTitle));
-                prc.anEmployee.setVcTitleOfCourtesy(trim(rc.vcTitleOfCourtesy));
-                prc.anEmployee.setDtBirthDate(trim(rc.dtBirthDate));
-                prc.anEmployee.setDtHireDate(trim(rc.dtHireDate));
-                prc.anEmployee.setVcAddress(trim(rc.vcAddress));
-                prc.anEmployee.setVcCity(trim(rc.vcCity));
-                prc.anEmployee.setVcRegion(trim(rc.vcRegion));
-                if (IsNumeric(rc.vcPostalCode)){
-                    prc.anEmployee.setVcPostalCode(rc.vcPostalCode);
-                }
-                prc.anEmployee.setVcCountry(trim(rc.vcCountry));
-                prc.anEmployee.setVcHomePhone(trim(rc.vcHomePhone));
-                prc.anEmployee.setVcExtension(trim(rc.vcExtension));
-                prc.anEmployee.setVcNotes(trim(rc.vcNotes));
-                prc.anEmployee.setIntCompanyKey(rc.intCompanyKey);
-            }
-        }
-
+            prc.errorMessage = EmployeeService.validate(prc.anEmployee);
+            if (len(prc.errorMessage) != 0) {
+                //event.setView( "employee/index" );
+                relocate('employee/index');
+            } 
+        } 
         // Function chain will run insert query
         EmployeeService.save(prc.anEmployee, rc.crudAction);
 
-        prc.message = "Your action was successful."
-        relocate('employee/index/message/' & prc.message);
-
+        relocate('employee/index');
     } 
+
     
     // Replaces all employees' first names that appear on cnn.com with "MOD" 
     function getCnnContent(event, rc, prc) {

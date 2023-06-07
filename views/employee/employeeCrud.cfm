@@ -30,7 +30,9 @@
 
                                     <!-- Hidden fields -->
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
-                                    <input type="hidden" name="intEmployeeID" value="#prc.oneEmployee.intEmployeeID ?: ''#">
+                                    <cfif isDefined("prc.oneEmployee.intEmployeeID") && len(prc.oneEmployee.intEmployeeID)>
+                                        <input type="hidden" name="intEmployeeID" value="#prc.oneEmployee.intEmployeeID#">
+                                    </cfif>                                    
                                     
                                     <label for="vcLastName"><span style="color: red;">* </span>Last Name</label>
                                     <input type="text" name="vcLastName" class="form-control" id="vcLastName" #prc.fieldsEnabled# 
@@ -130,7 +132,7 @@
                                 <div class="d-flex mt-3">
                                     <div>
                                         <button id="addEmployeeBtn" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                        onclick="return validateEmployeeForm();" ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                         ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
                                         </button>
                                     </div>
                                 </div> 

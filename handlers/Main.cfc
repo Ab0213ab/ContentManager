@@ -43,7 +43,7 @@ component extends="coldbox.system.EventHandler" {
 
             } else {
 
-				prc.errorMessage = "Please enter a valid User Name and Password.";
+				prc.errorMessage = getErrorMessage(1);
                 event.noLayout();
                 event.setView( "main/index" );
                 return;
@@ -51,6 +51,20 @@ component extends="coldbox.system.EventHandler" {
             session.vcUserName = trim(rc.vcUserName);
         }
 		relocate(event="employee/index");
+    }
+
+	
+    function getErrorMessage(errorCode) {
+
+        prc.errorMessage = "";
+        
+        switch (errorCode) {
+            case 1:
+            prc.errorMessage = "Please enter a valid User Name and Password.";
+            break;
+        }
+
+        return prc.errorMessage;      
     }
 
 	/**
