@@ -6,13 +6,13 @@ component name="EmployeeService"singleton accessors="true"{
 	/**
 	 * Constructor
 	 */
-	EmployeeService function init(){
+	EmployeeService function init() {
 
 		return this;
 	}
 
 	// Selects all employees
-	function getAllEmployees(){
+	function getAllEmployees() {
 
         var getAllEmployees = EmployeeGateway.getAllEmployees();
         return getAllEmployees;
@@ -25,7 +25,7 @@ component name="EmployeeService"singleton accessors="true"{
 	}
 
 	// Selects a single employee
-	function getOneEmployee(intEmployeeID){
+	function getOneEmployee(intEmployeeID) {
 
         var getOneEmployee = EmployeeGateway.getOneEmployee(intEmployeeID);
         return getOneEmployee;

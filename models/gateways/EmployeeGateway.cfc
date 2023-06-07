@@ -3,23 +3,25 @@
   <cffunction name="getAllEmployees">
 
       <cfquery name="employeeQuery" datasource="contentManager">
-          SELECT intEmployeeID,
-          vcLastName, 
-          vcFirstName, 
-          vcTitle, 
-          vcTitleOfCourtesy, 
-          dtBirthDate, 
-          dtHireDate, 
-          vcAddress, 
-          vcCity, 
-          vcRegion, 
-          vcPostalCode,
-          vcCountry, 
-          vcHomePhone, 
-          vcExtension, 
-          vcNotes, 
-          intCompanyKey 
-          FROM tblEmployee;
+          SELECT 
+            intEmployeeID,
+            vcLastName, 
+            vcFirstName, 
+            vcTitle, 
+            vcTitleOfCourtesy, 
+            dtBirthDate, 
+            dtHireDate, 
+            vcAddress, 
+            vcCity, 
+            vcRegion, 
+            vcPostalCode,
+            vcCountry, 
+            vcHomePhone, 
+            vcExtension, 
+            vcNotes, 
+            intCompanyKey 
+          FROM 
+            tblEmployee;
         </cfquery>
         <cfreturn employeeQuery>
 
@@ -29,8 +31,10 @@
   <cffunction name="getAllEmployeesFirstNames">
 
     <cfquery name="employeesFirstNameQuery" datasource="contentManager">
-        SELECT vcFirstName 
-        FROM tblEmployee;
+        SELECT 
+          vcFirstName 
+        FROM 
+          tblEmployee;
       </cfquery>
       <cfreturn employeesFirstNameQuery>
 
@@ -41,7 +45,8 @@
     <cfargument name="intEmployeeID" required="true">
   
     <cfquery name="getOneEmployeeQuery" datasource="contentManager">
-        SELECT intEmployeeID,
+        SELECT 
+          intEmployeeID,
           vcLastName, 
           vcFirstName, 
           vcTitle, 
@@ -57,8 +62,10 @@
           vcExtension, 
           vcNotes, 
           intCompanyKey  
-        FROM tblEmployee
-        WHERE intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">;
+        FROM 
+          tblEmployee
+        WHERE 
+          intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">;
     </cfquery>
     <cfreturn getOneEmployeeQuery>
 
@@ -70,7 +77,8 @@
 
     <cfquery name="addNewEmployeeQuery" datasource="contentManager">
 
-      INSERT INTO tblEmployee 
+      INSERT INTO 
+        tblEmployee 
         (
             vcLastName, 
             vcFirstName, 
@@ -115,23 +123,26 @@
 
     <cfquery name="updateEmployeeQuery" datasource="contentManager">
 
-      UPDATE tblEmployee 
-      SET vcLastName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcLastName()#">,
-          vcFirstName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcFirstName()#">,
-          vcTitle = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcTitle()#">,
-          vcTitleOfCourtesy = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcTitleOfCourtesy()#">,
-          dtBirthDate = <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.Employee.getDtBirthDate()#">,
-          dtHireDate = <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.Employee.getDtHireDate()#">,
-          vcAddress = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcAddress()#">,
-          vcCity = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcCity()#">,
-          vcRegion = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcRegion()#">,
-          vcPostalCode = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcPostalCode()#">,
-          vcCountry = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcCountry()#">,
-          vcHomePhone = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcHomePhone()#">,
-          vcExtension = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcExtension()#">,
-          vcNotes = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcNotes()#">,
-          intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
-      WHERE intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
+      UPDATE 
+        tblEmployee 
+      SET 
+        vcLastName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcLastName()#">,
+        vcFirstName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcFirstName()#">,
+        vcTitle = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcTitle()#">,
+        vcTitleOfCourtesy = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcTitleOfCourtesy()#">,
+        dtBirthDate = <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.Employee.getDtBirthDate()#">,
+        dtHireDate = <cfqueryparam cfsqltype="cf_sql_date" value="#arguments.Employee.getDtHireDate()#">,
+        vcAddress = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcAddress()#">,
+        vcCity = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcCity()#">,
+        vcRegion = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcRegion()#">,
+        vcPostalCode = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcPostalCode()#">,
+        vcCountry = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcCountry()#">,
+        vcHomePhone = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcHomePhone()#">,
+        vcExtension = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcExtension()#">,
+        vcNotes = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcNotes()#">,
+        intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
+      WHERE 
+        intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
     </cfquery>
     
 </cffunction>
@@ -142,8 +153,10 @@
 
     <cfquery name="deleteEmployeeQuery" datasource="contentManager">
 
-      DELETE FROM tblEmployee 
-      WHERE intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
+      DELETE FROM 
+        tblEmployee 
+      WHERE 
+        intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
     </cfquery>
     
 </cffunction>

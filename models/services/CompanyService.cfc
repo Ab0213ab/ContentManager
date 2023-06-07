@@ -18,5 +18,12 @@ component singleton accessors="true"{
         return getAllCompanies;
     }
 
+	// For selecting all companies and their associated employees
+	function getEmployeesByCompanyKey(intCompanyKey){
+
+		var employeesByCompanyKey = CompanyGateway.getEmployeesByCompanyKey(intCompanyKey);
+		return employeesByCompanyKey;
+	}
+
 
 }

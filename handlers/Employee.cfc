@@ -9,14 +9,35 @@ component extends="coldbox.system.EventHandler" {
         prc.welcomeMessage = "Welcome, #session.vcUserName#!";
         prc.allEmployees = EmployeeService.getAllEmployees();
 
+        // Populates the company dropdown in the form
+        prc.allCompanies = CompanyService.getAllCompanies();
+
+        //prc.employeesByCompanyKey = event.getValue("employeesByCompanyKey", "");
+        if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
+            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
+        }
+
         // For post CRUD action from employee/save()
-        prc.message = event.getValue("message", "");
+        // TODO: Remove this!!!! Just use prc scope
+        prc.message = event.getValue("messageCode", "");
+
+        // TODO: Refactor this
+        if (prc.message == "1") {
+            prc.message = "Your action was successful."
+        }
+        if (prc.message == "2") {
+            prc.message = "Your action was unsuccessful. Invalid data was entered into 
+            one or more required fields.";
+        }
 
         // Exit Handlers
         prc.xeh.readEmployee = "employee/readEmployee";
         prc.xeh.createEmployee = "employee/createEmployee";
         prc.xeh.updateEmployee = "employee/updateEmployee";
         prc.xeh.deleteEmployee = "employee/deleteEmployee";
+        prc.xeh.createCompany = "employee/createCompany";
+        prc.xeh.createUser = "employee/createUser";
+        prc.xeh.employeeIndex = "employee/index";
         
         event.setView( "employee/index" );
     }
@@ -119,6 +140,7 @@ component extends="coldbox.system.EventHandler" {
     }
 
     // Ensures required fields have data
+    // TODO: MOVE THIS TO SERVICE
     function validateEmpFormReqFields(
         crudAction, 
         vcLastName, 
@@ -179,9 +201,8 @@ component extends="coldbox.system.EventHandler" {
             trim(rc.vcRegion), 
             trim(rc.vcHomePhone)) == false) {
 
-                prc.message = "Your action was unsuccessful. Invalid data was entered into 
-                one or more required fields."
-                relocate('employee/index/message/' & prc.message);
+                prc.messageCode = "2";
+                relocate('employee/index/messageCode/' & prc.messageCode);
 
             } else {
                 

@@ -19,32 +19,34 @@ component extends="coldbox.system.EventHandler" {
 	 // Checks user credentials input and then routes to home page
 	 function validateLogin( event, rc, prc ) {
 
+		// Valid credentials
+		prc.userNames = ["andrew", "Kevin", "admin"];
+		prc.passwords = ["schaefer", "Barnes", "Admin"];
+
         // For when arriving at the handler from the login screen
         if (structKeyExists(rc, "isFormSubmission") && rc.isFormSubmission == "true") {
 
-            if (trim(rc.vcUserName) != "a" && trim(rc.vcPassword) != "s") {
+            if (trim(rc.vcUserName) == prc.userNames[1] && trim(rc.vcPassword) == prc.passwords[1]) {
 
-                prc.errorMessage = "Please enter a valid User Name and Password.";
-                event.noLayout();
-                event.setView( "main/index" );
-                return;
+				session.isLoggedIn = true;
+				session.isAdmin = false;
 
-            } else if (trim(rc.vcUserName) != "a") {
+            } else if (trim(rc.vcUserName) == prc.userNames[2] && trim(rc.vcPassword) == prc.passwords[2]) {
 
-                prc.errorMessage = "Please enter a valid User Name.";
-                event.noLayout();
-                event.setView( "main/index" );
-                return;
+				session.isLoggedIn = true;
+				session.isAdmin = true;
 
-            } else if (trim(rc.vcPassword) != "s") {
+            } else if (trim(rc.vcUserName) == prc.userNames[3] && trim(rc.vcPassword) == prc.passwords[3]) {
 
-                prc.errorMessage = "Please enter a valid Password.";
-                event.noLayout();
-                event.setView( "main/index" );
-                return;
+				session.isLoggedIn = true;
+				session.isAdmin = true;
 
             } else {
-				session.isLoggedIn = true;
+
+				prc.errorMessage = "Please enter a valid User Name and Password.";
+                event.noLayout();
+                event.setView( "main/index" );
+                return;
 			}
             session.vcUserName = trim(rc.vcUserName);
         }
@@ -67,6 +69,8 @@ component extends="coldbox.system.EventHandler" {
 		// Exit Handlers used in navbar
 		prc.xeh.validateLogin = "main/validateLogin";
 		prc.xeh.createEmployee = "employee/createEmployee";
+		prc.xeh.createCompany = "employee/createCompany";
+		prc.xeh.createUser = "employee/createUser";
 		prc.xeh.index = "main/index";
 		prc.xeh.getCnnContent = "employee/getCnnContent";
 	}
