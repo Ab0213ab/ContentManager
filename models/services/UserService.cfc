@@ -6,7 +6,7 @@ component singleton accessors="true"{
 	/**
 	 * Constructor
 	 */
-	CompanyService function init() {
+	UserService function init() {
 
 		return this;
 	}
@@ -17,5 +17,25 @@ component singleton accessors="true"{
         var getAllUsers = UserGateway.getAllUsers();
         return getAllUsers;
     }
+
+	// For selecting all users
+	function getOneUser(intUserID){
+
+        var getOneUser = UserGateway.getOneUser(intUserID);
+        return getOneUser;
+    }
+
+	// Function chain will run insert query
+	function save(aUser, crudAction) {
+
+		if (crudAction == "Create") {
+			UserGateway.create(aUser);
+		} else if (crudAction == "Update") {
+			UserGateway.update(aUser);
+		} else if (crudAction == "Delete") {
+			UserGateway.delete(aUser);
+		}
+		return;
+	}
 
 }

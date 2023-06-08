@@ -35,7 +35,7 @@
     >
         <!---Top NavBar --->
         <header style="margin:20px">
-            <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-dark fixed-top" style="background-image: linear-gradient(to right, ##000B4D, ##379BC1);">
                 <div class="container-fluid">
                     <!---Brand --->
                     <a class="navbar-brand" href="#event.buildLink(prc.xeh.validateLogin)#">

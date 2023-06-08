@@ -3,6 +3,7 @@ component extends="coldbox.system.EventHandler" {
     property name="EmployeeService" inject="model:EmployeeService";
     property name="EmployeeGateway" inject="model:EmployeeGateway";
     property name="CompanyService" inject="model:CompanyService";
+    property name="UserService" inject="model:UserService";
 
 
     function index() {
@@ -12,9 +13,16 @@ component extends="coldbox.system.EventHandler" {
 
         // Populates the company dropdown in the form
         prc.allCompanies = CompanyService.getAllCompanies();
+        // Populates the user list
+        prc.allUsers = UserService.getAllUsers();
 
+        //TODO: REFACTOR THIS
         if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
+        }
+
+        if (structKeyExists(rc, "isUserFormSubmission") && rc.isUserFormSubmission == "true") {
+            prc.aUser = UserService.getOneUser(rc.intUserID);
         }
 
         if (structKeyExists(prc, "errorMessage")) {

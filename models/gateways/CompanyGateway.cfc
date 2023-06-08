@@ -51,7 +51,7 @@
             )
             VALUES ( 
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getVcCompanyName()#">,
-                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getBitIsActive()#">
+                <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">
             )
         </cfquery>   
     </cffunction>

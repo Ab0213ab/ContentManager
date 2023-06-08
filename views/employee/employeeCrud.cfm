@@ -23,7 +23,7 @@
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
                             <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
                         </p>
-                        
+                        <hr> 
                         <form id="addEmployeeForm" action="#event.buildLink(prc.xeh.save)#" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">

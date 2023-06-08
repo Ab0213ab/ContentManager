@@ -14,7 +14,7 @@
         <br>
 		<div class="container">
 			<div class="row justify-content-center">
-				<div class="col-md-6">
+				<div class="col-md-4">
 					<div class="card p-3">
                         <center>
                             <h3>#prc.formTitle#</h3>
@@ -23,8 +23,9 @@
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
                             <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
                         </p>
+                        <hr>
                         
-                        <form id="addEmployeeForm" action="#event.buildLink(prc.xeh.save)#" method="post">
+                        <form id="addCompanyForm" action="#event.buildLink(prc.xeh.save)#" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
 
@@ -39,14 +40,6 @@
                                     value="#prc.oneCompany.vcCompanyName ?: ''#">
                                     <p id="vcCompanyNameMessage" style="color: red"></p>
                                 </div>
-                                <!---<div class="form-group col-md-6">
-                                    <label for="bitIsActive"><span style="color: red;">* </span>Is Active?</label>
-                                    <input type="text" name="vcFirstName" class="form-control" id="vcFirstName" #prc.fieldsEnabled# 
-                                    value="#prc.oneCompany.bitIsActive ?: ''#">
-                                    <p id="vcBitIsActiveMessage" style="color: red"></p>
-                                </div>--->
-
-
                                 <div class="form-group col-md-6">
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this company still active?</label>
                                     <div class="form-check">
@@ -58,9 +51,6 @@
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
                                     </div>
                                 </div>
-
-
-
                             </div>
                                 <div class="d-flex mt-3">
                                     <div>
