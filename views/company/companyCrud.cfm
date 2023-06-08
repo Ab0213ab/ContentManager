@@ -9,31 +9,6 @@
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script src="/includes/js/validateCompanyForm.js"></script>
-        <script>
-            function validateCompanyForm() {
-                var isValid = true;
-    
-                var hiddenFieldCrudAction = document.getElementById('crudAction');
-                var vcCompanyName = document.getElementById('vcCompanyName');
-                var bitIsActive = document.querySelector('input[name="bitIsActive"]:checked');
-    
-                if (hiddenFieldCrudAction.value == 'delete') {
-                    isValid = true;
-                    return;
-                } else {    
-                    if (vcCompanyName.value == "") {
-                        document.getElementById('vcCompanyNameMessage').innerHTML = "This field is required.";
-                        isValid = false;
-                    }
-                    if (!bitIsActive) {
-                        document.getElementById('bitIsActiveMessage').innerHTML = "This field is required.";
-                        isValid = false;
-                    }
-                }
-    
-                return isValid;
-            }
-        </script>
 	</head>
 	<body>
         <br>

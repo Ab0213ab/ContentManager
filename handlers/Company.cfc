@@ -25,6 +25,17 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "company/companyCrud" );
     }
 
+    function companyList() {
+
+        // Exit Handlers
+        prc.xeh.companyList = "company/companyList";
+
+        prc.allCompanies = CompanyService.getAllCompanies();
+        prc.formTitle = "View Companies";
+
+        event.setView("company/companyList");
+    }
+
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
