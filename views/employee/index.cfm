@@ -50,7 +50,7 @@
 						<form id="companiesForm" action="#event.buildLink(prc.xeh.employeeIndex)#" method="post">
 							<div class="form-group">
 								<div class="bordered-center">
-									<h5>Users</h5>
+									<h5>Companies</h5>
 								</div>
 								<select class="form-control" onchange="this.form.submit()" name="intCompanyKey" id="companiesSelect">
 									<option value="">Select a Company</option>

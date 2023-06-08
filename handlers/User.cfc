@@ -30,14 +30,15 @@ component extends="coldbox.system.EventHandler" {
 
         prc.aUser = populateModel( "User" );
 
-        // if (rc.crudAction == "Create" || rc.crudAction == "Update") {
+        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
-        //     prc.errorMessage = UserService.validate(prc.aUser);
+            // Validates object attributes (for fields)
+            prc.errorMessage = UserService.validate(prc.aUser);
 
-        //     if (len(prc.errorMessage) != 0) {
-        //         relocate('employee/index');
-        //     } 
-        // } 
+            if (len(prc.errorMessage) != 0) {
+                relocate('employee/index');
+            } 
+        } 
         // Function chain will run insert query
         UserService.save(prc.aUser, rc.crudAction);
 

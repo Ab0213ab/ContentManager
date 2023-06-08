@@ -153,6 +153,7 @@ component extends="coldbox.system.EventHandler" {
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
+            // Validates object attributes (form fields)
             prc.errorMessage = EmployeeService.validate(prc.anEmployee);
 
             if (len(prc.errorMessage) != 0) {

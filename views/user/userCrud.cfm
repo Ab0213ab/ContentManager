@@ -8,7 +8,7 @@
 		<!-- Bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="/includes/js/validateEmployeeForm.js"></script>
+        <script src="/includes/js/validateUserForm.js"></script>
 	</head>
 	<body>
         <br>
@@ -55,6 +55,7 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0">
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
+                                        <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -66,13 +67,14 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminNo" value="0">
                                         <label class="form-check-label" for="bitIsAdminNo">No</label>
+                                        <p id="bitIsAdminMessage" style="color: red"></p>
                                     </div>
                                 </div>
                             </div>
                                 <div class="d-flex mt-3">
                                     <div>
-                                        <button id="addUserBtn" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                         ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                        <button id="addUserBtn" onclick="return validateUserForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                        ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
                                         </button>
                                     </div>
                                 </div> 

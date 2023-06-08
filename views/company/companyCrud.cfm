@@ -8,7 +8,32 @@
 		<!-- Bootstrap -->
 		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
         integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="/includes/js/validateEmployeeForm.js"></script>
+        <script src="/includes/js/validateCompanyForm.js"></script>
+        <script>
+            function validateCompanyForm() {
+                var isValid = true;
+    
+                var hiddenFieldCrudAction = document.getElementById('crudAction');
+                var vcCompanyName = document.getElementById('vcCompanyName');
+                var bitIsActive = document.querySelector('input[name="bitIsActive"]:checked');
+    
+                if (hiddenFieldCrudAction.value == 'delete') {
+                    isValid = true;
+                    return;
+                } else {    
+                    if (vcCompanyName.value == "") {
+                        document.getElementById('vcCompanyNameMessage').innerHTML = "This field is required.";
+                        isValid = false;
+                    }
+                    if (!bitIsActive) {
+                        document.getElementById('bitIsActiveMessage').innerHTML = "This field is required.";
+                        isValid = false;
+                    }
+                }
+    
+                return isValid;
+            }
+        </script>
 	</head>
 	<body>
         <br>
@@ -49,13 +74,14 @@
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0">
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
+                                        <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
                                 </div>
                             </div>
                                 <div class="d-flex mt-3">
                                     <div>
-                                        <button id="addCompanyBtn" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                         ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                        <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                        ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
                                         </button>
                                     </div>
                                 </div> 

@@ -38,5 +38,19 @@ component singleton accessors="true"{
 		return;
 	}
 
+	function validate(aCompany) {
+
+		prc.errorMessage = [];
+
+		if (aCompany.getVcCompanyName() == "") {
+			arrayAppend(prc.errorMessage, "Company Name field is required.")
+		}
+		if (aCompany.getBitIsActive() == "") {
+			arrayAppend(prc.errorMessage, "Is Active field is required.")
+		}
+		
+		return prc.errorMessage;
+	}
+
 
 }
