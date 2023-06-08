@@ -25,5 +25,18 @@ component singleton accessors="true"{
 		return employeesByCompanyKey;
 	}
 
+	// Function chain will run insert query
+	function save(aCompany, crudAction) {
+
+		if (crudAction == "Create") {
+			CompanyGateway.create(aCompany);
+		} else if (crudAction == "Update") {
+			CompanyGateway.update(aCompany);
+		} else if (crudAction == "Delete") {
+			CompanyGateway.delete(aCompany);
+		}
+		return;
+	}
+
 
 }

@@ -12,8 +12,6 @@ component extends="coldbox.system.Interceptor" cache="false" {
             // Checks if the user is logged in
             if (!session.keyExists("isLoggedIn") || !session.isLoggedIn) {
                 // Redirects the user to the login page
-                //event.overrideEvent("main.index");
-                //event.relocate("main.index");
                 relocate("main.index");
             }
 
@@ -28,6 +26,8 @@ component extends="coldbox.system.Interceptor" cache="false" {
         }
     }
 }
+
+
 
 
 

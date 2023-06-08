@@ -11,7 +11,6 @@
               tblCompany;
           </cfquery>
           <cfreturn companyQuery>
-  
     </cffunction>
 
 
@@ -36,6 +35,25 @@
       </cfquery>
   
       <cfreturn employeesByCompanyKeyQuery>
+    </cffunction>
+
+
+    <cffunction name="create">
+        <cfargument name="Company" required="true">
+    
+        <cfquery name="addNewCompanyQuery" datasource="contentManager">
+    
+          INSERT INTO 
+            tblCompany 
+            (
+                vcCompanyName, 
+                bitIsActive
+            )
+            VALUES ( 
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getVcCompanyName()#">,
+                <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getBitIsActive()#">
+            )
+        </cfquery>   
     </cffunction>
   
     

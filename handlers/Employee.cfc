@@ -26,8 +26,8 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.createEmployee = "employee/createEmployee";
         prc.xeh.updateEmployee = "employee/updateEmployee";
         prc.xeh.deleteEmployee = "employee/deleteEmployee";
-        prc.xeh.createCompany = "employee/createCompany";
-        prc.xeh.createUser = "employee/createUser";
+        prc.xeh.createCompany = "company/createCompany";
+        prc.xeh.createUser = "user/createUser";
         prc.xeh.employeeIndex = "employee/index";
         
         event.setView( "employee/index" );
@@ -52,7 +52,10 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        // Extra check. Should always have a value with this crud action
+        if (structKeyExists(rc, "intEmployeeID")) {
+            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        }
 
         event.setView( "employee/employeeCrud" );
     }
@@ -76,10 +79,6 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        if (structKeyExists(rc, "intEmployeeID")) {
-            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
-        } 
-
         event.setView( "employee/employeeCrud" );
     }
 
@@ -102,6 +101,7 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
+        // Extra check. Should always have a value with this crud action
         if (structKeyExists(rc, "intEmployeeID")) {
             prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
         } 
@@ -129,13 +129,15 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        //prc.intEmployeeID = prc.allEmployees.intEmployeeID;
-        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        // Extra check. Should always have a value with this crud action
+        if (structKeyExists(rc, "intEmployeeID")) {
+            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+        }
 
         event.setView( "employee/employeeCrud" );
     }
 
-
+/*******************************************************************/
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
@@ -144,8 +146,8 @@ component extends="coldbox.system.EventHandler" {
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
             prc.errorMessage = EmployeeService.validate(prc.anEmployee);
+
             if (len(prc.errorMessage) != 0) {
-                //event.setView( "employee/index" );
                 relocate('employee/index');
             } 
         } 
@@ -158,9 +160,6 @@ component extends="coldbox.system.EventHandler" {
     
     // Replaces all employees' first names that appear on cnn.com with "MOD" 
     function getCnnContent(event, rc, prc) {
-
-        // Exit handlers
-        prc.xeh.validateLogin = "main/validateLogin";
 
         // Function chain will run select query
         prc.allEmployeesFirstNames = EmployeeService.getAllEmployeesFirstNames();

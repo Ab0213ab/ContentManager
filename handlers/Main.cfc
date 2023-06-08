@@ -19,6 +19,9 @@ component extends="coldbox.system.EventHandler" {
 	 // Checks user credentials input and then routes to home page
 	 function validateLogin( event, rc, prc ) {
 
+		// TEST EXIT HANDLER:
+		prc.xeh.createCompany = "company/createCompany";
+
 		// Valid credentials
 		prc.userNames = ["andrew", "Kevin", "admin"];
 		prc.passwords = ["schaefer", "Barnes", "Admin"];
@@ -83,8 +86,8 @@ component extends="coldbox.system.EventHandler" {
 		// Exit Handlers used in navbar
 		prc.xeh.validateLogin = "main/validateLogin";
 		prc.xeh.createEmployee = "employee/createEmployee";
-		prc.xeh.createCompany = "employee/createCompany";
-		prc.xeh.createUser = "employee/createUser";
+		prc.xeh.createCompany = "company/createCompany";
+		prc.xeh.createUser = "user/createUser";
 		prc.xeh.index = "main/index";
 		prc.xeh.getCnnContent = "employee/getCnnContent";
 	}
