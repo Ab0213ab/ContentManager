@@ -64,6 +64,7 @@
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.userIndex)#">View Users</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN</a>
                           </div>
+                          
                         <div class="navbar-nav ms-auto"> 
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.index)#"
                             ><i class="bi bi-person-circle" style="color: white"></i> Logout</a>

@@ -12,10 +12,6 @@ component extends="coldbox.system.EventHandler" {
         prc.allUsers = UserService.getAllUsers();
         prc.formTitle = "All Users";
 
-        if (structKeyExists(rc, "isUserFormSubmission") && rc.isUserFormSubmission == "true") {
-            prc.aUser = UserService.getOneUser(rc.intUserID);
-        }
-
         event.setView( "user/userList" );
     }
 

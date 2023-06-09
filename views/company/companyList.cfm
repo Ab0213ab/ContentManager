@@ -6,7 +6,6 @@
 		<title>View Companies</title>
 
     <script src="/includes/js/submitFormWithKey.js"></script>
-    <script src="/includes/js/displayEmployeesModal.js"></script>
 
     <!-- Bootstrap -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
@@ -29,6 +28,7 @@
           $('##companyTable').DataTable();
       } );
     </script>
+    <link rel="stylesheet" type="text/css" href="/includes/css/app.css"/>   
 	</head>
 	<body>
 
@@ -75,7 +75,7 @@
 			<div class="row justify-content-center">
 				<div class="col-md-6">
 					<div class="card p-3">
-            <center>
+            <center class="bordered-center">
                 <h3>#prc.formTitle#</h3>
             </center>
             <p style="float: right">

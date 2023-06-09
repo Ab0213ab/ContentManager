@@ -14,6 +14,7 @@
             --->
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
             <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+            <link rel="stylesheet" type="text/css" href="/includes/css/app.css"/>
             
         </head>
         <body>
@@ -22,7 +23,7 @@
                 <div class="row justify-content-center">
                     <div class="col-md-4">
                         <div class="card p-3">
-                            <center>
+                            <center class="bordered-center">
                                 <h3>#prc.formTitle#</h3>
                             </center>
                         <p style="float: right">
@@ -36,7 +37,7 @@
                                 <div class="form-group col-md-12">
                                     
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
+                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
                                     <cfif isDefined("prc.oneUser.intUserID") && len(prc.oneUser.intUserID)>
                                         <input type="hidden" name="intUserID" value="#prc.oneUser.intUserID#">
                                     </cfif>                                    
@@ -45,14 +46,14 @@
                                     <input type="text" name="vcUserName" class="form-control" id="vcUserName" #prc.fieldsEnabled# 
                                     value="#prc.oneUser.vcUserName ?: ''#">
                                     <p id="vcUserNameMessage" style="color: red"></p>
-                                    <div class="form-group col-md-6">
+                                    <div class="form-group col-md-12">
                                         <label for="vcPassword"><span style="color: red;">* </span>Password</label>
                                         <input type="password" name="vcPassword" class="form-control" id="vcPassword" #prc.fieldsEnabled# 
                                         value="#prc.oneUser.vcPassword ?: ''#">
                                         <p id="vcPasswordMessage" style="color: red"></p>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this User active?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" value="1">
@@ -64,7 +65,7 @@
                                         <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
                                 </div>
-                                <div class="form-group col-md-6">
+                                <div class="form-group col-md-12">
                                     <label for="bitIsAdmin"><span style="color: red;">* </span>Is this User an administrator?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminYes" value="1">
