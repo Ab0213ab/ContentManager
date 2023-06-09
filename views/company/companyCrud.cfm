@@ -4,16 +4,21 @@
 	<html>
 	<head>
 		<title>Add Company Form</title>
-
-		<!-- Bootstrap -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
         <script src="/includes/js/validateCompanyForm.js"></script>
-	</head>
-	<body>
-        <br>
-		<div class="container">
-			<div class="row justify-content-center">
+
+		<!---
+                CSS
+                - Bootstrap
+                - Alpine.js
+            --->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+            
+        </head>
+        <body>
+            <br>
+            <div class="container">
+                <div class="row justify-content-center">
 				<div class="col-md-4">
 					<div class="card p-3">
                         <center>
@@ -27,17 +32,17 @@
                         
                         <form id="addCompanyForm" action="#event.buildLink(prc.xeh.save)#" method="post">
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-
+                                <div class="form-group col-md-12">
+                                    
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
-                                    <cfif isDefined("prc.oneCompany.intCompanyID") && len(prc.oneCompany.intCompanyID)>
+                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
+                                    <!---<cfif isDefined("prc.oneCompany.intCompanyID") && len(prc.oneCompany.intCompanyID)>
                                         <input type="hidden" name="intCompanyID" value="#prc.oneCompany.intCompanyID#">
-                                    </cfif>                                    
+                                    </cfif>--->                                    
                                     
                                     <label for="vcCompanyName"><span style="color: red;">* </span>Company Name</label>
-                                    <input type="text" name="vcCompanyName" class="form-control" id="vcCompanyName" #prc.fieldsEnabled# 
-                                    value="#prc.oneCompany.vcCompanyName ?: ''#">
+                                    <!---<input type="text" name="vcCompanyName" class="form-control" id="vcCompanyName" #prc.fieldsEnabled# 
+                                    value="#prc.oneCompany.vcCompanyName ?: ''#">--->
                                     <p id="vcCompanyNameMessage" style="color: red"></p>
                                 </div>
                                 <div class="form-group col-md-6">
@@ -53,13 +58,13 @@
                                     </div>
                                 </div>
                             </div>
-                                <div class="d-flex mt-3">
-                                    <div>
+                            <div class="d-flex mt-3">
+                                <div>
                                         <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
                                         ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
-                                        </button>
-                                    </div>
-                                </div> 
+                                    </button>
+                                </div>
+                            </div> 
                         </form>
                         
 					</div>
@@ -69,11 +74,17 @@
             <br>
             <br>
 		</div>
-		<!-- jQuery -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
-	</body>
-	</html>
+        <!---
+        JavaScript
+        - Bootstrap
+        - Popper
+        - Alpine.js
+        --->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+
+</html>
 </cfoutput>
 
 

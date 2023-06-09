@@ -3,100 +3,124 @@
 	<!DOCTYPE html>
 	<html>
 	<head>
-		<title>Add Employee Form</title>
+		<title>View Companies</title>
 
-		<!-- Bootstrap -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
-        <script src="https://code.jquery.com/jquery-3.7.0.js" integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-        <script src="/includes/js/validateEmployeeForm.js"></script>
+    <script src="/includes/js/submitFormWithKey.js"></script>
+    <script src="/includes/js/displayEmployeesModal.js"></script>
 
-        <!-- Display datatables -->
-        <script>
-            $(document).ready( function () {
-                $('##companyTable').DataTable();
-            } );
-        </script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" 
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <!-- jQuery, Popper -->
+    <script src="https://code.jquery.com/jquery-3.7.0.js" 
+    integrity="sha256-JlqSTELeR4TLqP0OG9dxM7yDPqX1ox/HfgiSLBj8+kM=" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" 
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" 
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+    <!-- DataTables -->
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+
+    <script>
+      $(document).ready( function () {
+          $('##companyTable').DataTable();
+      } );
+    </script>
 	</head>
 	<body>
 
-    <!-- From PracticeApp for Modal-->
-    <cfif structKeyExists(prc, "intCompanyKey")>
-        <script>
-          window.onload = function() {
-            var myModal = new bootstrap.Modal(document.getElementById('displayEmployeesModal'), {});
-            myModal.show();
-          };
-        </script>
-      </cfif>
+    <cfif structKeyExists(prc, "displayModal")>
+      <script>
+        window.onload = function() {
+          var theModal = new bootstrap.Modal(document.getElementById('displayEmployeesModal'), {});
+          theModal.show();
+        };
+      </script>
+    </cfif>
 
-        <!-- Modal view (keep at top or else backdrop will take over the whole screen) -->
-      <div class="modal" id="displayEmployeesModal">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title">Associated employees</h4>
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                </div>
-                <div class="modal-body">
-       
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                </div>
-            </div>
-        </div>
+    <!-- Modal view (keep at top or else backdrop will take over the whole screen) -->
+    <div class="modal" id="displayEmployeesModal">
+      <div class="modal-dialog">
+          <div class="modal-content">
+              <div class="modal-header">
+                  <h4 class="modal-title">Associated employees</h4>
+                  <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
+              </div>
+              <div class="modal-body">
+
+                <cfif structKeyExists(prc, "displayModal")>
+                  <cfloop query="#prc.employeesByCompanyKey#">
+                    <div class="d-flex align-items-center">
+                      <ul>
+                        <li>#prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#</li>
+                      </ul>
+                    </div>
+                  </cfloop>
+                </cfif>
+
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
+              </div>
+          </div>
       </div>
-      <!-- End modal view -->
+    </div>
+    <!-- End modal view -->
 
-
-        <br>
+    <br>
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-md-6">
 					<div class="card p-3">
-                        <center>
-                            <h3>#prc.formTitle#</h3>
-                        </center>
-                        <p style="float: right">
-                            <i class="bi bi-house-door-fill" style="color: blue"></i>
-                            <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
-                        </p>
-                        <hr>
-      
-                        <div>
-                            <table class="table table-striped" id="companyTable">
-                                <thead>
-                                    <tr>
-                                      <th scope="col">Company Key</th>
-                                      <th scope="col">Company Name</th>
-                                      <th scope="col">Active?</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <cfloop query="#prc.allCompanies#">
-                                        <tr>
-                                          <td>#prc.allCompanies.intCompanyKey#</td>
-                                          <td><a href="#event.buildLink(prc.xeh.companyList)#">#vcCompanyName#</td>
-                                          <td>#prc.allCompanies.bitIsActive eq 1 ? "Yes" : "No"#</td>
-                                        </tr>
-                                    </cfloop>
-                                </tbody>
-                            </table>
-                          <br>  
-                        </div>
-    
+            <center>
+                <h3>#prc.formTitle#</h3>
+            </center>
+            <p style="float: right">
+                <i class="bi bi-house-door-fill" style="color: blue"></i>
+                <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
+            </p>
+            <hr>
+            <div>
+              <form id="companyListForm" action="#event.buildLink(prc.xeh.companyList)#" method="post">
+                <!-- Hidden field -->
+                <input type="hidden" name="intCompanyKey" id="intCompanyKey">
+                <input type="hidden" name="isCompanyTableSubmission" id="isCompanyTableSubmission" value="true">
+                <table class="table table-striped display" id="companyTable">
+                  <thead>
+                    <tr>
+                      <th scope="col">Company Name</th>
+                      <th scope="col">Active?</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                      <cfloop query="#prc.allCompanies#">
+                          <tr>
+                            <td>
+                              <a href="javascript:{}" 
+                                  onclick="submitFormWithKey('companyListForm', '#prc.allCompanies.intCompanyKey#');">
+                                #prc.allCompanies.vcCompanyName#
+                              </a>
+                            </td>
+                            <td>#prc.allCompanies.bitIsActive eq 1 ? "Yes" : "No"#</td>
+                          </tr>
+                      </cfloop>
+                  </tbody>
+                </table>
+              </form>
+              
+              <br>  
+            </div>
 					</div>
 				</div>
 			</div>
-            <br>
-            <br>
-            <br>
-		</div>
-		<!-- jQuery -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+      <br>
+      <br>
+      <br>
+		</div> 
+
 	</body>
 	</html>
 </cfoutput>

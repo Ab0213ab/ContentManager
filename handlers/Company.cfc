@@ -30,6 +30,11 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.companyList = "company/companyList";
 
+        if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
+            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(val(rc.intCompanyKey));
+            prc.displayModal = true;
+        }
+
         prc.allCompanies = CompanyService.getAllCompanies();
         prc.formTitle = "View Companies";
 

@@ -4,12 +4,18 @@
 	<html>
 	<head>
 		<title>Add Employee Form</title>
-
-		<!-- Bootstrap -->
-		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet" 
-        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+        
+        <!-- Custom js file -->
         <script src="/includes/js/validateEmployeeForm.js"></script>
-	</head>
+        <!---
+                CSS
+                - Bootstrap
+                - Alpine.js
+            --->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+            <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+                 
+        </head>
 	<body>
         <br>
 		<div class="container">
@@ -27,7 +33,7 @@
                         <form id="addEmployeeForm" action="#event.buildLink(prc.xeh.save)#" method="post">
                             <div class="form-row">
                                 <div class="form-group col-md-6">
-
+                                    
                                     <!-- Hidden fields -->
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction ?: ''#">
                                     <cfif isDefined("prc.oneEmployee.intEmployeeID") && len(prc.oneEmployee.intEmployeeID)>
@@ -83,32 +89,32 @@
                                     <p id="vcCityMessage" style="color: red"></p>
                                 </div>
                                 <div class="form-group col-md-6">
-                                        <label for="vcRegion"><span style="color: red;">* </span>Region</label>
-                                        <input type="text" name="vcRegion" class="form-control" id="vcRegion" #prc.fieldsEnabled# 
-                                        value="#prc.oneEmployee.vcRegion ?: ''#">
-                                        <p id="vcRegionMessage" style="color: red"></p>
+                                    <label for="vcRegion"><span style="color: red;">* </span>Region</label>
+                                    <input type="text" name="vcRegion" class="form-control" id="vcRegion" #prc.fieldsEnabled# 
+                                    value="#prc.oneEmployee.vcRegion ?: ''#">
+                                    <p id="vcRegionMessage" style="color: red"></p>
                                     </div>
                                 </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
                                         <label for="vcPostalCode">Postal Code</label>
                                         <input type="text" name="vcPostalCode" class="form-control" id="vcPostalCode" #prc.fieldsEnabled# 
                                         value="#prc.oneEmployee.vcPostalCode ?: ''#">
                                     </div>
-                                <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="vcCountry">Country</label>
                                         <input type="text" name="vcCountry" class="form-control" id="vcCountry" #prc.fieldsEnabled# 
                                         value="#prc.oneEmployee.vcCountry ?: ''#">
                                     </div>
                                 </div>
-                            <div class="form-row">
+                                <div class="form-row">
                                 <div class="form-group col-md-6">
-                                        <label for="vcHomePhone"><span style="color: red;">* </span>Home Phone</label>
-                                        <input type="text" name="vcHomePhone" class="form-control" id="vcHomePhone" #prc.fieldsEnabled# 
-                                        value="#prc.oneEmployee.vcHomePhone ?: ''#">
-                                        <p id="vcHomePhoneMessage" style="color: red"></p>
+                                    <label for="vcHomePhone"><span style="color: red;">* </span>Home Phone</label>
+                                    <input type="text" name="vcHomePhone" class="form-control" id="vcHomePhone" #prc.fieldsEnabled# 
+                                    value="#prc.oneEmployee.vcHomePhone ?: ''#">
+                                    <p id="vcHomePhoneMessage" style="color: red"></p>
                                     </div>
-                                <div class="form-group col-md-6">
+                                    <div class="form-group col-md-6">
                                         <label for="vcExtension">Extension</label>
                                         <input type="text" name="vcExtension" class="form-control" id="vcExtension" #prc.fieldsEnabled# 
                                         value="#prc.oneEmployee.vcExtension ?: ''#">
@@ -119,23 +125,23 @@
                                     <textarea class="form-control" name="vcNotes" id="vcNotes" rows="3" #prc.fieldsEnabled#
                                     >#prc.oneEmployee.vcNotes ?: ''#</textarea>
                                 </div>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="intCompanyKey">Company</label>
-                                    <select name="intCompanyKey" class="form-control" #prc.fieldsEnabled# id="intCompanyKey">
-                                        <cfloop query="prc.allCompanies">
-                                            <option value="#intCompanyKey#">#vcCompanyName#</option>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="intCompanyKey">Company</label>
+                                        <select name="intCompanyKey" class="form-control" #prc.fieldsEnabled# id="intCompanyKey">
+                                            <cfloop query="prc.allCompanies">
+                                                <option value="#intCompanyKey#">#vcCompanyName#</option>
                                         </cfloop>
                                     </select>
                                 </div>                        
                             </div>
-                                <div class="d-flex mt-3">
-                                    <div>
-                                        <button id="addEmployeeBtn" onclick="return validateEmployeeForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                         ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
-                                        </button>
-                                    </div>
-                                </div> 
+                            <div class="d-flex mt-3">
+                                <div>
+                                    <button id="addEmployeeBtn" onclick="return validateEmployeeForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                    ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                </button>
+                            </div>
+                        </div> 
                         </form>
                         
 					</div>
@@ -145,11 +151,17 @@
             <br>
             <br>
 		</div>
-		<!-- jQuery -->
-		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js" 
-        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe" crossorigin="anonymous"></script>
+        <!---
+        JavaScript
+        - Bootstrap
+        - Popper
+        - Alpine.js
+        --->
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+        <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
 	</body>
-	</html>
+</html>
 </cfoutput>
 
 

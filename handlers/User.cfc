@@ -5,6 +5,18 @@ component extends="coldbox.system.EventHandler" {
 
     function index() {
 
+        // Exit Handlers
+        prc.xeh.employeeIndex = "employee/index";
+
+        // Populates the user list
+        prc.allUsers = UserService.getAllUsers();
+        prc.formTitle = "All Users";
+
+        if (structKeyExists(rc, "isUserFormSubmission") && rc.isUserFormSubmission == "true") {
+            prc.aUser = UserService.getOneUser(rc.intUserID);
+        }
+
+        event.setView( "user/userList" );
     }
 
     function createUser(event, rc, prc) {

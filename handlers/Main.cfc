@@ -89,6 +89,7 @@ component extends="coldbox.system.EventHandler" {
 		prc.xeh.createCompany = "company/createCompany";
 		prc.xeh.companyList = "company/companyList";
 		prc.xeh.createUser = "user/createUser";
+		prc.xeh.userIndex = "user/index";
 		prc.xeh.index = "main/index";
 		prc.xeh.getCnnContent = "employee/getCnnContent";
 	}

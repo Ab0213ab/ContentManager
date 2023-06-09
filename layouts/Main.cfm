@@ -61,6 +61,7 @@
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.createCompany)#">Add Company</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.companyList)#">View Companies</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.createUser)#">Add User</a>
+                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.userIndex)#">View Users</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN</a>
                           </div>
                         <div class="navbar-nav ms-auto"> 
