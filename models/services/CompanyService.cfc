@@ -25,6 +25,12 @@ component singleton accessors="true"{
 		return employeesByCompanyKey;
 	}
 
+	function getOneCompany(intCompanyKey) {
+
+		var getOneCompany = CompanyGateway.getOneCompany(intCompanyKey);
+        return getOneCompany;
+	}
+
 	// Function chain will run insert query
 	function save(aCompany, crudAction) {
 

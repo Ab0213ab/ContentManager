@@ -50,17 +50,13 @@
                   <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
               </div>
               <div class="modal-body">
-
-                <cfif structKeyExists(prc, "displayModal")>
-                  <cfloop query="#prc.employeesByCompanyKey#">
-                    <div class="d-flex align-items-center">
-                      <ul>
-                        <li>#prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#</li>
-                      </ul>
-                    </div>
-                  </cfloop>
-                </cfif>
-
+                <cfloop query="#prc.employeesByCompanyKey#">
+                  <div class="d-flex align-items-center">
+                    <ul>
+                      <li>#prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#</li>
+                    </ul>
+                  </div>
+                </cfloop>
               </div>
               <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>

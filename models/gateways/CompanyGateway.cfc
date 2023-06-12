@@ -19,6 +19,29 @@
           <cfreturn companyQuery>
     </cffunction>
 
+    <cffunction name="getOneCompany">
+      <cfargument name="intCompanyKey" required="true">
+    
+      <cfquery name="getOneCompanyQuery" datasource="contentManager">
+          SELECT
+            intCompanyKey, 
+            vcCompanyName, 
+            CASE 
+              WHEN 
+                bitIsActive = 1 THEN 'Yes'
+              ELSE 
+                'No'
+          END AS 
+            bitIsActive
+          FROM 
+            tblCompany
+          WHERE 
+            intCompanyKey = <cfqueryparam value="#arguments.intCompanyKey#" cfsqltype="cf_sql_integer">;
+      </cfquery>
+      <cfreturn getOneCompanyQuery>
+    
+    </cffunction>
+
 
     <cffunction name="getEmployeesByCompanyKey" access="public" returntype="query">
       <cfargument name="intCompanyKey" type="numeric" required="true">

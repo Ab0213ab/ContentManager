@@ -13,6 +13,9 @@ component extends="coldbox.system.EventHandler" {
 
 		session.isLoggedIn = false;
 
+		prc.errorMessage = "";
+		prc.errorClass = "";
+
 		event.noLayout()
 		event.setView( "main/index" );
 	}
@@ -45,6 +48,7 @@ component extends="coldbox.system.EventHandler" {
             } else {
 
 				prc.errorMessage = getErrorMessage(1);
+				prc.errorClass = "alert alert-danger text-center";
                 event.noLayout();
                 event.setView( "main/index" );
                 return;

@@ -28,8 +28,11 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the form
         prc.allCompanies = CompanyService.getAllCompanies();
 
+        // To avoid conditionals in form fields
         if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
+        } else {
+            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(-1);
         }
 
         // For post action messages
@@ -38,7 +41,6 @@ component extends="coldbox.system.EventHandler" {
             prc.errorClass = "alert alert-danger text-center";
             flash.clear();
         }
-
         if (flash.exists("successMessage")) {
             prc.successMessage = flash.get("successMessage");
             prc.successClass = "alert alert-success text-center";
@@ -112,6 +114,9 @@ component extends="coldbox.system.EventHandler" {
 
         prc.crudAction = "Create";
         prc.formTitle = "Add Employee";
+
+        // Sets form values to empty strings as no intEmployeeID == -1
+        prc.oneEmployee = EmployeeService.getOneEmployee(-1);
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();

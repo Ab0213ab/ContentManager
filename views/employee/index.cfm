@@ -28,13 +28,11 @@
 			<br>
 			<br>
 			<div class="row justify-content-center">
-				
-				<!-- Display messages -->
+
 				<div class="#prc.successClass#">
 					#prc.successMessage#
 				</div>
 
-				<!-- Display messages -->
 				<div class="#prc.errorClass#">
 					<cfloop array="#prc.errorMessages#" index="i">
 						<p>#i#</p>
@@ -61,24 +59,22 @@
 						</form>
 						<br>
 						
-						<cfif structKeyExists(prc, "employeesByCompanyKey")>
-							<cfloop query="#prc.employeesByCompanyKey#">
-							  <div class="d-flex align-items-center">
+						<cfloop query="#prc.employeesByCompanyKey#">
+							<div class="d-flex align-items-center">
 								<a href="#event.buildLink(prc.xeh.updateEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
-								class="btn btn-primary btn-sm m-2">
-								Edit
-							</a>
-							<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
-							class="btn btn-danger btn-sm">
-							Delete
+									class="btn btn-primary btn-sm m-2">
+									Edit
+								</a>
+								<a href="#event.buildLink(prc.xeh.deleteEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
+									class="btn btn-danger btn-sm">
+									Delete
 								</a>
 								<a href="#event.buildLink(prc.xeh.readEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
-								  class="m-2">
-								  #prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#
+									class="m-2">
+									#prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#
 								</a>
 							</div>
 						</cfloop>
-					</cfif> 
 					<br> 
 				</div>
 			</div>

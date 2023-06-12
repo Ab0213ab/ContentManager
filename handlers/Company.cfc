@@ -22,6 +22,9 @@ component extends="coldbox.system.EventHandler" {
         prc.crudAction = "Create";
         prc.formTitle = "Add Company";
 
+        // Sets form values to empty strings as no intCompanyKey == -1
+        prc.oneCompany = CompanyService.getOneCompany(-1);
+
         event.setView( "company/companyCrud" );
     }
 
@@ -30,9 +33,12 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.viewCompanies = "company/viewCompanies";
 
+        // To avoid conditionals in form fields
         if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(val(rc.intCompanyKey));
             prc.displayModal = true;
+        } else {
+            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(-1);
         }
 
         prc.allCompanies = CompanyService.getAllCompanies();

@@ -30,6 +30,9 @@ component extends="coldbox.system.EventHandler" {
         prc.crudAction = "Create";
         prc.formTitle = "Add User";
 
+        // Sets form values to empty strings as no intUserID == -1
+        prc.oneUser = UserService.getOneUser(-1);
+
         event.setView( "user/userCrud" );
     }
 

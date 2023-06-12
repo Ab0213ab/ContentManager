@@ -31,12 +31,9 @@
 						<center><img width="100" role="img" src="/includes/images/MODLOGO2.png"></center>
 						<center><h2 id="signIn">Sign In</h2></center>
 
-						 <!-- Display message -->
-						 <cfif structKeyExists(prc, "errorMessage")>
-							<div class="alert alert-danger">
-								<p>#prc.errorMessage#</p>
-							</div>
-						  </cfif>
+						<div class="#prc.errorClass#">
+							<p>#prc.errorMessage#</p>
+						</div>
 						
 						<!-- Login form -->
 						<form id="userNameForm" action="#event.buildLink(prc.xeh.validateLogin)#" method="post">

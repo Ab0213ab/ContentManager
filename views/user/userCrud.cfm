@@ -38,18 +38,16 @@
                                     
                                     <!-- Hidden fields -->
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
-                                    <cfif isDefined("prc.oneUser.intUserID") && len(prc.oneUser.intUserID)>
-                                        <input type="hidden" name="intUserID" value="#prc.oneUser.intUserID#">
-                                    </cfif>                                    
+                                    <input type="hidden" name="intUserID" value="#prc.oneUser.intUserID#">                            
                                     
                                     <label for="vcUserName"><span style="color: red;">* </span>User Name</label>
                                     <input type="text" name="vcUserName" class="form-control" id="vcUserName" #prc.fieldsEnabled# 
-                                    value="#prc.oneUser.vcUserName ?: ''#">
+                                    value="#prc.oneUser.vcUserName#">
                                     <p id="vcUserNameMessage" style="color: red"></p>
                                     <div class="form-group col-md-12">
                                         <label for="vcPassword"><span style="color: red;">* </span>Password</label>
                                         <input type="password" name="vcPassword" class="form-control" id="vcPassword" #prc.fieldsEnabled# 
-                                        value="#prc.oneUser.vcPassword ?: ''#">
+                                        value="#prc.oneUser.vcPassword#">
                                         <p id="vcPasswordMessage" style="color: red"></p>
                                     </div>
                                 </div>

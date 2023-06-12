@@ -38,13 +38,11 @@
                                     
                                     <!-- Hidden fields -->
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
-                                    <cfif isDefined("prc.oneCompany.intCompanyKey") && len(prc.oneCompany.intCompanyKey)>
-                                        <input type="hidden" name="intCompanyKey" value="#prc.oneCompany.intCompanyKey#">
-                                    </cfif>                                    
-                                    
+                                    <input type="hidden" name="intCompanyKey" value="#prc.oneCompany.intCompanyKey#">
+                                
                                     <label for="vcCompanyName"><span style="color: red;">* </span>Company Name</label>
                                     <input type="text" name="vcCompanyName" class="form-control" id="vcCompanyName" #prc.fieldsEnabled# 
-                                    value="#prc.oneCompany.vcCompanyName ?: ''#">
+                                    value="#prc.oneCompany.vcCompanyName#">
                                     <p id="vcCompanyNameMessage" style="color: red"></p>
                                 </div>
                                 <div class="form-group col-md-12">
