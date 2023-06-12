@@ -6,7 +6,13 @@
             SELECT 
               intCompanyKey,
               vcCompanyName,
-              bitIsActive 
+              CASE 
+                WHEN 
+                  bitIsActive = 1 THEN 'Yes'
+                ELSE 
+                  'No'
+            END AS 
+              bitIsActive
             FROM 
               tblCompany;
           </cfquery>

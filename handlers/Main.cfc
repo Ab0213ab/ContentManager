@@ -10,6 +10,7 @@ component extends="coldbox.system.EventHandler" {
 		// Exit Handlers
 		prc.xeh.index = "main/index";
 		prc.xeh.validateLogin = "main/validateLogin";
+
 		session.isLoggedIn = false;
 
 		event.noLayout()
@@ -18,9 +19,6 @@ component extends="coldbox.system.EventHandler" {
 
 	 // Checks user credentials input and then routes to home page
 	 function validateLogin( event, rc, prc ) {
-
-		// TEST EXIT HANDLER:
-		prc.xeh.createCompany = "company/createCompany";
 
 		// Valid credentials
 		prc.userNames = ["andrew", "Kevin", "admin"];
@@ -65,6 +63,7 @@ component extends="coldbox.system.EventHandler" {
             case 1:
             prc.errorMessage = "Please enter a valid User Name and Password.";
             break;
+			// Other error messages to be added
         }
 
         return prc.errorMessage;      
@@ -87,7 +86,7 @@ component extends="coldbox.system.EventHandler" {
 		prc.xeh.validateLogin = "main/validateLogin";
 		prc.xeh.createEmployee = "employee/createEmployee";
 		prc.xeh.createCompany = "company/createCompany";
-		prc.xeh.companyList = "company/companyList";
+		prc.xeh.viewCompanies = "company/viewCompanies";
 		prc.xeh.createUser = "user/createUser";
 		prc.xeh.userIndex = "user/index";
 		prc.xeh.index = "main/index";

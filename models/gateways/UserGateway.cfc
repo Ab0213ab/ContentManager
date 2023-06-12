@@ -1,20 +1,33 @@
 <cfcomponent name="UserGateway" accessors="true" output="false">
 
-    <cffunction name="getAllUsers">
+  <cffunction name="getAllUsers">
   
-        <cfquery name="UserQuery" datasource="contentManager">
-            SELECT 
-                vcUserName,
-                vcPassword,
-                bitIsActive,
-                bitIsAdmin,
-                intUserID 
-            FROM 
-                tblUser;
-          </cfquery>
-          <cfreturn UserQuery>
+    <cfquery name="UserQuery" datasource="contentManager">
+        SELECT 
+            vcUserName,
+            vcPassword,
+            CASE 
+                WHEN 
+                  bitIsActive = 1 THEN 'Yes'
+                ELSE 
+                  'No'
+            END AS 
+              bitIsActive,
+            CASE 
+                WHEN 
+                  bitIsAdmin = 1 THEN 'Yes'
+                ELSE 
+                  'No'
+            END AS 
+              bitIsAdmin,
+            intUserID 
+        FROM 
+            tblUser;
+      </cfquery>
+      <cfreturn UserQuery>
   
-    </cffunction>
+</cffunction>
+
 
 
     <cffunction name="getOneUser">
@@ -23,7 +36,19 @@
         <cfquery name="getOneUserQuery" datasource="contentManager">
             SELECT 
               vcUserName, 
-              bitIsActive, 
+              CASE 
+                WHEN 
+                  bitIsActive = 1 THEN 'yes'
+                ELSE 
+                  'no'
+            END AS 
+              bitIsActive,
+            CASE 
+                WHEN 
+                  bitIsAdmin = 1 THEN 'yes'
+                ELSE 
+                  'no'
+            END AS 
               bitIsAdmin,
               intUserID 
             FROM 

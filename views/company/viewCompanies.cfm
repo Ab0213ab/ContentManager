@@ -84,7 +84,7 @@
             </p>
             <hr>
             <div>
-              <form id="companyListForm" action="#event.buildLink(prc.xeh.companyList)#" method="post">
+              <form id="viewCompaniesForm" action="#event.buildLink(prc.xeh.viewCompanies)#" method="post">
                 <!-- Hidden field -->
                 <input type="hidden" name="intCompanyKey" id="intCompanyKey">
                 <input type="hidden" name="isCompanyTableSubmission" id="isCompanyTableSubmission" value="true">
@@ -100,11 +100,11 @@
                           <tr>
                             <td>
                               <a href="javascript:{}" 
-                                  onclick="submitFormWithKey('companyListForm', '#prc.allCompanies.intCompanyKey#');">
+                                  onclick="submitFormWithKey('viewCompaniesForm', '#prc.allCompanies.intCompanyKey#');">
                                 #prc.allCompanies.vcCompanyName#
                               </a>
                             </td>
-                            <td>#prc.allCompanies.bitIsActive eq 1 ? "Yes" : "No"#</td>
+                            <td>#prc.allCompanies.bitIsActive#</td>
                           </tr>
                       </cfloop>
                   </tbody>

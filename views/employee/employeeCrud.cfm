@@ -139,7 +139,7 @@
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
-                                    <button id="addEmployeeBtn" onclick="return validateEmployeeForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                    <button id="addEmployeeBtn"  #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
                                     ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
                                 </button>
                             </div>

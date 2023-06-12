@@ -66,8 +66,8 @@
                                         <cfloop query="#prc.allUsers#">
                                             <tr>
                                               <td>#prc.allUsers.vcUserName#</td>
-                                              <td>#prc.allUsers.bitIsActive eq 1 ? "Yes" : "No"#</td>
-                                              <td>#prc.allUsers.bitIsAdmin eq 1 ? "Yes" : "No"#</td>
+                                              <td>#prc.allUsers.bitIsActive#</td>
+                                              <td>#prc.allUsers.bitIsAdmin#</td>
                                             </tr>
                                         </cfloop>
                                     </tbody>

@@ -30,18 +30,16 @@
 			<div class="row justify-content-center">
 				
 				<!-- Display messages -->
-				<cfif structKeyExists(prc, "message") AND prc.message NEQ "">
-					<div class="alert alert-success text-center">
-						#prc.message#
-					</div>
-				</cfif>
-				
+				<div class="#prc.successClass#">
+					#prc.successMessage#
+				</div>
+
 				<!-- Display messages -->
-				<cfif structKeyExists(prc, "errorMessages")>
-					<div class="alert alert-danger text-center">
-						<cfdump var="#prc.errorMessages#">
-					</div>
-				</cfif>
+				<div class="#prc.errorClass#">
+					<cfloop array="#prc.errorMessages#" index="i">
+						<p>#i#</p>
+					</cfloop>
+				</div>
 				
 				<!--- Company Card --->
 				<div class="col-md-6">

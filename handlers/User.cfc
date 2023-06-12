@@ -12,7 +12,7 @@ component extends="coldbox.system.EventHandler" {
         prc.allUsers = UserService.getAllUsers();
         prc.formTitle = "All Users";
 
-        event.setView( "user/userList" );
+        event.setView( "user/viewUsers" );
     }
 
     function createUser(event, rc, prc) {
@@ -44,11 +44,14 @@ component extends="coldbox.system.EventHandler" {
             prc.errorMessage = UserService.validate(prc.aUser);
 
             if (len(prc.errorMessage) != 0) {
+                flash.put("errorMessage", prc.errorMessage);
                 relocate('employee/index');
             } 
         } 
         // Function chain will run insert query
         UserService.save(prc.aUser, rc.crudAction);
+        prc.successMessage = "Your action was successful."
+        flash.put("successMessage", prc.successMessage);
 
         relocate('employee/index');
     }

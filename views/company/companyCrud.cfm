@@ -38,8 +38,8 @@
                                     
                                     <!-- Hidden fields -->
                                     <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
-                                    <cfif isDefined("prc.oneCompany.intCompanyID") && len(prc.oneCompany.intCompanyID)>
-                                        <input type="hidden" name="intCompanyID" value="#prc.oneCompany.intCompanyID#">
+                                    <cfif isDefined("prc.oneCompany.intCompanyKey") && len(prc.oneCompany.intCompanyKey)>
+                                        <input type="hidden" name="intCompanyKey" value="#prc.oneCompany.intCompanyKey#">
                                     </cfif>                                    
                                     
                                     <label for="vcCompanyName"><span style="color: red;">* </span>Company Name</label>

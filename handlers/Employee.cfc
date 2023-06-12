@@ -8,27 +8,6 @@ component extends="coldbox.system.EventHandler" {
 
     function index() {
 
-        prc.welcomeMessage = "Welcome, #session.vcUserName#!";
-        prc.allEmployees = EmployeeService.getAllEmployees();
-
-        // Populates the company dropdown in the form
-        prc.allCompanies = CompanyService.getAllCompanies();
-        // Populates the user list
-        prc.allUsers = UserService.getAllUsers();
-
-        //TODO: REFACTOR THIS
-        if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
-            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
-        }
-
-        if (structKeyExists(rc, "isUserFormSubmission") && rc.isUserFormSubmission == "true") {
-            prc.aUser = UserService.getOneUser(rc.intUserID);
-        }
-
-        if (structKeyExists(prc, "errorMessage")) {
-            prc.errorMessages = prc.errorMessage;
-        }
-
         // Exit Handlers
         prc.xeh.readEmployee = "employee/readEmployee";
         prc.xeh.createEmployee = "employee/createEmployee";
@@ -37,8 +16,61 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.createCompany = "company/createCompany";
         prc.xeh.createUser = "user/createUser";
         prc.xeh.employeeIndex = "employee/index";
+
+        prc.welcomeMessage = "Welcome, #session.vcUserName#!";
+        prc.allEmployees = EmployeeService.getAllEmployees();
+
+        prc.successMessage = "";
+        prc.successClass = "";
+        prc.errorMessages = [];
+        prc.errorClass = "";
+
+        // Populates the company dropdown in the form
+        prc.allCompanies = CompanyService.getAllCompanies();
+
+        if (structKeyExists(rc, "isCompanyFormSubmission") && rc.isCompanyFormSubmission == "true") {
+            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(rc.intCompanyKey);
+        }
+
+        // For post action messages
+        if (flash.exists("errorMessage")) {
+            prc.errorMessages = flash.get("errorMessage");
+            prc.errorClass = "alert alert-danger text-center";
+            flash.clear();
+        }
+
+        if (flash.exists("successMessage")) {
+            prc.successMessage = flash.get("successMessage");
+            prc.successClass = "alert alert-success text-center";
+            flash.clear();
+        }
         
         event.setView( "employee/index" );
+    }
+
+
+    // Determines which CRUD action to take
+    function save(event, rc, prc) {
+
+        prc.anEmployee = populateModel( "Employee" );
+
+        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
+
+            // Validates object attributes (form fields)
+            prc.errorMessage = EmployeeService.validate(prc.anEmployee);
+
+            if (len(prc.errorMessage) != 0) {
+                flash.put("errorMessage", prc.errorMessage);
+                relocate('employee/index');
+            } 
+        } 
+        // Function chain will run insert query
+        EmployeeService.save(prc.anEmployee, rc.crudAction);
+
+        prc.successMessage = "Your action was successful."
+        flash.put("successMessage", prc.successMessage);
+        
+        relocate('employee/index');
     }
 
 
@@ -60,10 +92,7 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        // Extra check. Should always have a value with this crud action
-        if (structKeyExists(rc, "intEmployeeID")) {
-            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
-        }
+        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
 
         event.setView( "employee/employeeCrud" );
     }
@@ -109,10 +138,7 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        // Extra check. Should always have a value with this crud action
-        if (structKeyExists(rc, "intEmployeeID")) {
-            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
-        } 
+        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
 
         event.setView( "employee/employeeCrud" );
 
@@ -137,34 +163,14 @@ component extends="coldbox.system.EventHandler" {
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
 
-        // Extra check. Should always have a value with this crud action
-        if (structKeyExists(rc, "intEmployeeID")) {
-            prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
-        }
+        prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+
 
         event.setView( "employee/employeeCrud" );
     }
 
 /*******************************************************************/
-    // Determines which CRUD action to take
-    function save(event, rc, prc) {
-
-        prc.anEmployee = populateModel( "Employee" );
-
-        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
-
-            // Validates object attributes (form fields)
-            prc.errorMessage = EmployeeService.validate(prc.anEmployee);
-
-            if (len(prc.errorMessage) != 0) {
-                relocate('employee/index');
-            } 
-        } 
-        // Function chain will run insert query
-        EmployeeService.save(prc.anEmployee, rc.crudAction);
-
-        relocate('employee/index');
-    } 
+ 
 
     
     // Replaces all employees' first names that appear on cnn.com with "MOD" 

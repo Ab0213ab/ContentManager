@@ -25,10 +25,10 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "company/companyCrud" );
     }
 
-    function companyList() {
+    function viewCompanies() {
 
         // Exit Handlers
-        prc.xeh.companyList = "company/companyList";
+        prc.xeh.viewCompanies = "company/viewCompanies";
 
         if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(val(rc.intCompanyKey));
@@ -38,7 +38,7 @@ component extends="coldbox.system.EventHandler" {
         prc.allCompanies = CompanyService.getAllCompanies();
         prc.formTitle = "View Companies";
 
-        event.setView("company/companyList");
+        event.setView("company/viewCompanies");
     }
 
     // Determines which CRUD action to take
@@ -51,11 +51,14 @@ component extends="coldbox.system.EventHandler" {
             prc.errorMessage = CompanyService.validate(prc.aCompany);
 
             if (len(prc.errorMessage) != 0) {
+                flash.put("errorMessage", prc.errorMessage);
                 relocate('employee/index');
             } 
         } 
         // Function chain will run insert query
         CompanyService.save(prc.aCompany, rc.crudAction);
+        prc.successMessage = "Your action was successful."
+        flash.put("successMessage", prc.successMessage);
 
         relocate('employee/index');
     }
