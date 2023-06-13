@@ -28,11 +28,72 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "company/companyCrud" );
     }
 
+    function updateCompany(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "company/save";
+
+        // For form fields
+        prc.fieldsEnabled = "";
+        // For action button
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-pen";
+        prc.btnClass = "btn btn-primary mt-2";
+
+        prc.crudAction = "Update";
+        prc.formTitle = "Edit Company";
+
+        prc.oneCompany = CompanyService.getOneCompany(rc.intCompanyKey);
+
+        // For radio buttons
+        if (prc.oneCompany.bitIsActive == 1) {
+            prc.isActiveYes = 'checked';
+            prc.isActiveNo = '';
+        } else if (prc.oneCompany.bitIsActive == 0) {
+            prc.isActiveYes = '';
+            prc.isActiveNo = 'checked';
+        }
+
+        event.setView( "company/companyCrud" );
+
+    }
+
+    function deleteCompany(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "company/save";
+
+        // For form fields
+        prc.fieldsEnabled = "disabled";
+        // For action button
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-person-x-fill";
+        prc.btnClass = "btn btn-danger mt-2";
+
+        prc.crudAction = "Delete";
+        prc.formTitle = "Delete Company";
+
+        prc.oneCompany = CompanyService.getOneCompany(rc.intCompanyKey);
+
+        // For radio buttons
+        if (prc.oneCompany.bitIsActive == 1) {
+            prc.isActiveYes = 'checked';
+            prc.isActiveNo = '';
+        } else if (prc.oneCompany.bitIsActive == 0) {
+            prc.isActiveYes = '';
+            prc.isActiveNo = 'checked';
+        }
+
+        event.setView( "company/companyCrud" );
+    }
+
     function viewCompanies() {
 
         // Exit Handlers
         prc.xeh.viewCompanies = "company/viewCompanies";
         prc.xeh.readEmployee = "employee/readEmployee";
+        prc.xeh.updateCompany = "company/updateCompany";
+        prc.xeh.deleteCompany = "company/deleteCompany";
 
         // To avoid conditionals in form fields
         if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {

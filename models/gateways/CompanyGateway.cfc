@@ -84,6 +84,37 @@
             )
         </cfquery>   
     </cffunction>
+
+
+    <cffunction name="update">
+      <cfargument name="Company" required="true">
+    
+        <cfquery name="updateCompanyQuery" datasource="contentManager">
+    
+          UPDATE 
+            tblCompany 
+          SET 
+            vcCompanyName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getVcCompanyName()#">,
+            bitIsActive = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">
+          WHERE 
+            intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
+        </cfquery>
+        
+    </cffunction>
+
+
+    <cffunction name="delete">
+      <cfargument name="Company" required="true">
+    
+        <cfquery name="deleteCompanyQuery" datasource="contentManager">
+    
+          DELETE FROM 
+            tblCompany 
+          WHERE 
+            intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
+        </cfquery>
+        
+    </cffunction>
   
     
   </cfcomponent>

@@ -48,11 +48,13 @@
                                 <div class="form-group col-md-12">
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this company still active?</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" value="1">
+                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" value="1"
+                                        #prc.isActiveYes#>
                                         <label class="form-check-label" for="bitIsActiveYes">Yes</label>
                                     </div>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0">
+                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0"
+                                        #prc.isActiveNo#>
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
                                         <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>

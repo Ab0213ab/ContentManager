@@ -72,21 +72,16 @@
                                                         class="btn btn-primary btn-sm">
                                                         Edit
                                                     </a>
-                                                  </td>
-                                                  <td>
-                                                    <a href="#event.buildLink(prc.xeh.updateUser, {intUserID = prc.allUsers.intUserID})#"
+                                                </td>
+                                                <td>
+                                                    <a href="#event.buildLink(prc.xeh.deleteUser, {intUserID = prc.allUsers.intUserID})#"
                                                         class="btn btn-danger btn-sm">
                                                         Delete
                                                     </a>
-                                                  </td>
-                                              <td>
-                                                <a href="#event.buildLink(prc.xeh.updateUser, {intUserID = prc.allUsers.intUserID})#"
-									                class="m-2">
-									                #prc.allUsers.vcUserName#
-								                </a>
-                                              </td>
-                                              <td>#prc.allUsers.bitIsActive#</td>
-                                              <td>#prc.allUsers.bitIsAdmin#</td> 
+                                                </td>
+                                                <td>#prc.allUsers.vcUserName#</td>
+                                                <td>#prc.allUsers.bitIsActive#</td>
+                                                <td>#prc.allUsers.bitIsAdmin#</td> 
                                             </tr>
                                         </cfloop>
                                     </tbody>

@@ -8,6 +8,7 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.employeeIndex = "employee/index";
         prc.xeh.updateUser = "user/updateUser";
+        prc.xeh.deleteUser = "user/deleteUser";
 
         // Populates the user list
         prc.allUsers = UserService.getAllUsers();
@@ -34,6 +35,12 @@ component extends="coldbox.system.EventHandler" {
         // Sets form values to empty strings as no intUserID == -1
         prc.oneUser = UserService.getOneUser(-1);
 
+        // For radio buttons
+        prc.isActiveYes = '';
+        prc.isActiveNo = '';
+        prc.isAdminYes = '';
+        prc.isAdminNo = '';
+
         event.setView( "user/userCrud" );
     }
 
@@ -54,8 +61,62 @@ component extends="coldbox.system.EventHandler" {
 
         prc.oneUser = UserService.getOneUser(rc.intUserID);
 
+        // For radio buttons
+        if (prc.oneUser.bitIsActive == 1) {
+            prc.isActiveYes = 'checked';
+            prc.isActiveNo = '';
+        } else if (prc.oneUser.bitIsActive == 0) {
+            prc.isActiveYes = '';
+            prc.isActiveNo = 'checked';
+        }
+
+        if (prc.oneUser.bitIsAdmin == 1) {
+            prc.isAdminYes = 'checked';
+            prc.isAdminNo = '';
+        } else if (prc.oneUser.bitIsAdmin == 0) {
+            prc.isAdminYes = '';
+            prc.isAdminNo = 'checked';
+        }
+
         event.setView( "user/userCrud" );
 
+    }
+
+    function deleteUser(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "user/save";
+
+        // For form fields
+        prc.fieldsEnabled = "disabled";
+        // For action button
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-person-x-fill";
+        prc.btnClass = "btn btn-danger mt-2";
+
+        prc.crudAction = "Delete";
+        prc.formTitle = "Delete User";
+
+        prc.oneUser = UserService.getOneUser(rc.intUserID);
+
+        // For radio buttons
+        if (prc.oneUser.bitIsActive == 1) {
+            prc.isActiveYes = 'checked';
+            prc.isActiveNo = '';
+        } else if (prc.oneUser.bitIsActive == 0) {
+            prc.isActiveYes = '';
+            prc.isActiveNo = 'checked';
+        }
+
+        if (prc.oneUser.bitIsAdmin == 1) {
+            prc.isAdminYes = 'checked';
+            prc.isAdminNo = '';
+        } else if (prc.oneUser.bitIsAdmin == 0) {
+            prc.isAdminYes = '';
+            prc.isAdminNo = 'checked';
+        }
+
+        event.setView( "user/userCrud" );
     }
 
     // Determines which CRUD action to take

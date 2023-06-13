@@ -92,6 +92,8 @@
                 <table class="table table-striped display" id="companyTable">
                   <thead>
                     <tr>
+                      <th scope="col"></th>
+                      <th scope="col"></th>
                       <th scope="col">Company Name</th>
                       <th scope="col">Active?</th>
                     </tr>
@@ -99,6 +101,18 @@
                   <tbody>
                       <cfloop query="#prc.allCompanies#">
                           <tr>
+                            <td>
+                              <a href="#event.buildLink(prc.xeh.updateCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
+                                  class="btn btn-primary btn-sm">
+                                  Edit
+                              </a>
+                          </td>
+                          <td>
+                              <a href="#event.buildLink(prc.xeh.deleteCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
+                                  class="btn btn-danger btn-sm">
+                                  Delete
+                              </a>
+                          </td>
                             <td>
                               <a href="javascript:{}" 
                                   onclick="submitFormWithKey('viewCompaniesForm', '#prc.allCompanies.intCompanyKey#');">
