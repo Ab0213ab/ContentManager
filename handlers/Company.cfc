@@ -25,6 +25,10 @@ component extends="coldbox.system.EventHandler" {
         // Sets form values to empty strings as no intCompanyKey == -1
         prc.oneCompany = CompanyService.getOneCompany(-1);
 
+        // For radio buttons
+        prc.isActiveYes = '';
+        prc.isActiveNo = '';
+
         event.setView( "company/companyCrud" );
     }
 

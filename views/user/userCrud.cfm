@@ -55,12 +55,12 @@
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this User active?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" value="1"
-                                        #prc.isActiveYes#>
+                                        #prc.isActiveYes# #prc.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveYes">Yes</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0"
-                                        #prc.isActiveNo#>
+                                        #prc.isActiveNo# #prc.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
                                         <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
@@ -69,12 +69,12 @@
                                     <label for="bitIsAdmin"><span style="color: red;">* </span>Is this User an administrator?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminYes" value="1"
-                                        #prc.isAdminYes#>
+                                        #prc.isAdminYes# #prc.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsAdminYes">Yes</label>
                                     </div>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminNo" value="0"
-                                        #prc.isAdminNo#>
+                                        #prc.isAdminNo# #prc.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsAdminNo">No</label>
                                         <p id="bitIsAdminMessage" style="color: red"></p>
                                     </div>
