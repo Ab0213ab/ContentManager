@@ -12,7 +12,7 @@ Credential Authorization/Input Validation   |  Responsiveness
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssLoginE.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssResponsive.png)
 
-Sleek, modern design       |  Intuitive usability             
+Minimalistic, Modern Design       |  Intuitive Usability             
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssHome2.png)
 
