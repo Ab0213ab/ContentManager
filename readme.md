@@ -67,7 +67,7 @@ enterprise development techniques including, but not limited to:
 <hr>
 
 ## Developer Information
-Programmed by Andrew B. Schaefer [(Ab0213ab)](https://github.com/Ab0213ab).
+Built by Andrew B. Schaefer [(Ab0213ab)](https://github.com/Ab0213ab).
 
 LinkedIn: https://www.linkedin.com/in/andrewbschaefer/
 
