@@ -10,7 +10,7 @@
 
 Step To -> |  This
 :-------------------------:|:-------------------------:
-![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.PNG)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.PNG)
+![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.png)
 
 <hr>
 
