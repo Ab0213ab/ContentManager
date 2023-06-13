@@ -41,7 +41,7 @@ enterprise development techniques including, but not limited to:
 	<li>Responsiveness</li>
 	<li>OOP</li> 
 	<li>Poper MVC</li>
-	<li>Session management<li> 
+	<li>Session management</li> 
 	<li>Utilization of services, gateways, and domains</li> 
 	<li>jQuery Datatables</li>
 	<li>Bootstrap modals</li> 
