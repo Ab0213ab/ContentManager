@@ -8,7 +8,7 @@
 
 ## Functionality Screenshots
 
-Input Validation           |  Responsiveness           
+Credential Authorization/Input Validation   |  Responsiveness           
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssLoginE.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssResponsive.png)
 
