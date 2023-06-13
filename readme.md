@@ -20,9 +20,9 @@ BootStrap Front-End Techniques   |  jQuery DataTables
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssModal.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssDataTables.png)
 
-Full CRUD Operation Support   |             
+Full CRUD Operation Support   | .            
 :-------------------------:|:-------------------------:
-![ScreenShot](includes/images/functionalityScreenShots/ssEditUser.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssEdlUser.png)
+![ScreenShot](includes/images/functionalityScreenShots/ssEditUser.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssDelUser.png)
 
 
 <img src="includes/images/functionalityScreenShots/ssLoginE.png" width="50%">
