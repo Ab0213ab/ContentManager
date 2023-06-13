@@ -3,7 +3,6 @@ component extends="coldbox.system.EventHandler" {
     property name="EmployeeService" inject="model:EmployeeService";
     property name="EmployeeGateway" inject="model:EmployeeGateway";
     property name="CompanyService" inject="model:CompanyService";
-    property name="UserService" inject="model:UserService";
 
 
     function index() {
@@ -20,7 +19,7 @@ component extends="coldbox.system.EventHandler" {
         prc.welcomeMessage = "Welcome, #session.vcUserName#!";
         prc.allEmployees = EmployeeService.getAllEmployees();
 
-        prc.successMessage = "";
+        prc.successMessages = "";
         prc.successClass = "";
         prc.errorMessages = [];
         prc.errorClass = "";
@@ -35,16 +34,16 @@ component extends="coldbox.system.EventHandler" {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(-1);
         }
 
-        // For post action messages
-        if (flash.exists("errorMessage")) {
-            prc.errorMessages = flash.get("errorMessage");
+        // For post-action
+        if (structKeyExists(session, "errorMessages") && len(session.errorMessages) != 0) { 
             prc.errorClass = "alert alert-danger text-center";
-            flash.clear();
+            prc.errorMessages = session.errorMessages;
+            session.errorMessages = "";
         }
-        if (flash.exists("successMessage")) {
-            prc.successMessage = flash.get("successMessage");
+        if (structKeyExists(session, "successMessages") && session.successMessages != "") {
             prc.successClass = "alert alert-success text-center";
-            flash.clear();
+            prc.successMessages = session.successMessages;
+            session.successMessages = "";
         }
         
         event.setView( "employee/index" );
@@ -54,23 +53,26 @@ component extends="coldbox.system.EventHandler" {
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
+        // Since form values are always sent as strs
+        if (structKeyExists(rc, 'intEmployeeID')) {
+            rc.intEmployeeID = val(rc.intEmployeeID);
+        }
+
         prc.anEmployee = populateModel( "Employee" );
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
             // Validates object attributes (form fields)
-            prc.errorMessage = EmployeeService.validate(prc.anEmployee);
+            prc.errorMessages = EmployeeService.validate(prc.anEmployee);
 
-            if (len(prc.errorMessage) != 0) {
-                flash.put("errorMessage", prc.errorMessage);
+            if (len(prc.errorMessages) != 0) {
+                session.errorMessages = prc.errorMessages;
                 relocate('employee/index');
             } 
         } 
         // Function chain will run insert query
         EmployeeService.save(prc.anEmployee, rc.crudAction);
-
-        prc.successMessage = "Your action was successful."
-        flash.put("successMessage", prc.successMessage);
+        session.successMessages = "Your action was successful."
         
         relocate('employee/index');
     }

@@ -32,6 +32,7 @@ component extends="coldbox.system.EventHandler" {
 
         // Exit Handlers
         prc.xeh.viewCompanies = "company/viewCompanies";
+        prc.xeh.readEmployee = "employee/readEmployee";
 
         // To avoid conditionals in form fields
         if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
@@ -50,21 +51,25 @@ component extends="coldbox.system.EventHandler" {
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
+        // Since form values are always sent as strs
+        if (structKeyExists(rc, 'intCompanyKey')) {
+            rc.intCompanyKey = val(rc.intCompanyKey);
+        }
+
         prc.aCompany = populateModel( "Company" );
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
-            prc.errorMessage = CompanyService.validate(prc.aCompany);
+            prc.errorMessages = CompanyService.validate(prc.aCompany);
 
-            if (len(prc.errorMessage) != 0) {
-                flash.put("errorMessage", prc.errorMessage);
+            if (len(prc.errorMessages) != 0) {
+                session.errorMessages = prc.errorMessages;
                 relocate('employee/index');
-            } 
+            }
         } 
         // Function chain will run insert query
         CompanyService.save(prc.aCompany, rc.crudAction);
-        prc.successMessage = "Your action was successful."
-        flash.put("successMessage", prc.successMessage);
+        session.successMessages = "Your action was successful."
 
         relocate('employee/index');
     }

@@ -46,24 +46,24 @@ component name="EmployeeService"singleton accessors="true"{
 /*******************************************************************/
 	function validate(anEmployee) {
 
-		prc.errorMessage = [];
+		prc.errorMessages = [];
 
 		if (REFind("^(?!$)[A-Za-z\s]+$", anEmployee.getVcLastName()) == 0) {
-			arrayAppend(prc.errorMessage, "Employee Last Name field only accepts letters.")
+			arrayAppend(prc.errorMessages, "Employee Last Name field only accepts letters.")
 		}
 		if (REFind("^(?!$)[A-Za-z\s]+$", anEmployee.getVcFirstName()) == 0) {
-			arrayAppend(prc.errorMessage, "Employee First Name field only accepts letters.")
+			arrayAppend(prc.errorMessages, "Employee First Name field only accepts letters.")
 		}
 		if (REFind("^[A-Za-z\s]*$", anEmployee.getVcRegion()) == 0) {
-			arrayAppend(prc.errorMessage, "Employee Region field only accepts letters.")
+			arrayAppend(prc.errorMessages, "Employee Region field only accepts letters.")
 		}
 		if (REFind("^[A-Za-z\s]*$", anEmployee.getVcCity()) == 0) {
-			arrayAppend(prc.errorMessage, "Employee City field only accepts letters.")
+			arrayAppend(prc.errorMessages, "Employee City field only accepts letters.")
 		}
 		if (REFind("^[0-9\s]*$", anEmployee.getVcHomePhone()) == 0) {
-			arrayAppend(prc.errorMessage, "Employee Home Phone field only accepts numbers.")
+			arrayAppend(prc.errorMessages, "Employee Home Phone field only accepts numbers.")
 		}
-		return prc.errorMessage;
+		return prc.errorMessages;
 	}
 
 }

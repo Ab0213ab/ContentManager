@@ -46,16 +46,16 @@ component singleton accessors="true"{
 
 	function validate(aCompany) {
 
-		prc.errorMessage = [];
+		prc.errorMessages = [];
 
 		if (aCompany.getVcCompanyName() == "") {
-			arrayAppend(prc.errorMessage, "Company Name field is required.")
+			arrayAppend(prc.errorMessages, "Company Name field is required.")
 		}
 		if (aCompany.getBitIsActive() == "") {
-			arrayAppend(prc.errorMessage, "Is Active field is required.")
+			arrayAppend(prc.errorMessages, "Is Active field is required.")
 		}
 		
-		return prc.errorMessage;
+		return prc.errorMessages;
 	}
 
 

@@ -53,7 +53,12 @@
                 <cfloop query="#prc.employeesByCompanyKey#">
                   <div class="d-flex align-items-center">
                     <ul>
-                      <li>#prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#</li>
+                      <li>
+                        <a href="#event.buildLink(prc.xeh.readEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
+									        class="m-2">
+									        #prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#
+								        </a>
+                      </li>
                     </ul>
                   </div>
                 </cfloop>

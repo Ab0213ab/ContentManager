@@ -40,22 +40,22 @@ component singleton accessors="true"{
 
 	function validate(aUser) {
 
-		prc.errorMessage = [];
+		prc.errorMessages = [];
 
 		if (aUser.getVcUserName() == "") {
-			arrayAppend(prc.errorMessage, "User Name field is required.")
+			arrayAppend(prc.errorMessages, "User Name field is required.")
 		}
 		if (aUser.getVcPassword() == "") {
-			arrayAppend(prc.errorMessage, "Password field is required.")
+			arrayAppend(prc.errorMessages, "Password field is required.")
 		}
 		if (aUser.getBitIsActive() == "") {
-			arrayAppend(prc.errorMessage, "Is Active field is required.")
+			arrayAppend(prc.errorMessages, "Is Active field is required.")
 		}
 		if (aUser.getBitIsAdmin() == "") {
-			arrayAppend(prc.errorMessage, "Is Admin field is required.")
+			arrayAppend(prc.errorMessages, "Is Admin field is required.")
 		}
 		
-		return prc.errorMessage;
+		return prc.errorMessages;
 	}
 
 }

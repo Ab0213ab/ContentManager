@@ -29,17 +29,22 @@
 			<br>
 			<div class="row justify-content-center">
 
-				<div class="#prc.successClass#">
-					#prc.successMessage#
-				</div>
+				<center>
+					<div class="#prc.successClass#">
+						#prc.successMessages#
+					</div>
+				</center>
 
-				<div class="#prc.errorClass#">
-					<cfloop array="#prc.errorMessages#" index="i">
-						<p>#i#</p>
-					</cfloop>
-				</div>
+				<center>
+					<div class="#prc.errorClass#">
+						<cfloop array="#prc.errorMessages#" index="i">
+							<p>#i#</p>
+						</cfloop>
+					</div>
+				</center>
 				
 				<!--- Company Card --->
+				<br>
 				<div class="col-md-6">
 					<div class="card p-3">
 						<form id="companiesForm" action="#event.buildLink(prc.xeh.employeeIndex)#" method="post">

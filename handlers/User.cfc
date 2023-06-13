@@ -7,6 +7,7 @@ component extends="coldbox.system.EventHandler" {
 
         // Exit Handlers
         prc.xeh.employeeIndex = "employee/index";
+        prc.xeh.updateUser = "user/updateUser";
 
         // Populates the user list
         prc.allUsers = UserService.getAllUsers();
@@ -36,25 +37,51 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "user/userCrud" );
     }
 
+    function updateUser(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "user/save";
+
+        // For form fields
+        prc.fieldsEnabled = "";
+        // For action button
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-pen";
+        prc.btnClass = "btn btn-primary mt-2";
+
+        prc.crudAction = "Update";
+        prc.formTitle = "Edit User";
+
+        prc.oneUser = UserService.getOneUser(rc.intUserID);
+
+        event.setView( "user/userCrud" );
+
+    }
+
     // Determines which CRUD action to take
     function save(event, rc, prc) {
+
+        // Since form values are always sent as strs
+        if (structKeyExists(rc, 'intUserID')) {
+            rc.intUserID = val(rc.intUserID);
+        }        
 
         prc.aUser = populateModel( "User" );
 
         if (rc.crudAction == "Create" || rc.crudAction == "Update") {
 
             // Validates object attributes (for fields)
-            prc.errorMessage = UserService.validate(prc.aUser);
+            prc.errorMessages = UserService.validate(prc.aUser);
 
-            if (len(prc.errorMessage) != 0) {
-                flash.put("errorMessage", prc.errorMessage);
-                relocate('employee/index');
-            } 
+             if (len(prc.errorMessages) != 0) {
+                 session.errorMessages = prc.errorMessages;
+                 relocate('employee/index');
+             }
+
         } 
         // Function chain will run insert query
         UserService.save(prc.aUser, rc.crudAction);
-        prc.successMessage = "Your action was successful."
-        flash.put("successMessage", prc.successMessage);
+        session.successMessages = "Your action was successful."
 
         relocate('employee/index');
     }

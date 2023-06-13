@@ -82,5 +82,24 @@
           )
       </cfquery>   
   </cffunction>
+
+
+  <cffunction name="update">
+    <cfargument name="User" required="true">
+  
+      <cfquery name="updateUserQuery" datasource="contentManager">
+  
+        UPDATE 
+          tblUser 
+        SET 
+          vcUserName = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.User.getVcUserName()#">,
+          vcPassword = <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.User.getVcPassword()#">,
+          bitIsActive = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsActive()#">,
+          bitIsAdmin = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsAdmin()#">
+        WHERE 
+          intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
+      </cfquery>
+      
+  </cffunction>
     
   </cfcomponent>
