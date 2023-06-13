@@ -55,7 +55,7 @@ enterprise development techniques including, but not limited to:
 
 ## Technologies Used
 - ColdFusion Markup Language (CFML)
-- Some custom CSS and JavaScript
+- Custom CSS and JavaScript
 - Bootstrap, jQuery
 - ColdBox MVC framework
 - SQL/Micorsoft SQL Server Management Studio
