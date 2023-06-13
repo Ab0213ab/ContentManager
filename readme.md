@@ -8,9 +8,14 @@
 
 ## Functionality Screenshots
 
-Simple, modern design 
-:-------------------------:
-![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.png)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.png)
+ 
+Sleek, modern design       |  Intuitive usability             
+:-------------------------:|:-------------------------:
+![ScreenShot](includes/images/functionalityScreenShots/ssHome2.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssHome1.png)
+
+Input Validation             |             
+:-------------------------:|
+<img src="includes/images/functionalityScreenShots/ssLoginE.png" width="50%">
 
 <hr>
 
