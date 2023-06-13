@@ -8,16 +8,21 @@
 
 ## Functionality Screenshots
 
-Input Validation           |  Responsiveness           
+Credential Authorization/Input Validation   |  Responsiveness           
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssLoginE.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssResponsive.png)
 
-Sleek, modern design       |  Intuitive usability             
+Minimalistic, Modern Design       |  Intuitive Usability             
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssHome2.png)
 
+BootStrap Front-End Techniques   |  jQuery DataTables           
+:-------------------------:|:-------------------------:
+![ScreenShot](includes/images/functionalityScreenShots/ssModal.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssViewCo.png)
 
-<img src="includes/images/functionalityScreenShots/ssLoginE.png" width="50%">
+Full CRUD Operation Support   |  "           
+:-------------------------:|:-------------------------:
+![ScreenShot](includes/images/functionalityScreenShots/ssEditUser.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssDelUser.png)
 
 <hr>
 
@@ -28,9 +33,21 @@ Sleek, modern design       |  Intuitive usability
 ## Application Description
 
 This is a small, but growing web application designed as an interface to perform CRUD 
-(create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates advanced
-enterprise development techniques like client-side and server-side input validation, security interceptors, responsiveness, OOP, MVC, session management, utilization of services, gateways, and domains, datatables, modals, user privilege managment, and various security focused 
-techniques like implementation of SQL query parameters. 
+(create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates many advanced
+enterprise development techniques including, but not limited to: 
+<ul>
+	<li>Client-side and server-side input validation</li> 
+	<li>Security interceptors</li>
+	<li>Responsiveness</li>
+	<li>OOP</li> 
+	<li>Proper MVC</li>
+	<li>Session management</li> 
+	<li>Utilization of services, gateways, and domains</li> 
+	<li>jQuery Datatables</li>
+	<li>Bootstrap modals</li> 
+	<li>User privilege managment</li> 
+	<li>And security focused techniques like SQL query parameter usage</li> 
+</ul>
 
 [Back to Table of Contents](#table-of-contents)
 
@@ -38,7 +55,7 @@ techniques like implementation of SQL query parameters.
 
 ## Technologies Used
 - ColdFusion Markup Language (CFML)
-- Some custom CSS and JavaScript
+- Custom CSS and JavaScript
 - Bootstrap, jQuery
 - ColdBox MVC framework
 - SQL/Micorsoft SQL Server Management Studio
