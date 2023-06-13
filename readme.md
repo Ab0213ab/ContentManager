@@ -8,9 +8,9 @@
 
 ## Functionality Screenshots
 
-Step To -> |  This
+Simple, modern design 
 :-------------------------:|:-------------------------:
-![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.png)
+![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.png)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.png)
 
 <hr>
 
