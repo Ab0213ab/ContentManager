@@ -18,7 +18,7 @@ Coming Soon...
 
 This is a small, but growing web application designed as an interface to perform CRUD 
 (create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates advanced
-enterprise development techniques like user input validation, security interceptors, responsiveness, OOP, MVC, session management, utilization of services, gateways, and domains, datatables, modals, user privilege managment, and various security focused 
+enterprise development techniques like client-side and server-side input validation, security interceptors, responsiveness, OOP, MVC, session management, utilization of services, gateways, and domains, datatables, modals, user privilege managment, and various security focused 
 techniques like implementation of SQL query parameters. 
 
 [Back to Table of Contents](#table-of-contents)
