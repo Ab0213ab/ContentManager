@@ -8,7 +8,11 @@
 
 ## Functionality Screenshots
 
-Coming Soon...
+Step To -> |  This
+:-------------------------:|:-------------------------:
+![ScreenShot](/includes/images/functionalityScreenShots/ssHome1.PNG)  |  ![ScreenShot](/includes/images/functionalityScreenShots/ssHome2.PNG)
+
+<hr>
 
 [Back to Table of Contents](#table-of-contents)
 
