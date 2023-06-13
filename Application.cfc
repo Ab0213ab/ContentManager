@@ -71,9 +71,7 @@ component {
 	  class: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
 	, bundleName: 'org.lucee.mssql'
 	, bundleVersion: '7.2.2.jre8'
-	, connectionString: 'jdbc:sqlserver://localhost:1433;DATABASENAME=contentManager;sendStringParametersAsUnicode=true;SelectMethod=direct'
-	, username: 'sa'
-	, password: "encrypted:780faa2c2b1960bed6c61283ec965daf7c0fba353f27c6debefbd6bcfc560e16204e9cc4a88ad742"
+	, NICE TRY!
 	
 	// optional settings
 	, connectionLimit:-1 // default:-1
