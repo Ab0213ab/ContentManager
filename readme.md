@@ -36,11 +36,11 @@ This is a small, but growing web application designed as an interface to perform
 (create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates many advanced
 enterprise development techniques including, but not limited to: 
 <ul>
-	<li>client-side and server-side input validation</li> 
+	<li>Client-side and server-side input validation</li> 
 	<li>Security interceptors</li>
 	<li>Responsiveness</li>
 	<li>OOP</li> 
-	<li>Poper MVC</li>
+	<li>Proper MVC</li>
 	<li>Session management</li> 
 	<li>Utilization of services, gateways, and domains</li> 
 	<li>jQuery Datatables</li>
