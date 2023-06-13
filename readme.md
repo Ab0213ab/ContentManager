@@ -13,8 +13,11 @@ Sleek, modern design       |  Intuitive usability
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssHome2.png)
 
-Input Validation             |             
-:-------------------------:|
+Input Validation           |  Responsiveness           
+:-------------------------:|:-------------------------:
+![ScreenShot](includes/images/functionalityScreenShots/ssLoginE.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssResponsive.png)
+
+
 <img src="includes/images/functionalityScreenShots/ssLoginE.png" width="50%">
 
 <hr>
