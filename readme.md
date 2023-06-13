@@ -16,6 +16,10 @@ Sleek, modern design       |  Intuitive usability
 :-------------------------:|:-------------------------:
 ![ScreenShot](includes/images/functionalityScreenShots/ssHome1.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssHome2.png)
 
+BootStrap Front End Techniques   |  jQuery DataTables           
+:-------------------------:|:-------------------------:
+![ScreenShot](includes/images/functionalityScreenShots/ssModal.png)  |  ![ScreenShot](includes/images/functionalityScreenShots/ssDataTables.png)
+
 
 <img src="includes/images/functionalityScreenShots/ssLoginE.png" width="50%">
 
