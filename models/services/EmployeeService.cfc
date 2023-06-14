@@ -43,10 +43,15 @@ component name="EmployeeService"singleton accessors="true"{
 		}
         return;
     }
-/*******************************************************************/
-	function validate(anEmployee) {
+
+
+	function validate(anEmployee, crudAction) {
 
 		prc.errorMessages = [];
+
+		if (crudAction == "Delete") {
+			return prc.errorMessages;
+		}
 
 		if (REFind("^(?!$)[A-Za-z\s]+$", anEmployee.getVcLastName()) == 0) {
 			arrayAppend(prc.errorMessages, "Employee Last Name field only accepts letters.")
@@ -64,6 +69,35 @@ component name="EmployeeService"singleton accessors="true"{
 			arrayAppend(prc.errorMessages, "Employee Home Phone field only accepts numbers.")
 		}
 		return prc.errorMessages;
+	}
+
+
+	function getEmptyDomain() {
+
+		return new models.domains.Employee();
+	}
+
+	// To fill in form values on creates
+	function createEmptyEmployee() {
+
+		prc.oneEmployee = getEmptyDomain();
+        prc.oneEmployee.intEmployeeID = 0;
+        prc.oneEmployee.vcFirstName = "";
+		prc.oneEmployee.vcLastName = "";
+		prc.oneEmployee.vcTitle = "";
+		prc.oneEmployee.vcTitleOfCourtesy = "";
+		prc.oneEmployee.dtBirthDate = "";
+		prc.oneEmployee.dtHireDate = "";
+		prc.oneEmployee.vcAddress = "";
+		prc.oneEmployee.vcCity = "";
+		prc.oneEmployee.vcRegion = "";
+		prc.oneEmployee.vcPostalCode = "";
+		prc.oneEmployee.vcCountry = "";
+		prc.oneEmployee.vcHomePhone = "";
+		prc.oneEmployee.vcExtension = "";
+		prc.oneEmployee.vcNotes = "";
+
+		return prc.oneEmployee;
 	}
 
 }

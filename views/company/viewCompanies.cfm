@@ -83,6 +83,12 @@
                 <i class="bi bi-house-door-fill" style="color: blue"></i>
                 <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
             </p>
+            <center>
+              <a href="#event.buildLink(prc.xeh.createCompany)#" class="btn btn-primary">
+                  <i class="bi bi-building" style="color: white"></i>
+                  Add Company
+              </a>
+          </center>
             <hr>
             <div>
               <form id="viewCompaniesForm" action="#event.buildLink(prc.xeh.viewCompanies)#" method="post">

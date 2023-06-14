@@ -44,9 +44,13 @@ component singleton accessors="true"{
 		return;
 	}
 
-	function validate(aCompany) {
+	function validate(aCompany, crudAction) {
 
 		prc.errorMessages = [];
+
+		if (crudAction == "Delete") {
+			return prc.errorMessages;
+		}
 
 		if (aCompany.getVcCompanyName() == "") {
 			arrayAppend(prc.errorMessages, "Company Name field is required.")
@@ -56,6 +60,21 @@ component singleton accessors="true"{
 		}
 		
 		return prc.errorMessages;
+	}
+
+	function getEmptyDomain() {
+
+		return new models.domains.Company();
+	}
+
+	// To fill in form values on creates
+	function createEmptyCompany() {
+
+		prc.oneCompany = getEmptyDomain();
+        prc.oneCompany.intCompanyKey = 0;
+        prc.oneCompany.vcCompanyName = "";
+
+		return prc.oneCompany;
 	}
 
 

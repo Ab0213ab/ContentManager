@@ -54,22 +54,22 @@ component extends="coldbox.system.EventHandler" {
     function save(event, rc, prc) {
 
         // Since form values are always sent as strs
+        // TODO:
         if (structKeyExists(rc, 'intEmployeeID')) {
             rc.intEmployeeID = val(rc.intEmployeeID);
         }
 
-        prc.anEmployee = populateModel( "Employee" );
+        prc.anEmployee = EmployeeService.getEmptyDomain();
 
-        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
+        populateModel(prc.anEmployee);
 
-            // Validates object attributes (form fields)
-            prc.errorMessages = EmployeeService.validate(prc.anEmployee);
+        prc.errorMessages = EmployeeService.validate(prc.anEmployee, rc.crudAction);
 
-            if (len(prc.errorMessages) != 0) {
-                session.errorMessages = prc.errorMessages;
-                relocate('employee/index');
-            } 
-        } 
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('employee/index');
+        }
+
         // Function chain will run insert query
         EmployeeService.save(prc.anEmployee, rc.crudAction);
         session.successMessages = "Your action was successful."
@@ -117,8 +117,7 @@ component extends="coldbox.system.EventHandler" {
         prc.crudAction = "Create";
         prc.formTitle = "Add Employee";
 
-        // Sets form values to empty strings as no intEmployeeID == -1
-        prc.oneEmployee = EmployeeService.getOneEmployee(-1);
+        prc.oneEmployee = EmployeeService.createEmptyEmployee();
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
@@ -175,9 +174,6 @@ component extends="coldbox.system.EventHandler" {
 
         event.setView( "employee/employeeCrud" );
     }
-
-/*******************************************************************/
- 
 
     
     // Replaces all employees' first names that appear on cnn.com with "MOD" 

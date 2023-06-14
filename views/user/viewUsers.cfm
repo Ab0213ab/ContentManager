@@ -50,6 +50,13 @@
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
                             <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
                         </p>
+                        <center>
+                            <a href="#event.buildLink(prc.xeh.createUser)#" class="btn btn-primary">
+                                <i class="bi bi-person-check-fill" style="color: white"></i>
+                                Add User
+                            </a>
+                        </center>
+                        
                         <hr>
                         <!--- User Card --->
                         <div class="col-md-12">

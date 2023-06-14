@@ -9,10 +9,11 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.employeeIndex = "employee/index";
         prc.xeh.updateUser = "user/updateUser";
         prc.xeh.deleteUser = "user/deleteUser";
+        prc.xeh.addUser = "user/createUser";
 
         // Populates the user list
         prc.allUsers = UserService.getAllUsers();
-        prc.formTitle = "All Users";
+        prc.formTitle = "Users";
 
         event.setView( "user/viewUsers" );
     }
@@ -32,8 +33,7 @@ component extends="coldbox.system.EventHandler" {
         prc.crudAction = "Create";
         prc.formTitle = "Add User";
 
-        // Sets form values to empty strings as no intUserID == -1
-        prc.oneUser = UserService.getOneUser(-1);
+        prc.oneUser = UserService.createEmptyUser();
 
         // For radio buttons
         prc.isActiveYes = '';
@@ -127,19 +127,18 @@ component extends="coldbox.system.EventHandler" {
             rc.intUserID = val(rc.intUserID);
         }        
 
-        prc.aUser = populateModel( "User" );
+        prc.aUser = UserService.getEmptyDomain();
 
-        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
+        //prc.aUser = populateModel( "User" );
+        populateModel(prc.aUser);
 
-            // Validates object attributes (for fields)
-            prc.errorMessages = UserService.validate(prc.aUser);
+        prc.errorMessages = UserService.validate(prc.aUser, rc.crudAction);
 
-             if (len(prc.errorMessages) != 0) {
-                 session.errorMessages = prc.errorMessages;
-                 relocate('employee/index');
-             }
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('employee/index');
+        }
 
-        } 
         // Function chain will run insert query
         UserService.save(prc.aUser, rc.crudAction);
         session.successMessages = "Your action was successful."

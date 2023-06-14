@@ -22,8 +22,7 @@ component extends="coldbox.system.EventHandler" {
         prc.crudAction = "Create";
         prc.formTitle = "Add Company";
 
-        // Sets form values to empty strings as no intCompanyKey == -1
-        prc.oneCompany = CompanyService.getOneCompany(-1);
+        prc.oneCompany = CompanyService.createEmptyCompany();
 
         // For radio buttons
         prc.isActiveYes = '';
@@ -98,6 +97,7 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.readEmployee = "employee/readEmployee";
         prc.xeh.updateCompany = "company/updateCompany";
         prc.xeh.deleteCompany = "company/deleteCompany";
+        prc.xeh.createCompany = "company/createCompany";
 
         // To avoid conditionals in form fields
         if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
@@ -108,7 +108,7 @@ component extends="coldbox.system.EventHandler" {
         }
 
         prc.allCompanies = CompanyService.getAllCompanies();
-        prc.formTitle = "View Companies";
+        prc.formTitle = "Companies";
 
         event.setView("company/viewCompanies");
     }
@@ -121,17 +121,18 @@ component extends="coldbox.system.EventHandler" {
             rc.intCompanyKey = val(rc.intCompanyKey);
         }
 
-        prc.aCompany = populateModel( "Company" );
+        prc.aCompany = CompanyService.getEmptyDomain();
 
-        if (rc.crudAction == "Create" || rc.crudAction == "Update") {
+        //prc.aCompany = populateModel( "Company" );
+        populateModel(prc.aCompany);
 
-            prc.errorMessages = CompanyService.validate(prc.aCompany);
+        prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
 
-            if (len(prc.errorMessages) != 0) {
-                session.errorMessages = prc.errorMessages;
-                relocate('employee/index');
-            }
-        } 
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('employee/index');
+        }
+
         // Function chain will run insert query
         CompanyService.save(prc.aCompany, rc.crudAction);
         session.successMessages = "Your action was successful."
@@ -139,4 +140,48 @@ component extends="coldbox.system.EventHandler" {
         relocate('employee/index');
     }
   
-}
+}  
+/*
+
+Process user create()
+// Gets empty model, stores in var
+rc.user = userService.getEmptyDomain();
+
+// Validates rc fields/attributes makes sure they exist in the rc, does other validation
+var hasError = userService.validateCreate(rc, session.messenger);
+
+// if an error, relocates
+if ( hasError )
+relocate(event="userManagement/viewUserCreate");
+
+// Populates empty domain with empty fields
+populateModel(rc.user);
+
+// Then saves it
+rc.user = userService.save(rc.user);
+
+
+save()
+// if there's a usedID, calls update()
+// if not, calls create
+
+create()
+// Checks if that usedID exists already and if so, throws error
+if not, calls gateway.create()
+
+returns load(userID)
+
+load()
+// gets empty domain
+populates it with populate()
+calls gateway.load, which is a select statement for what was just inserted
+returns the object
+
+
+processUserUpdate()
+-checks if form user id is numeric and exists
+- Uses load to store the query select statement in an object/var
+- Validates object
+- populates model
+
+*/

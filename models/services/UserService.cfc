@@ -38,9 +38,13 @@ component singleton accessors="true"{
 		return;
 	}
 
-	function validate(aUser) {
+	function validate(aUser, crudAction) {
 
 		prc.errorMessages = [];
+
+		if (crudAction == "Delete") {
+			return prc.errorMessages;
+		}
 
 		if (aUser.getVcUserName() == "") {
 			arrayAppend(prc.errorMessages, "User Name field is required.")
@@ -56,6 +60,22 @@ component singleton accessors="true"{
 		}
 		
 		return prc.errorMessages;
+	}
+
+	
+	function getEmptyDomain() {
+		return new models.domains.User();
+	}
+
+	// To fill in form values on creates
+	function createEmptyUser() {
+
+		prc.oneUser = getEmptyDomain();
+        prc.oneUser.intUserID = 0;
+        prc.oneUser.vcUserName = "";
+		prc.oneUser.vcPassword = "";
+
+		return prc.oneUser;
 	}
 
 }
