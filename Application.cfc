@@ -71,7 +71,7 @@ component {
 	  class: 'com.microsoft.sqlserver.jdbc.SQLServerDriver'
 	, bundleName: 'org.lucee.mssql'
 	, bundleVersion: '7.2.2.jre8'
-	, Nice try.
+	, Nice try...
 	
 	// optional settings
 	, connectionLimit:-1 // default:-1

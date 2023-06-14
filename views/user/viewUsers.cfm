@@ -52,7 +52,7 @@
                         </p>
                         <center>
                             <a href="#event.buildLink(prc.xeh.createUser)#" class="btn btn-primary">
-                                <i class="bi bi-person-check-fill" style="color: white"></i>
+                                <i class="bi bi-person-check" style="color: white"></i>
                                 Add User
                             </a>
                         </center>

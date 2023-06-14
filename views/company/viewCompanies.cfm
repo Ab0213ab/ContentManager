@@ -122,7 +122,7 @@
                             <td>
                               <a href="javascript:{}" 
                                   onclick="submitFormWithKey('viewCompaniesForm', '#prc.allCompanies.intCompanyKey#');">
-                                #prc.allCompanies.vcCompanyName#
+                                  #prc.allCompanies.vcCompanyName#
                               </a>
                             </td>
                             <td>#prc.allCompanies.bitIsActive#</td>

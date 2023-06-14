@@ -64,6 +64,7 @@ component singleton accessors="true"{
 
 	
 	function getEmptyDomain() {
+		
 		return new models.domains.User();
 	}
 

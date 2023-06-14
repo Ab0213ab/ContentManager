@@ -175,6 +175,20 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "employee/employeeCrud" );
     }
 
+    function viewEmployees() {
+
+        // Exit Handlers
+        prc.xeh.createEmployee = "employee/createEmployee";
+        prc.xeh.updateEmployee = "employee/updateEmployee";
+        prc.xeh.deleteEmployee = "employee/deleteEmployee";
+        prc.xeh.readEmployee = "employee/readEmployee";
+
+        prc.allEmployees = EmployeeService.getAllEmployees();
+        prc.formTitle = "Employees";
+
+        event.setView( "employee/viewEmployees" );
+    }
+
     
     // Replaces all employees' first names that appear on cnn.com with "MOD" 
     function getCnnContent(event, rc, prc) {

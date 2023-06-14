@@ -57,7 +57,7 @@
     
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <div class="navbar-nav">
-                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.createEmployee)#">Add Employee</a>
+                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.viewEmployees)#">Employees</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.viewCompanies)#">Companies</a>  
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.userIndex)#">Users</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN</a>

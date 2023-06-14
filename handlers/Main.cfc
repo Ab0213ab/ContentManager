@@ -88,7 +88,7 @@ component extends="coldbox.system.EventHandler" {
 
 		// Exit Handlers used in navbar
 		prc.xeh.validateLogin = "main/validateLogin";
-		prc.xeh.createEmployee = "employee/createEmployee";
+		prc.xeh.viewEmployees = "employee/viewEmployees";
 		prc.xeh.createCompany = "company/createCompany";
 		prc.xeh.viewCompanies = "company/viewCompanies";
 		prc.xeh.createUser = "user/createUser";
