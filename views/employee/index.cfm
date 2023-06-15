@@ -28,22 +28,6 @@
 			<br>
 			<br>
 			<div class="row justify-content-center">
-
-				<center>
-					<div class="#prc.successClass#">
-						#prc.successMessages#
-					</div>
-				</center>
-
-				<center>
-					<div class="#prc.errorClass#">
-						<cfloop array="#prc.errorMessages#" index="i">
-							<p>#i#</p>
-						</cfloop>
-					</div>
-				</center>
-				
-				<!--- Company Card --->
 				<br>
 				<div class="col-md-6">
 					<div class="card p-3">

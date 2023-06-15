@@ -7,6 +7,7 @@ component extends="coldbox.system.EventHandler" {
 
     }
 
+
     function createCompany(event, rc, prc) {
 
         // Exit Handlers
@@ -99,16 +100,25 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.deleteCompany = "company/deleteCompany";
         prc.xeh.createCompany = "company/createCompany";
 
-        // To avoid conditionals in form fields
-        if (structKeyExists(rc, "isCompanyTableSubmission") && rc.isCompanyTableSubmission == "true") {
-            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(val(rc.intCompanyKey));
-            prc.displayModal = true;
-        } else {
-            prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(-1);
-        }
+        prc.successMessage = "";
+        prc.successClass = "";
+        prc.errorMessages = [];
+        prc.errorClass = "";
 
         prc.allCompanies = CompanyService.getAllCompanies();
         prc.formTitle = "Companies";
+
+        // For post-action
+        if (structKeyExists(session, "errorMessages") && len(session.errorMessages) != 0) { 
+            prc.errorClass = "alert alert-danger text-center";
+            prc.errorMessages = session.errorMessages;
+            session.errorMessages = "";
+        }
+        if (structKeyExists(session, "successMessage") && session.successMessage != "") {
+            prc.successClass = "alert alert-success text-center";
+            prc.successMessage = session.successMessage;
+            session.successMessage = "";
+        }
 
         event.setView("company/viewCompanies");
     }
@@ -116,72 +126,53 @@ component extends="coldbox.system.EventHandler" {
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
-        // Since form values are always sent as strs
-        if (structKeyExists(rc, 'intCompanyKey')) {
-            rc.intCompanyKey = val(rc.intCompanyKey);
-        }
-
         prc.aCompany = CompanyService.getEmptyDomain();
-
-        //prc.aCompany = populateModel( "Company" );
         populateModel(prc.aCompany);
 
         prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
 
         if (len(prc.errorMessages) != 0) {
             session.errorMessages = prc.errorMessages;
-            relocate('employee/index');
+            relocate('company/viewCompanies');
         }
 
         // Function chain will run insert query
         CompanyService.save(prc.aCompany, rc.crudAction);
-        session.successMessages = "Your action was successful."
+        session.successMessage = "Your action was successful."
 
-        relocate('employee/index');
+        relocate('company/viewCompanies');
     }
+
+
+
+
+
+        // Experimental...
+        function saveTest(event, rc, prc) {
+
+            prc.aCompany = CompanyService.getEmptyDomain();
+            populateModel(prc.aCompany);
+    
+            prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
+    
+            if (len(prc.errorMessages) != 0) {
+                session.errorMessages = prc.errorMessages;
+                relocate('employee/index');
+            }
+
+            if (crudAction == "Create") {
+                CompanyService.createSave(aCompany);
+            } else if (crudAction == "Update") {
+                CompanyService.updateSave(aCompany);
+            } else if (crudAction == "Delete") {
+                CompanyService.deleteSave(aCompany);
+            }
+    
+            // Function chain will run insert query
+            CompanyService.save(prc.aCompany, rc.crudAction);
+            session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
+    
+            relocate('employee/index');
+        }
   
-}  
-/*
-
-Process user create()
-// Gets empty model, stores in var
-rc.user = userService.getEmptyDomain();
-
-// Validates rc fields/attributes makes sure they exist in the rc, does other validation
-var hasError = userService.validateCreate(rc, session.messenger);
-
-// if an error, relocates
-if ( hasError )
-relocate(event="userManagement/viewUserCreate");
-
-// Populates empty domain with empty fields
-populateModel(rc.user);
-
-// Then saves it
-rc.user = userService.save(rc.user);
-
-
-save()
-// if there's a usedID, calls update()
-// if not, calls create
-
-create()
-// Checks if that usedID exists already and if so, throws error
-if not, calls gateway.create()
-
-returns load(userID)
-
-load()
-// gets empty domain
-populates it with populate()
-calls gateway.load, which is a select statement for what was just inserted
-returns the object
-
-
-processUserUpdate()
--checks if form user id is numeric and exists
-- Uses load to store the query select statement in an object/var
-- Validates object
-- populates model
-
-*/
+}

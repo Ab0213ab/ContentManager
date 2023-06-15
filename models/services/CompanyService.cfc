@@ -31,7 +31,7 @@ component singleton accessors="true"{
         return getOneCompany;
 	}
 
-	// Function chain will run insert query
+	// Function chain will run query
 	function save(aCompany, crudAction) {
 
 		if (crudAction == "Create") {
@@ -43,6 +43,20 @@ component singleton accessors="true"{
 		}
 		return;
 	}
+
+	// Experimental...
+	function createSave(aCompany) {
+		CompanyGateway.create(aCompany);
+	}
+
+	function updateSave() {
+		CompanyGateway.update(aCompany);
+	}
+
+	function deleteSave() {
+		CompanyGateway.delete(aCompany);
+	}
+
 
 	function validate(aCompany, crudAction) {
 
@@ -61,6 +75,25 @@ component singleton accessors="true"{
 		
 		return prc.errorMessages;
 	}
+
+	function getSuccessMessage(crudAction) {
+
+		prc.successMessage = "";
+	
+		switch (crudAction) {
+			case "Create":
+				prc.successMessage = "Your new company was successfully created.";
+				break;
+			case "Update":
+				prc.successMessage = "Your company was successfully updated.";
+				break;
+			case "Delete":
+				prc.successMessage = "Your company was successfully deleted.";
+				break;
+		}	
+		return prc.successMessage;
+	}
+
 
 	function getEmptyDomain() {
 

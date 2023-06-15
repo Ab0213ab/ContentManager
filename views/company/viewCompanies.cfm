@@ -32,44 +32,7 @@
 	</head>
 	<body>
 
-    <cfif structKeyExists(prc, "displayModal")>
-      <script>
-        window.onload = function() {
-          var theModal = new bootstrap.Modal(document.getElementById('displayEmployeesModal'), {});
-          theModal.show();
-        };
-      </script>
-    </cfif>
-
-    <!-- Modal view (keep at top or else backdrop will take over the whole screen) -->
-    <div class="modal" id="displayEmployeesModal">
-      <div class="modal-dialog">
-          <div class="modal-content">
-              <div class="modal-header">
-                  <h4 class="modal-title">Associated employees</h4>
-                  <button type="button" class="close" data-bs-dismiss="modal">&times;</button>
-              </div>
-              <div class="modal-body">
-                <cfloop query="#prc.employeesByCompanyKey#">
-                  <div class="d-flex align-items-center">
-                    <ul>
-                      <li>
-                        <a href="#event.buildLink(prc.xeh.readEmployee, {intEmployeeID = prc.employeesByCompanyKey.intEmployeeID})#"
-									        class="m-2">
-									        #prc.employeesByCompanyKey.vcFirstName# #prc.employeesByCompanyKey.vcLastName#
-								        </a>
-                      </li>
-                    </ul>
-                  </div>
-                </cfloop>
-              </div>
-              <div class="modal-footer">
-                <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
-              </div>
-          </div>
-      </div>
-    </div>
-    <!-- End modal view -->
+    <!--- Modals removed in version 2.0 as functionality was redundant --->
 
     <br>
 		<div class="container">
@@ -83,6 +46,21 @@
                 <i class="bi bi-house-door-fill" style="color: blue"></i>
                 <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
             </p>
+
+            <center>
+              <div class="#prc.successClass#">
+                #prc.successMessage#
+              </div>
+            </center>
+    
+            <center>
+              <div class="#prc.errorClass#">
+                <cfloop array="#prc.errorMessages#" index="i">
+                  <p>#i#</p>
+                </cfloop>
+              </div>
+            </center>
+
             <center>
               <a href="#event.buildLink(prc.xeh.createCompany)#" class="btn btn-primary">
                   <i class="bi bi-building" style="color: white"></i>
@@ -91,47 +69,36 @@
           </center>
             <hr>
             <div>
-              <form id="viewCompaniesForm" action="#event.buildLink(prc.xeh.viewCompanies)#" method="post">
-                <!-- Hidden field -->
-                <input type="hidden" name="intCompanyKey" id="intCompanyKey">
-                <input type="hidden" name="isCompanyTableSubmission" id="isCompanyTableSubmission" value="true">
-                <table class="table table-striped display" id="companyTable">
-                  <thead>
-                    <tr>
-                      <th scope="col"></th>
-                      <th scope="col"></th>
-                      <th scope="col">Company Name</th>
-                      <th scope="col">Active?</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                      <cfloop query="#prc.allCompanies#">
-                          <tr>
-                            <td>
-                              <a href="#event.buildLink(prc.xeh.updateCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
-                                  class="btn btn-primary btn-sm">
-                                  Edit
-                              </a>
+              <table class="table table-striped display" id="companyTable">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Company Name</th>
+                    <th scope="col">Active?</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    <cfloop query="#prc.allCompanies#">
+                        <tr>
+                          <td>
+                            <a href="#event.buildLink(prc.xeh.updateCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
+                                class="btn btn-primary btn-sm">
+                                Edit
+                            </a>
                           </td>
                           <td>
-                              <a href="#event.buildLink(prc.xeh.deleteCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
-                                  class="btn btn-danger btn-sm">
-                                  Delete
-                              </a>
+                            <a href="#event.buildLink(prc.xeh.deleteCompany, {intCompanyKey = prc.allCompanies.intCompanyKey})#"
+                                class="btn btn-danger btn-sm">
+                                Delete
+                            </a>
                           </td>
-                            <td>
-                              <a href="javascript:{}" 
-                                  onclick="submitFormWithKey('viewCompaniesForm', '#prc.allCompanies.intCompanyKey#');">
-                                  #prc.allCompanies.vcCompanyName#
-                              </a>
-                            </td>
-                            <td>#prc.allCompanies.bitIsActive#</td>
-                          </tr>
-                      </cfloop>
-                  </tbody>
-                </table>
-              </form>
-              
+                          <td>#prc.allCompanies.vcCompanyName#</td>
+                          <td>#prc.allCompanies.bitIsActive#</td>
+                        </tr>
+                    </cfloop>
+                </tbody>
+              </table>
               <br>  
             </div>
 					</div>
@@ -145,6 +112,7 @@
 	</body>
 	</html>
 </cfoutput>
+
 
 
 

@@ -60,7 +60,6 @@
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.viewEmployees)#">Employees</a>
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.viewCompanies)#">Companies</a>  
                             <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.userIndex)#">Users</a>
-                            <a class="nav-item nav-link active" href="#event.buildLink(prc.xeh.getCnnContent)#">CNN</a>
                           </div>
                           
                         <div class="navbar-nav ms-auto"> 

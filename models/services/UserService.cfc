@@ -25,7 +25,7 @@ component singleton accessors="true"{
         return getOneUser;
     }
 
-	// Function chain will run insert query
+	// Function chain will run query
 	function save(aUser, crudAction) {
 
 		if (crudAction == "Create") {
@@ -60,6 +60,24 @@ component singleton accessors="true"{
 		}
 		
 		return prc.errorMessages;
+	}
+
+	function getSuccessMessage(crudAction) {
+
+		prc.successMessage = "";
+	
+		switch (crudAction) {
+			case "Create":
+				prc.successMessage = "Your new user was successfully created.";
+				break;
+			case "Update":
+				prc.successMessage = "Your user was successfully updated.";
+				break;
+			case "Delete":
+				prc.successMessage = "Your user was successfully deleted.";
+				break;
+		}	
+		return prc.successMessage;
 	}
 
 	

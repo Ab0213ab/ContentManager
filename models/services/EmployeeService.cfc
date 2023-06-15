@@ -31,7 +31,7 @@ component name="EmployeeService"singleton accessors="true"{
         return getOneEmployee;
     }
 
-	// Function chain will run insert query
+	// Function chain will run query
 	function save(anEmployee, crudAction) {
 
 		if (crudAction == "Create") {
@@ -69,6 +69,24 @@ component name="EmployeeService"singleton accessors="true"{
 			arrayAppend(prc.errorMessages, "Employee Home Phone field only accepts numbers.")
 		}
 		return prc.errorMessages;
+	}
+
+	function getSuccessMessage(crudAction) {
+
+		prc.successMessage = "";
+	
+		switch (crudAction) {
+			case "Create":
+				prc.successMessage = "Your new employee was successfully created.";
+				break;
+			case "Update":
+				prc.successMessage = "Your employee was successfully updated.";
+				break;
+			case "Delete":
+				prc.successMessage = "Your employee was successfully deleted.";
+				break;
+		}	
+		return prc.successMessage;
 	}
 
 

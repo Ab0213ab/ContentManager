@@ -19,11 +19,6 @@ component extends="coldbox.system.EventHandler" {
         prc.welcomeMessage = "Welcome, #session.vcUserName#!";
         prc.allEmployees = EmployeeService.getAllEmployees();
 
-        prc.successMessages = "";
-        prc.successClass = "";
-        prc.errorMessages = [];
-        prc.errorClass = "";
-
         // Populates the company dropdown in the form
         prc.allCompanies = CompanyService.getAllCompanies();
 
@@ -33,18 +28,6 @@ component extends="coldbox.system.EventHandler" {
         } else {
             prc.employeesByCompanyKey = CompanyService.getEmployeesByCompanyKey(-1);
         }
-
-        // For post-action
-        if (structKeyExists(session, "errorMessages") && len(session.errorMessages) != 0) { 
-            prc.errorClass = "alert alert-danger text-center";
-            prc.errorMessages = session.errorMessages;
-            session.errorMessages = "";
-        }
-        if (structKeyExists(session, "successMessages") && session.successMessages != "") {
-            prc.successClass = "alert alert-success text-center";
-            prc.successMessages = session.successMessages;
-            session.successMessages = "";
-        }
         
         event.setView( "employee/index" );
     }
@@ -53,28 +36,21 @@ component extends="coldbox.system.EventHandler" {
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
-        // Since form values are always sent as strs
-        // TODO:
-        if (structKeyExists(rc, 'intEmployeeID')) {
-            rc.intEmployeeID = val(rc.intEmployeeID);
-        }
-
         prc.anEmployee = EmployeeService.getEmptyDomain();
-
         populateModel(prc.anEmployee);
 
         prc.errorMessages = EmployeeService.validate(prc.anEmployee, rc.crudAction);
 
         if (len(prc.errorMessages) != 0) {
             session.errorMessages = prc.errorMessages;
-            relocate('employee/index');
+            relocate('employee/viewEmployees');
         }
 
         // Function chain will run insert query
         EmployeeService.save(prc.anEmployee, rc.crudAction);
-        session.successMessages = "Your action was successful."
+        session.successMessage = EmployeeService.getSuccessMessage(rc.crudAction);
         
-        relocate('employee/index');
+        relocate('employee/viewEmployees');
     }
 
 
@@ -183,13 +159,30 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.deleteEmployee = "employee/deleteEmployee";
         prc.xeh.readEmployee = "employee/readEmployee";
 
+        prc.successMessage = "";
+        prc.successClass = "";
+        prc.errorMessages = [];
+        prc.errorClass = "";
+
         prc.allEmployees = EmployeeService.getAllEmployees();
         prc.formTitle = "Employees";
+
+        // For post-action
+        if (structKeyExists(session, "errorMessages") && len(session.errorMessages) != 0) { 
+            prc.errorClass = "alert alert-danger text-center";
+            prc.errorMessages = session.errorMessages;
+            session.errorMessages = "";
+        }
+        if (structKeyExists(session, "successMessage") && session.successMessage != "") {
+            prc.successClass = "alert alert-success text-center";
+            prc.successMessage = session.successMessage;
+            session.successMessage = "";
+        }
 
         event.setView( "employee/viewEmployees" );
     }
 
-    
+    /* From version 1.0, removed in version 2.0
     // Replaces all employees' first names that appear on cnn.com with "MOD" 
     function getCnnContent(event, rc, prc) {
 
@@ -218,6 +211,6 @@ component extends="coldbox.system.EventHandler" {
         }
 
         return session.email;
-    }
+    }*/
   
 }

@@ -11,6 +11,23 @@ component extends="coldbox.system.EventHandler" {
         prc.xeh.deleteUser = "user/deleteUser";
         prc.xeh.addUser = "user/createUser";
 
+        prc.successMessage = "";
+        prc.successClass = "";
+        prc.errorMessages = [];
+        prc.errorClass = "";
+
+        // For post-action
+        if (structKeyExists(session, "errorMessages") && len(session.errorMessages) != 0) { 
+            prc.errorClass = "alert alert-danger text-center";
+            prc.errorMessages = session.errorMessages;
+            session.errorMessages = "";
+        }
+        if (structKeyExists(session, "successMessage") && session.successMessage != "") {
+            prc.successClass = "alert alert-success text-center";
+            prc.successMessage = session.successMessage;
+            session.successMessage = "";
+        }
+
         // Populates the user list
         prc.allUsers = UserService.getAllUsers();
         prc.formTitle = "Users";
@@ -122,28 +139,22 @@ component extends="coldbox.system.EventHandler" {
     // Determines which CRUD action to take
     function save(event, rc, prc) {
 
-        // Since form values are always sent as strs
-        if (structKeyExists(rc, 'intUserID')) {
-            rc.intUserID = val(rc.intUserID);
-        }        
-
         prc.aUser = UserService.getEmptyDomain();
-
-        //prc.aUser = populateModel( "User" );
         populateModel(prc.aUser);
 
         prc.errorMessages = UserService.validate(prc.aUser, rc.crudAction);
 
         if (len(prc.errorMessages) != 0) {
             session.errorMessages = prc.errorMessages;
-            relocate('employee/index');
+            relocate('user/index');
         }
 
         // Function chain will run insert query
         UserService.save(prc.aUser, rc.crudAction);
-        session.successMessages = "Your action was successful."
 
-        relocate('employee/index');
+        session.successMessage = UserService.getSuccessMessage(rc.crudAction);
+
+        relocate('user/index');
     }
   
 }

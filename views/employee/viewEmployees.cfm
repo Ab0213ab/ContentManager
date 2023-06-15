@@ -44,6 +44,21 @@
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
                             <a href="#event.buildLink(prc.xeh.validateLogin)#"> Home</a>
                         </p>
+
+                        <center>
+                            <div class="#prc.successClass#">
+                              #prc.successMessage#
+                            </div>
+                          </center>
+                  
+                          <center>
+                            <div class="#prc.errorClass#">
+                              <cfloop array="#prc.errorMessages#" index="i">
+                                <p>#i#</p>
+                              </cfloop>
+                            </div>
+                          </center>
+
                         <center>
                             <a href="#event.buildLink(prc.xeh.createEmployee)#" class="btn btn-primary">
                                 <i class="bi bi-person-plus" style="color: white"></i>

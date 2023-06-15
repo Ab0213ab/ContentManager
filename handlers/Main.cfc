@@ -94,7 +94,6 @@ component extends="coldbox.system.EventHandler" {
 		prc.xeh.createUser = "user/createUser";
 		prc.xeh.userIndex = "user/index";
 		prc.xeh.index = "main/index";
-		prc.xeh.getCnnContent = "employee/getCnnContent";
 	}
 
 	function onRequestEnd( event, rc, prc ){
