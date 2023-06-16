@@ -40,17 +40,14 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/save";
 
-        // For form fields
         prc.fieldsEnabled = "";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-plus";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Create";
         prc.formTitle = "Add User";
 
-        prc.oneUser = UserService.createEmptyUser();
+        prc.oneUser = UserService.getEmptyDomain();
 
         // For radio buttons
         prc.isActiveYes = '';
@@ -66,13 +63,10 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/save";
 
-        // For form fields
         prc.fieldsEnabled = "";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-pen";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Update";
         prc.formTitle = "Edit User";
 
@@ -104,13 +98,10 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/save";
 
-        // For form fields
         prc.fieldsEnabled = "disabled";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-x-fill";
         prc.btnClass = "btn btn-danger mt-2";
-
         prc.crudAction = "Delete";
         prc.formTitle = "Delete User";
 
@@ -124,7 +115,7 @@ component extends="coldbox.system.EventHandler" {
             prc.isActiveYes = '';
             prc.isActiveNo = 'checked';
         }
-
+        
         if (prc.oneUser.bitIsAdmin == 1) {
             prc.isAdminYes = 'checked';
             prc.isAdminNo = '';

@@ -62,8 +62,8 @@
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
-                                        <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                        ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                    <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
+                                    ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
                                     </button>
                                 </div>
                             </div> 

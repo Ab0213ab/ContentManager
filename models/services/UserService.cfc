@@ -87,11 +87,4 @@ component singleton accessors="true"{
 		return new models.domains.User();
 	}
 
-	// To fill in form values on creates
-	function createEmptyUser() {
-
-		prc.oneUser = getEmptyDomain();
-		return prc.oneUser;
-	}
-
 }

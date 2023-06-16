@@ -22,11 +22,10 @@ component extends="coldbox.system.EventHandler" {
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-plus";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Create";
         prc.formTitle = "Add Company";
 
-        prc.oneCompany = CompanyService.createEmptyCompany();
+        prc.oneCompany = CompanyService.getEmptyDomain();
 
         // For radio buttons
         prc.isActiveYes = '';
@@ -43,13 +42,10 @@ component extends="coldbox.system.EventHandler" {
         // Test Exit Handler
         prc.xeh.save = "company/updateSave";
 
-        // For form fields
         prc.fieldsEnabled = "";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-pen";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Update";
         prc.formTitle = "Edit Company";
 
@@ -76,13 +72,10 @@ component extends="coldbox.system.EventHandler" {
         // Test Exit Handler
         prc.xeh.save = "company/deleteSave";
 
-        // For form fields
         prc.fieldsEnabled = "disabled";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-x-fill";
         prc.btnClass = "btn btn-danger mt-2";
-
         prc.crudAction = "Delete";
         prc.formTitle = "Delete Company";
 
@@ -103,7 +96,6 @@ component extends="coldbox.system.EventHandler" {
     function viewCompanies() {
 
         // Exit Handlers
-        prc.xeh.viewCompanies = "company/viewCompanies";
         prc.xeh.readEmployee = "employee/readEmployee";
         prc.xeh.updateCompany = "company/updateCompany";
         prc.xeh.deleteCompany = "company/deleteCompany";
@@ -171,13 +163,14 @@ component extends="coldbox.system.EventHandler" {
             relocate('company/ViewCompanies');
         }
 
-        // Function chain will run insert query
+        // Function chain will run query
         CompanyService.createSave(prc.aCompany);
         session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
 
         relocate('company/viewCompanies');
 
     }
+
 
     function updateSave(event, rc, prc) {
 
@@ -191,7 +184,7 @@ component extends="coldbox.system.EventHandler" {
             relocate('company/ViewCompanies');
         }
 
-        // Function chain will run insert query
+        // Function chain will run query
         CompanyService.updateSave(prc.aCompany);
         session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
 
@@ -199,17 +192,19 @@ component extends="coldbox.system.EventHandler" {
 
     }
 
+
     function deleteSave(event, rc, prc) {
 
         prc.aCompany = CompanyService.getEmptyDomain();
         populateModel(prc.aCompany);
 
-        // Function chain will run insert query
+        // Function chain will run query
         CompanyService.deleteSave(prc.aCompany);
         session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
 
         relocate('company/viewCompanies');
     }
+
 
     // From what Andrew said:
     function saveCreateAndUpdate(event, rc, prc) {
@@ -237,7 +232,7 @@ component extends="coldbox.system.EventHandler" {
             relocate('company/ViewCompanies');
         }
 
-        // Function chain will run insert query
+        // Function chain will run query
         CompanyService.updateSave(prc.aCompany);
         session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
 

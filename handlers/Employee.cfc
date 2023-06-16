@@ -59,13 +59,10 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
-        // For form fields
         prc.fieldsEnabled = "disabled";
-        // For action button
         prc.btnEnabled = "disabled";
         prc.btnIcon = "bi bi-book";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Read Only";
         prc.formTitle = "View Employee";
 
@@ -83,17 +80,14 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
-        // For form fields
         prc.fieldsEnabled = "";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-plus";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Create";
         prc.formTitle = "Add Employee";
 
-        prc.oneEmployee = EmployeeService.createEmptyEmployee();
+        prc.oneEmployee = EmployeeService.getEmptyDomain();
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
@@ -107,13 +101,10 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
-        // For form fields
         prc.fieldsEnabled = "";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-pen";
         prc.btnClass = "btn btn-primary mt-2";
-
         prc.crudAction = "Update";
         prc.formTitle = "Edit Employee";
 
@@ -132,13 +123,10 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
-        // For form fields
         prc.fieldsEnabled = "disabled";
-        // For action button
         prc.btnEnabled = "";
         prc.btnIcon = "bi bi-person-x-fill";
         prc.btnClass = "btn btn-danger mt-2";
-
         prc.crudAction = "Delete";
         prc.formTitle = "Delete Employee";
 

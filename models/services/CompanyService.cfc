@@ -88,20 +88,12 @@ component singleton accessors="true"{
 		return new models.domains.Company();
 	}
 
-	// To fill in form values on creates
-	function createEmptyCompany() {
-
-		prc.oneCompany = getEmptyDomain();
-		return prc.oneCompany;
-	}
-
 
 /***********************************************************************************************************************************************/
 /***********************************************************************************************************************************************/
 
 
 	// Experimental...
-
 
 	function createSave(aCompany) {
 		CompanyGateway.create(aCompany);

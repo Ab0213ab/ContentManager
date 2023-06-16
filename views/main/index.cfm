@@ -34,13 +34,12 @@
 						<div class="#prc.errorClass#">
 							<p>#prc.errorMessage#</p>
 						</div>
-						
-						<!-- Login form -->
 						<form id="userNameForm" action="#event.buildLink(prc.xeh.validateLogin)#" method="post">
 							<div class="form-group">
 
 								<!-- Hidden field sets flag for main handler -->
 								<input type="hidden" name="isFormSubmission" value="true">
+
 								<label for="vcUserName">User Name</label>
 								<input type="text" id="vcUserName" name="vcUserName" class="form-control">
 								<p id="vcUserNameMessage" style="color: red"></p>

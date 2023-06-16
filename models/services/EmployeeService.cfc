@@ -96,26 +96,5 @@ component name="EmployeeService"singleton accessors="true"{
 		return new models.domains.Employee();
 	}
 
-	// To fill in form values on creates
-	function createEmptyEmployee() {
-
-		prc.oneEmployee = getEmptyDomain();
-        // prc.oneEmployee.intEmployeeID = 0;
-        // prc.oneEmployee.vcFirstName = "";
-		// prc.oneEmployee.vcLastName = "";
-		// prc.oneEmployee.vcTitle = "";
-		// prc.oneEmployee.vcTitleOfCourtesy = "";
-		// prc.oneEmployee.dtBirthDate = "";
-		// prc.oneEmployee.dtHireDate = "";
-		// prc.oneEmployee.vcAddress = "";
-		// prc.oneEmployee.vcCity = "";
-		// prc.oneEmployee.vcRegion = "";
-		// prc.oneEmployee.vcPostalCode = "";
-		// prc.oneEmployee.vcCountry = "";
-		// prc.oneEmployee.vcHomePhone = "";
-		// prc.oneEmployee.vcExtension = "";
-		// prc.oneEmployee.vcNotes = "";
-		return prc.oneEmployee;
-	}
 
 }
