@@ -61,6 +61,7 @@ component singleton accessors="true"{
 		
 		return prc.errorMessages;
 	}
+	
 
 	function getSuccessMessage(crudAction) {
 
@@ -90,10 +91,6 @@ component singleton accessors="true"{
 	function createEmptyUser() {
 
 		prc.oneUser = getEmptyDomain();
-        prc.oneUser.intUserID = 0;
-        prc.oneUser.vcUserName = "";
-		prc.oneUser.vcPassword = "";
-
 		return prc.oneUser;
 	}
 

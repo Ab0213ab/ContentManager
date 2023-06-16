@@ -70,6 +70,7 @@ component name="EmployeeService"singleton accessors="true"{
 		}
 		return prc.errorMessages;
 	}
+	
 
 	function getSuccessMessage(crudAction) {
 
@@ -99,22 +100,21 @@ component name="EmployeeService"singleton accessors="true"{
 	function createEmptyEmployee() {
 
 		prc.oneEmployee = getEmptyDomain();
-        prc.oneEmployee.intEmployeeID = 0;
-        prc.oneEmployee.vcFirstName = "";
-		prc.oneEmployee.vcLastName = "";
-		prc.oneEmployee.vcTitle = "";
-		prc.oneEmployee.vcTitleOfCourtesy = "";
-		prc.oneEmployee.dtBirthDate = "";
-		prc.oneEmployee.dtHireDate = "";
-		prc.oneEmployee.vcAddress = "";
-		prc.oneEmployee.vcCity = "";
-		prc.oneEmployee.vcRegion = "";
-		prc.oneEmployee.vcPostalCode = "";
-		prc.oneEmployee.vcCountry = "";
-		prc.oneEmployee.vcHomePhone = "";
-		prc.oneEmployee.vcExtension = "";
-		prc.oneEmployee.vcNotes = "";
-
+        // prc.oneEmployee.intEmployeeID = 0;
+        // prc.oneEmployee.vcFirstName = "";
+		// prc.oneEmployee.vcLastName = "";
+		// prc.oneEmployee.vcTitle = "";
+		// prc.oneEmployee.vcTitleOfCourtesy = "";
+		// prc.oneEmployee.dtBirthDate = "";
+		// prc.oneEmployee.dtHireDate = "";
+		// prc.oneEmployee.vcAddress = "";
+		// prc.oneEmployee.vcCity = "";
+		// prc.oneEmployee.vcRegion = "";
+		// prc.oneEmployee.vcPostalCode = "";
+		// prc.oneEmployee.vcCountry = "";
+		// prc.oneEmployee.vcHomePhone = "";
+		// prc.oneEmployee.vcExtension = "";
+		// prc.oneEmployee.vcNotes = "";
 		return prc.oneEmployee;
 	}
 

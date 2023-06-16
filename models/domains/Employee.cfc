@@ -17,4 +17,22 @@ component name="Employee" accessors="true" {
     property type="String" name="vcNotes" getter=true;
     property type="Numeric" name="intCompanyKey" getter=true;
 
+    function init() {
+
+        this.intEmployeeID = 0;
+        this.vcFirstName = "";
+		this.vcLastName = "";
+		this.vcTitle = "";
+		this.vcTitleOfCourtesy = "";
+		this.dtBirthDate = "";
+		this.dtHireDate = "";
+		this.vcAddress = "";
+		this.vcCity = "";
+		this.vcRegion = "";
+		this.vcPostalCode = "";
+		this.vcCountry = "";
+		this.vcHomePhone = "";
+		this.vcExtension = "";
+		this.vcNotes = "";
+    }
 }

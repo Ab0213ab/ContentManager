@@ -44,19 +44,6 @@ component singleton accessors="true"{
 		return;
 	}
 
-	// Experimental...
-	function createSave(aCompany) {
-		CompanyGateway.create(aCompany);
-	}
-
-	function updateSave() {
-		CompanyGateway.update(aCompany);
-	}
-
-	function deleteSave() {
-		CompanyGateway.delete(aCompany);
-	}
-
 
 	function validate(aCompany, crudAction) {
 
@@ -75,6 +62,7 @@ component singleton accessors="true"{
 		
 		return prc.errorMessages;
 	}
+	
 
 	function getSuccessMessage(crudAction) {
 
@@ -104,10 +92,27 @@ component singleton accessors="true"{
 	function createEmptyCompany() {
 
 		prc.oneCompany = getEmptyDomain();
-        prc.oneCompany.intCompanyKey = 0;
-        prc.oneCompany.vcCompanyName = "";
-
 		return prc.oneCompany;
+	}
+
+
+/***********************************************************************************************************************************************/
+/***********************************************************************************************************************************************/
+
+
+	// Experimental...
+
+
+	function createSave(aCompany) {
+		CompanyGateway.create(aCompany);
+	}
+
+	function updateSave(aCompany) {
+		CompanyGateway.update(aCompany);
+	}
+
+	function deleteSave(aCompany) {
+		CompanyGateway.delete(aCompany);
 	}
 
 

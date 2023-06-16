@@ -131,17 +131,17 @@
                                         <select name="intCompanyKey" class="form-control" #prc.fieldsEnabled# id="intCompanyKey">
                                             <cfloop query="prc.allCompanies">
                                                 <option value="#intCompanyKey#">#vcCompanyName#</option>
-                                        </cfloop>
-                                    </select>
-                                </div>                        
-                            </div>
+                                            </cfloop>
+                                        </select>
+                                    </div>                        
+                                </div>
                             <div class="d-flex mt-3">
                                 <div>
                                     <button id="addEmployeeBtn" onclick="return validateEmployeeForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                    ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
-                                </button>
-                            </div>
-                        </div> 
+                                        ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                    </button>
+                                </div>
+                            </div> 
                         </form>
                         
 					</div>

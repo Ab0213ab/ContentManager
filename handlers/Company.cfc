@@ -11,7 +11,10 @@ component extends="coldbox.system.EventHandler" {
     function createCompany(event, rc, prc) {
 
         // Exit Handlers
-        prc.xeh.save = "company/save";
+        //prc.xeh.save = "company/save";
+
+        // Test Exit Handler
+        prc.xeh.save = "company/createSave";
 
         // For form fields
         prc.fieldsEnabled = "";
@@ -35,7 +38,10 @@ component extends="coldbox.system.EventHandler" {
     function updateCompany(event, rc, prc) {
 
         // Exit Handlers
-        prc.xeh.save = "company/save";
+        //prc.xeh.save = "company/save";
+
+        // Test Exit Handler
+        prc.xeh.save = "company/updateSave";
 
         // For form fields
         prc.fieldsEnabled = "";
@@ -65,7 +71,10 @@ component extends="coldbox.system.EventHandler" {
     function deleteCompany(event, rc, prc) {
 
         // Exit Handlers
-        prc.xeh.save = "company/save";
+        //prc.xeh.save = "company/save";
+
+        // Test Exit Handler
+        prc.xeh.save = "company/deleteSave";
 
         // For form fields
         prc.fieldsEnabled = "disabled";
@@ -138,41 +147,100 @@ component extends="coldbox.system.EventHandler" {
 
         // Function chain will run insert query
         CompanyService.save(prc.aCompany, rc.crudAction);
-        session.successMessage = "Your action was successful."
+        session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
 
         relocate('company/viewCompanies');
     }
 
 
 
+/***********************************************************************************************************************************************/
+/***********************************************************************************************************************************************/
 
+    // Experimental...
 
-        // Experimental...
-        function saveTest(event, rc, prc) {
+    function createSave(event, rc, prc) {
 
-            prc.aCompany = CompanyService.getEmptyDomain();
-            populateModel(prc.aCompany);
-    
-            prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
-    
-            if (len(prc.errorMessages) != 0) {
-                session.errorMessages = prc.errorMessages;
-                relocate('employee/index');
-            }
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
 
-            if (crudAction == "Create") {
-                CompanyService.createSave(aCompany);
-            } else if (crudAction == "Update") {
-                CompanyService.updateSave(aCompany);
-            } else if (crudAction == "Delete") {
-                CompanyService.deleteSave(aCompany);
-            }
-    
-            // Function chain will run insert query
-            CompanyService.save(prc.aCompany, rc.crudAction);
-            session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
-    
-            relocate('employee/index');
+        prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
+
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('company/ViewCompanies');
         }
-  
+
+        // Function chain will run insert query
+        CompanyService.createSave(prc.aCompany);
+        session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
+
+        relocate('company/viewCompanies');
+
+    }
+
+    function updateSave(event, rc, prc) {
+
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
+
+        prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
+
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('company/ViewCompanies');
+        }
+
+        // Function chain will run insert query
+        CompanyService.updateSave(prc.aCompany);
+        session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
+
+        relocate('company/viewCompanies');
+
+    }
+
+    function deleteSave(event, rc, prc) {
+
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
+
+        // Function chain will run insert query
+        CompanyService.deleteSave(prc.aCompany);
+        session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
+
+        relocate('company/viewCompanies');
+    }
+
+    // From what Andrew said:
+    function saveCreateAndUpdate(event, rc, prc) {
+
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
+
+        // Could eliminate the need for rc.crudAction hidden field if 
+        // a check is done on intCompanyKey. If it is anything other 
+        // than 0, it's an update. Could do this:
+
+        /*
+        prc.crudAction = "Create";
+        if (rc.intCompanyKey > 0) {
+           prc.crudAction = "Update"; 
+        }
+
+        Or move the above code to the service.
+        */
+
+        prc.errorMessages = CompanyService.validate(prc.aCompany, rc.crudAction);
+
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('company/ViewCompanies');
+        }
+
+        // Function chain will run insert query
+        CompanyService.updateSave(prc.aCompany);
+        session.successMessage = CompanyService.getSuccessMessage(rc.crudAction);
+
+        relocate('company/viewCompanies');
+    }
 }
