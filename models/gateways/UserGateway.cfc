@@ -41,14 +41,14 @@
                 bitIsActive = 1 THEN 'Yes'
               ELSE 
                 'No'
-          END AS 
+            END AS 
             bitIsActive,
           CASE 
               WHEN 
                 bitIsAdmin = 1 THEN 'Yes'
               ELSE 
                 'No'
-          END AS 
+            END AS 
             bitIsAdmin,
             intUserID 
           FROM 
@@ -101,6 +101,7 @@
       </cfquery>
       
   </cffunction>
+  
 
   <cffunction name="delete">
     <cfargument name="User" required="true">

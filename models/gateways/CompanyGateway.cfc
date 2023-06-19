@@ -11,7 +11,7 @@
                   bitIsActive = 1 THEN 'Yes'
                 ELSE 
                   'No'
-            END AS 
+              END AS 
               bitIsActive
             FROM 
               tblCompany;
@@ -31,7 +31,7 @@
                 bitIsActive = 1 THEN 'Yes'
               ELSE 
                 'No'
-          END AS 
+            END AS 
             bitIsActive
           FROM 
             tblCompany

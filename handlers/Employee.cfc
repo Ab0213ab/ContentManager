@@ -33,27 +33,6 @@ component extends="coldbox.system.EventHandler" {
     }
 
 
-    // Determines which CRUD action to take
-    function save(event, rc, prc) {
-
-        prc.anEmployee = EmployeeService.getEmptyDomain();
-        populateModel(prc.anEmployee);
-
-        prc.errorMessages = EmployeeService.validate(prc.anEmployee, rc.crudAction);
-
-        if (len(prc.errorMessages) != 0) {
-            session.errorMessages = prc.errorMessages;
-            relocate('employee/viewEmployees');
-        }
-
-        // Function chain will run insert query
-        EmployeeService.save(prc.anEmployee, rc.crudAction);
-        session.successMessage = EmployeeService.getSuccessMessage(rc.crudAction);
-        
-        relocate('employee/viewEmployees');
-    }
-
-
     function readEmployee(event, rc, prc) {
 
         // Exit Handlers
@@ -65,6 +44,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-primary mt-2";
         prc.crudAction = "Read Only";
         prc.formTitle = "View Employee";
+        prc.onClick = "";
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
@@ -86,6 +66,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-primary mt-2";
         prc.crudAction = "Create";
         prc.formTitle = "Add Employee";
+        prc.onClick = "return validateEmployeeForm();";
 
         prc.oneEmployee = EmployeeService.getEmptyDomain();
 
@@ -107,6 +88,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-primary mt-2";
         prc.crudAction = "Update";
         prc.formTitle = "Edit Employee";
+        prc.onClick = "return validateEmployeeForm();";
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
@@ -121,7 +103,7 @@ component extends="coldbox.system.EventHandler" {
     function deleteEmployee(event, rc, prc) {
 
         // Exit Handlers
-        prc.xeh.save = "employee/save";
+        prc.xeh.save = "employee/delete";
 
         prc.fieldsEnabled = "disabled";
         prc.btnEnabled = "";
@@ -129,6 +111,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-danger mt-2";
         prc.crudAction = "Delete";
         prc.formTitle = "Delete Employee";
+        prc.onClick = "";
 
         // Populates the company dropdown in the add form
         prc.allCompanies = CompanyService.getAllCompanies();
@@ -169,6 +152,40 @@ component extends="coldbox.system.EventHandler" {
 
         event.setView( "employee/viewEmployees" );
     }
+
+    
+    function delete(event, rc, prc) {
+
+        prc.anEmployee = EmployeeService.getEmptyDomain();
+        populateModel(prc.anEmployee);
+
+        // Function chain will run query
+        EmployeeService.delete(prc.anEmployee);
+        
+        relocate('employee/viewEmployees');
+    }
+
+
+    function save(event, rc, prc) {
+
+        prc.anEmployee = EmployeeService.getEmptyDomain();
+        populateModel(prc.anEmployee);
+
+        prc.errorMessages = EmployeeService.validate(prc.anEmployee);
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('employee/viewEmployees');
+        }
+
+        // Function chain will run query
+        EmployeeService.save(prc.anEmployee);
+        session.successMessage = EmployeeService.getSuccessMessage(prc.anEmployee);
+
+        relocate('employee/viewEmployees');
+    }
+
+
+
 
     /* From version 1.0, removed in version 2.0
     // Replaces all employees' first names that appear on cnn.com with "MOD" 

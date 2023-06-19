@@ -31,27 +31,10 @@ component name="EmployeeService"singleton accessors="true"{
         return getOneEmployee;
     }
 
-	// Function chain will run query
-	function save(anEmployee, crudAction) {
 
-		if (crudAction == "Create") {
-			EmployeeGateway.create(anEmployee);
-		} else if (crudAction == "Update") {
-			EmployeeGateway.update(anEmployee);
-		} else if (crudAction == "Delete") {
-			EmployeeGateway.delete(anEmployee);
-		}
-        return;
-    }
-
-
-	function validate(anEmployee, crudAction) {
+	function validate(anEmployee) {
 
 		prc.errorMessages = [];
-
-		if (crudAction == "Delete") {
-			return prc.errorMessages;
-		}
 
 		if (REFind("^(?!$)[A-Za-z\s]+$", anEmployee.getVcLastName()) == 0) {
 			arrayAppend(prc.errorMessages, "Employee Last Name field only accepts letters.")
@@ -72,21 +55,14 @@ component name="EmployeeService"singleton accessors="true"{
 	}
 	
 
-	function getSuccessMessage(crudAction) {
+	function getSuccessMessage(anEmployee) {
 
-		prc.successMessage = "";
+		if (anEmployee.getIntEmployeeID() > 0) {
+			prc.successMessage = "Your employee was successfully updated.";
+		} else {
+			prc.successMessage = "Your employee was successfully created.";
+		}
 	
-		switch (crudAction) {
-			case "Create":
-				prc.successMessage = "Your new employee was successfully created.";
-				break;
-			case "Update":
-				prc.successMessage = "Your employee was successfully updated.";
-				break;
-			case "Delete":
-				prc.successMessage = "Your employee was successfully deleted.";
-				break;
-		}	
 		return prc.successMessage;
 	}
 
@@ -94,6 +70,23 @@ component name="EmployeeService"singleton accessors="true"{
 	function getEmptyDomain() {
 
 		return new models.domains.Employee();
+	}
+
+	function save(anEmployee) { 
+
+		if (anEmployee.getIntEmployeeID() == 0) {
+			EmployeeGateway.create(anEmployee);
+		} else {
+			EmployeeGateway.update(anEmployee);
+		}
+		
+	}
+
+	function delete(anEmployee) {
+
+		EmployeeGateway.delete(anEmployee);
+		session.successMessage = "Your employee was successfully deleted."
+
 	}
 
 

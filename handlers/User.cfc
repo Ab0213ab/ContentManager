@@ -46,6 +46,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-primary mt-2";
         prc.crudAction = "Create";
         prc.formTitle = "Add User";
+        prc.onClick = "return validateUserForm();";
 
         prc.oneUser = UserService.getEmptyDomain();
 
@@ -69,6 +70,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-primary mt-2";
         prc.crudAction = "Update";
         prc.formTitle = "Edit User";
+        prc.onClick = "return validateUserForm();";
 
         prc.oneUser = UserService.getOneUser(rc.intUserID);
 
@@ -76,7 +78,7 @@ component extends="coldbox.system.EventHandler" {
         if (prc.oneUser.bitIsActive == 1) {
             prc.isActiveYes = 'checked';
             prc.isActiveNo = '';
-        } else if (prc.oneUser.bitIsActive == 0) {
+        } else {
             prc.isActiveYes = '';
             prc.isActiveNo = 'checked';
         }
@@ -84,7 +86,7 @@ component extends="coldbox.system.EventHandler" {
         if (prc.oneUser.bitIsAdmin == 1) {
             prc.isAdminYes = 'checked';
             prc.isAdminNo = '';
-        } else if (prc.oneUser.bitIsAdmin == 0) {
+        } else {
             prc.isAdminYes = '';
             prc.isAdminNo = 'checked';
         }
@@ -96,7 +98,7 @@ component extends="coldbox.system.EventHandler" {
     function deleteUser(event, rc, prc) {
 
         // Exit Handlers
-        prc.xeh.save = "user/save";
+        prc.xeh.save = "user/delete";
 
         prc.fieldsEnabled = "disabled";
         prc.btnEnabled = "";
@@ -104,6 +106,7 @@ component extends="coldbox.system.EventHandler" {
         prc.btnClass = "btn btn-danger mt-2";
         prc.crudAction = "Delete";
         prc.formTitle = "Delete User";
+        prc.onClick = "";
 
         prc.oneUser = UserService.getOneUser(rc.intUserID);
 
@@ -111,7 +114,7 @@ component extends="coldbox.system.EventHandler" {
         if (prc.oneUser.bitIsActive == 1) {
             prc.isActiveYes = 'checked';
             prc.isActiveNo = '';
-        } else if (prc.oneUser.bitIsActive == 0) {
+        } else {
             prc.isActiveYes = '';
             prc.isActiveNo = 'checked';
         }
@@ -119,7 +122,7 @@ component extends="coldbox.system.EventHandler" {
         if (prc.oneUser.bitIsAdmin == 1) {
             prc.isAdminYes = 'checked';
             prc.isAdminNo = '';
-        } else if (prc.oneUser.bitIsAdmin == 0) {
+        } else {
             prc.isAdminYes = '';
             prc.isAdminNo = 'checked';
         }
@@ -127,23 +130,34 @@ component extends="coldbox.system.EventHandler" {
         event.setView( "user/userCrud" );
     }
 
-    // Determines which CRUD action to take
+
+    function delete(event, rc, prc) {
+
+        prc.aUser = UserService.getEmptyDomain();
+        populateModel(prc.aUser);
+
+        // Function chain will run query
+        UserService.delete(prc.aUser);
+        
+        relocate('user/index');
+    }
+
+
     function save(event, rc, prc) {
 
         prc.aUser = UserService.getEmptyDomain();
         populateModel(prc.aUser);
 
-        prc.errorMessages = UserService.validate(prc.aUser, rc.crudAction);
+        prc.errorMessages = UserService.validate(prc.aUser);
 
         if (len(prc.errorMessages) != 0) {
             session.errorMessages = prc.errorMessages;
             relocate('user/index');
         }
 
-        // Function chain will run insert query
-        UserService.save(prc.aUser, rc.crudAction);
-
-        session.successMessage = UserService.getSuccessMessage(rc.crudAction);
+        // Function chain will run query
+        UserService.save(prc.aUser);
+        session.successMessage = UserService.getSuccessMessage(prc.aUser);
 
         relocate('user/index');
     }

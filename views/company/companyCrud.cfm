@@ -37,7 +37,6 @@
                                 <div class="form-group col-md-12">
                                     
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
                                     <input type="hidden" name="intCompanyKey" value="#prc.oneCompany.intCompanyKey#">
                                 
                                     <label for="vcCompanyName"><span style="color: red;">* </span>Company Name</label>
@@ -45,20 +44,24 @@
                                     value="#prc.oneCompany.vcCompanyName#">
                                     <p id="vcCompanyNameMessage" style="color: red"></p>
                                 </div>
+
+
                                 <div class="form-group col-md-12">
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this company still active?</label>
                                     <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" value="1"
-                                        #prc.isActiveYes# #prc.fieldsEnabled#>
+                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" 
+                                        value="#prc.oneCompany.bitIsActive#" #prc.fieldsEnabled# #prc.isActiveYes#>
                                         <label class="form-check-label" for="bitIsActiveYes">Yes</label>
-                                    </div>
-                                    <div class="form-check">
-                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" value="0"
-                                        #prc.isActiveNo# #prc.fieldsEnabled#>
+                                        <br>
+                                        <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" 
+                                        value="#prc.oneCompany.bitIsActive#" #prc.fieldsEnabled# #prc.isActiveNo#>
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
+                                    
                                         <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
                                 </div>
+                                
+
                             </div>
                             <div class="d-flex mt-3">
                                 <div>

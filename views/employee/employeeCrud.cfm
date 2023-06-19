@@ -37,7 +37,6 @@
                                 <div class="form-group col-md-12">
                                     
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="crudAction" id="crudAction" value="#prc.crudAction#">
                                     <input type="hidden" name="intEmployeeID" value="#prc.oneEmployee.intEmployeeID#">
                                      
                                     <label for="vcLastName"><span style="color: red;">* </span>Last Name</label>

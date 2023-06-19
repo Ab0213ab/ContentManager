@@ -31,27 +31,18 @@ component singleton accessors="true"{
         return getOneCompany;
 	}
 
-	// Function chain will run query
-	function save(aCompany, crudAction) {
 
-		if (crudAction == "Create") {
-			CompanyGateway.create(aCompany);
-		} else if (crudAction == "Update") {
-			CompanyGateway.update(aCompany);
-		} else if (crudAction == "Delete") {
-			CompanyGateway.delete(aCompany);
-		}
-		return;
+	function delete(aCompany) {
+
+		CompanyGateway.delete(aCompany);
+		session.successMessage = "Your company was successfully deleted."
+
 	}
 
 
-	function validate(aCompany, crudAction) {
+	function validate(aCompany) {
 
 		prc.errorMessages = [];
-
-		if (crudAction == "Delete") {
-			return prc.errorMessages;
-		}
 
 		if (aCompany.getVcCompanyName() == "") {
 			arrayAppend(prc.errorMessages, "Company Name field is required.")
@@ -64,21 +55,14 @@ component singleton accessors="true"{
 	}
 	
 
-	function getSuccessMessage(crudAction) {
+	function getSuccessMessage(aCompany) {
 
-		prc.successMessage = "";
+		if (aCompany.getIntCompanyKey() > 0) {
+			prc.successMessage = "Your company was successfully updated.";
+		} else {
+			prc.successMessage = "Your new company was successfully created.";
+		}
 	
-		switch (crudAction) {
-			case "Create":
-				prc.successMessage = "Your new company was successfully created.";
-				break;
-			case "Update":
-				prc.successMessage = "Your company was successfully updated.";
-				break;
-			case "Delete":
-				prc.successMessage = "Your company was successfully deleted.";
-				break;
-		}	
 		return prc.successMessage;
 	}
 
@@ -89,22 +73,14 @@ component singleton accessors="true"{
 	}
 
 
-/***********************************************************************************************************************************************/
-/***********************************************************************************************************************************************/
+	function save(aCompany) { 
 
-
-	// Experimental...
-
-	function createSave(aCompany) {
-		CompanyGateway.create(aCompany);
-	}
-
-	function updateSave(aCompany) {
-		CompanyGateway.update(aCompany);
-	}
-
-	function deleteSave(aCompany) {
-		CompanyGateway.delete(aCompany);
+		if (aCompany.getIntCompanyKey() == 0) {
+			CompanyGateway.create(aCompany);
+		} else {
+			CompanyGateway.update(aCompany);
+		}
+		
 	}
 
 

@@ -25,26 +25,10 @@ component singleton accessors="true"{
         return getOneUser;
     }
 
-	// Function chain will run query
-	function save(aUser, crudAction) {
 
-		if (crudAction == "Create") {
-			UserGateway.create(aUser);
-		} else if (crudAction == "Update") {
-			UserGateway.update(aUser);
-		} else if (crudAction == "Delete") {
-			UserGateway.delete(aUser);
-		}
-		return;
-	}
-
-	function validate(aUser, crudAction) {
+	function validate(aUser) {
 
 		prc.errorMessages = [];
-
-		if (crudAction == "Delete") {
-			return prc.errorMessages;
-		}
 
 		if (aUser.getVcUserName() == "") {
 			arrayAppend(prc.errorMessages, "User Name field is required.")
@@ -63,28 +47,41 @@ component singleton accessors="true"{
 	}
 	
 
-	function getSuccessMessage(crudAction) {
-
-		prc.successMessage = "";
-	
-		switch (crudAction) {
-			case "Create":
-				prc.successMessage = "Your new user was successfully created.";
-				break;
-			case "Update":
-				prc.successMessage = "Your user was successfully updated.";
-				break;
-			case "Delete":
-				prc.successMessage = "Your user was successfully deleted.";
-				break;
-		}	
-		return prc.successMessage;
-	}
-
 	
 	function getEmptyDomain() {
 		
 		return new models.domains.User();
 	}
+
+
+	function getSuccessMessage(aUser) {
+
+		if (aUser.getIntUserID() > 0) {
+			prc.successMessage = "Your user was successfully updated.";
+		} else {
+			prc.successMessage = "Your user was successfully created.";
+		}
+	
+		return prc.successMessage;
+	}
+
+
+	function save(aUser) { 
+
+		if (aUser.getIntUserID() == 0) {
+			UserGateway.create(aUser);
+		} else {
+			UserGateway.update(aUser);
+		}
+		
+	}
+
+	function delete(aUser) {
+
+		UserGateway.delete(aUser);
+		session.successMessage = "Your user was successfully deleted."
+
+	}
+
 
 }
