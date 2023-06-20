@@ -95,7 +95,6 @@ component singleton accessors="true"{
 
 		form.oneCompany = getEmptyDomain();
  
-		// For radio buttons
 		form.isActiveYes = '';
 		form.isActiveNo = '';
 

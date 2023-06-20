@@ -23,7 +23,7 @@
           FROM 
             tblEmployee
           WHERE
-            bitIsDeleted != 1;
+            bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
         </cfquery>
         <cfreturn employeeQuery>
   </cffunction>
