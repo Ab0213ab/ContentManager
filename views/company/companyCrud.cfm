@@ -24,7 +24,7 @@
 				<div class="col-md-4">
 					<div class="card p-3">
                         <center class="bordered-center">
-                            <h3>#prc.formTitle#</h3>
+                            <h3>#prc.formData.formTitle#</h3>
                         </center>
                         <p style="float: right">
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
@@ -37,36 +37,31 @@
                                 <div class="form-group col-md-12">
                                     
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="intCompanyKey" value="#prc.oneCompany.intCompanyKey#">
+                                    <input type="hidden" name="intCompanyKey" value="#prc.formData.oneCompany.intCompanyKey#">
                                 
                                     <label for="vcCompanyName"><span style="color: red;">* </span>Company Name</label>
-                                    <input type="text" name="vcCompanyName" class="form-control" id="vcCompanyName" #prc.fieldsEnabled# 
-                                    value="#prc.oneCompany.vcCompanyName#">
+                                    <input type="text" name="vcCompanyName" class="form-control" id="vcCompanyName" #prc.formData.fieldsEnabled# 
+                                    value="#prc.formData.oneCompany.vcCompanyName#">
                                     <p id="vcCompanyNameMessage" style="color: red"></p>
                                 </div>
-
-
                                 <div class="form-group col-md-12">
-                                    <label for="bitIsActive"><span style="color: red;">* </span>Is this company still active?</label>
+                                    <label for="bitIsActive"><span style="color: red;">* </span>Is this company active?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" 
-                                        value="#prc.oneCompany.bitIsActive#" #prc.fieldsEnabled# #prc.isActiveYes#>
+                                        value="1" #prc.formData.isActiveYes# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveYes">Yes</label>
                                         <br>
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" 
-                                        value="#prc.oneCompany.bitIsActive#" #prc.fieldsEnabled# #prc.isActiveNo#>
+                                        value="0" #prc.formData.isActiveNo# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
-                                    
-                                        <p id="bitIsActiveMessage" style="color: red"></p>
                                     </div>
+                                    <p id="bitIsActiveMessage" style="color: red"></p>
                                 </div>
-                                
-
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
-                                    <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                    ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                    <button id="addCompanyBtn" onclick="return validateCompanyForm();" #prc.formData.btnEnabled# type="submit" class="#prc.formData.btnClass#" 
+                                    ><i class="#prc.formData.btnIcon#" style="color: white"> </i>#prc.formData.crudAction#
                                     </button>
                                 </div>
                             </div> 

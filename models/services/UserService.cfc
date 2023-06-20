@@ -84,4 +84,94 @@ component singleton accessors="true"{
 	}
 
 
+	function buildCreateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-person-plus";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Create";
+		form.formTitle = "Add User";
+
+		form.oneUser = getEmptyDomain();
+ 
+		// For radio buttons
+		form.isActiveYes = '';
+		form.isActiveNo = '';
+		form.isAdminYes = '';
+        form.isAdminNo = '';
+
+		return form;
+	}
+
+
+	function buildUpdateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-pen";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Update";
+		form.formTitle = "Edit User";
+
+		form.oneUser = getOneUser(prc.intUserID);
+		
+		form.isActiveYes = isActiveYesChecked(form.oneUser.bitIsActive);
+		form.isActiveNo = isActiveNoChecked(form.oneUser.bitIsActive);
+		form.isAdminYes = isAdminYesChecked(form.oneUser.bitIsAdmin);
+		form.isAdminNo = isAdminNoChecked(form.oneUser.bitIsAdmin);
+
+		return form;
+	}
+
+	function buildDeleteForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "disabled";
+        form.btnEnabled = "";
+        form.btnIcon = "bi bi-person-x-fill";
+        form.btnClass = "btn btn-danger mt-2";
+        form.crudAction = "Delete";
+        form.formTitle = "Delete User";
+
+		form.oneUser = getOneUser(prc.intUserID);
+		
+		form.isActiveYes = isActiveYesChecked(form.oneUser.bitIsActive);
+		form.isActiveNo = isActiveNoChecked(form.oneUser.bitIsActive);
+		form.isAdminYes = isAdminYesChecked(form.oneUser.bitIsAdmin);
+		form.isAdminNo = isAdminNoChecked(form.oneUser.bitIsAdmin);
+
+		return form;
+	}
+
+
+	private function isActiveYesChecked(bitIsActive) {
+
+		return (bitIsActive == 1) ? 'checked' : '';
+	}
+
+
+	private function isActiveNoChecked(bitIsActive) {
+
+		return (bitIsActive == 1) ? '' : 'checked';
+	}
+
+
+	private function isAdminYesChecked(bitIsAdmin) {
+
+		return (bitIsAdmin == 1) ? 'checked' : '';
+	}
+
+
+	private function isAdminNoChecked(bitIsAdmin) {
+
+		return (bitIsAdmin == 1) ? '' : 'checked';
+	}
+
+
 }

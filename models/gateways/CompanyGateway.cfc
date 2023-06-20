@@ -14,7 +14,9 @@
               END AS 
               bitIsActive
             FROM 
-              tblCompany;
+              tblCompany
+            WHERE
+              bitIsDeleted != 1;
           </cfquery>
           <cfreturn companyQuery>
     </cffunction>
@@ -61,8 +63,10 @@
               tblCompany.intCompanyKey = tblEmployee.intCompanyKey
           WHERE 
               tblCompany.intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.intCompanyKey#">
+          AND 
+            tblEmployee.bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
       </cfquery>
-  
+
       <cfreturn employeesByCompanyKeyQuery>
     </cffunction>
 
@@ -76,11 +80,13 @@
             tblCompany 
             (
                 vcCompanyName, 
-                bitIsActive
+                bitIsActive,
+                bitIsDeleted
             )
             VALUES ( 
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getVcCompanyName()#">,
-                <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">
+                <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">,
+                <cfqueryparam cfsqltype="cf_sql_bit" value="0">
             )
         </cfquery>   
     </cffunction>
@@ -98,12 +104,11 @@
             bitIsActive = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">
           WHERE 
             intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
-        </cfquery>
-        
+        </cfquery>  
     </cffunction>
 
 
-    <cffunction name="delete">
+    <!---<cffunction name="delete">
       <cfargument name="Company" required="true">
     
         <cfquery name="deleteCompanyQuery" datasource="contentManager">
@@ -114,6 +119,21 @@
             intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
         </cfquery>
         
+    </cffunction>--->
+
+
+    <cffunction name="delete">
+      <cfargument name="Company" required="true">
+    
+        <cfquery name="deleteCompanyQuery" datasource="contentManager">
+    
+          UPDATE 
+            tblCompany 
+          SET 
+            bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+          WHERE 
+            intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
+        </cfquery>  
     </cffunction>
   
     

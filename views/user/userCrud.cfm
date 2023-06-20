@@ -24,7 +24,7 @@
                     <div class="col-md-4">
                         <div class="card p-3">
                             <center class="bordered-center">
-                                <h3>#prc.formTitle#</h3>
+                                <h3>#prc.formData.formTitle#</h3>
                             </center>
                         <p style="float: right">
                             <i class="bi bi-house-door-fill" style="color: blue"></i>
@@ -37,16 +37,16 @@
                                 <div class="form-group col-md-12">
                                     
                                     <!-- Hidden fields -->
-                                    <input type="hidden" name="intUserID" value="#prc.oneUser.intUserID#">                            
+                                    <input type="hidden" name="intUserID" value="#prc.formData.oneUser.intUserID#">                            
                                     
                                     <label for="vcUserName"><span style="color: red;">* </span>User Name</label>
-                                    <input type="text" name="vcUserName" class="form-control" id="vcUserName" #prc.fieldsEnabled# 
-                                    value="#prc.oneUser.vcUserName#">
+                                    <input type="text" name="vcUserName" class="form-control" id="vcUserName" #prc.formData.fieldsEnabled# 
+                                    value="#prc.formData.oneUser.vcUserName#">
                                     <p id="vcUserNameMessage" style="color: red"></p>
                                     <div class="form-group col-md-12">
                                         <label for="vcPassword"><span style="color: red;">* </span>Password</label>
-                                        <input type="password" name="vcPassword" class="form-control" id="vcPassword" #prc.fieldsEnabled# 
-                                        value="#prc.oneUser.vcPassword#">
+                                        <input type="password" name="vcPassword" class="form-control" id="vcPassword" #prc.formData.fieldsEnabled# 
+                                        value="#prc.formData.oneUser.vcPassword#">
                                         <p id="vcPasswordMessage" style="color: red"></p>
                                     </div>
                                 </div>
@@ -54,11 +54,11 @@
                                     <label for="bitIsActive"><span style="color: red;">* </span>Is this User active?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveYes" 
-                                        value="1" #prc.isActiveYes# #prc.fieldsEnabled#>
+                                        value="1" #prc.formData.isActiveYes# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveYes">Yes</label>
                                         <br>
                                         <input class="form-check-input" type="radio" name="bitIsActive" id="bitIsActiveNo" 
-                                        value="0" #prc.isActiveNo# #prc.fieldsEnabled#>
+                                        value="0" #prc.formData.isActiveNo# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsActiveNo">No</label>
                                     </div>
                                     <p id="bitIsActiveMessage" style="color: red"></p>
@@ -68,21 +68,20 @@
                                     <label for="bitIsAdmin"><span style="color: red;">* </span>Is this User an administrator?</label>
                                     <div class="form-check">
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminYes" 
-                                        value="1" #prc.isAdminYes# #prc.fieldsEnabled#>
+                                        value="1" #prc.formData.isAdminYes# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsAdminYes">Yes</label>
                                         <br>
                                         <input class="form-check-input" type="radio" name="bitIsAdmin" id="bitIsAdminNo" 
-                                        value="0" #prc.isAdminNo# #prc.fieldsEnabled#>
+                                        value="0" #prc.formData.isAdminNo# #prc.formData.fieldsEnabled#>
                                         <label class="form-check-label" for="bitIsAdminNo">No</label>
                                     </div>
                                     <p id="bitIsAdminMessage" style="color: red"></p>
-                                </div>
-                                
+                                </div> 
                             </div>
                             <div class="d-flex mt-3">
                                 <div>
-                                    <button id="addUserBtn" onclick="return validateUserForm();" #prc.btnEnabled# type="submit" class="#prc.btnClass#" 
-                                    ><i class="#prc.btnIcon#" style="color: white"> </i>#prc.crudAction#
+                                    <button id="addUserBtn" onclick="return validateUserForm();" #prc.formData.btnEnabled# type="submit" class="#prc.formData.btnClass#" 
+                                    ><i class="#prc.formData.btnIcon#" style="color: white"> </i>#prc.formData.crudAction#
                                 </button>
                             </div>
                         </div> 

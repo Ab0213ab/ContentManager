@@ -9,7 +9,23 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "company/save";
 
+        // // For form fields
+        // prc.fieldsEnabled = "";
+        // // For action button
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-person-plus";
+        // prc.btnClass = "btn btn-primary mt-2";
+        // prc.crudAction = "Create";
+        // prc.formTitle = "Add Company";
+
+        // prc.oneCompany = CompanyService.getEmptyDomain();
+
+        // // For radio buttons
+        // prc.isActiveYes = '';
+        // prc.isActiveNo = '';
+
         prc.formData = CompanyService.buildCreateForm(prc, rc);
+
         event.setView( "company/companyCrud" );
     }
 
@@ -18,7 +34,21 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "company/save";
 
+        // prc.fieldsEnabled = "";
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-pen";
+        // prc.btnClass = "btn btn-primary mt-2";
+        // prc.crudAction = "Update";
+        // prc.formTitle = "Edit Company";
+
+        //prc.oneCompany = CompanyService.getOneCompany(rc.intCompanyKey);
+
+        // For radio buttons
+        // prc.isActiveYes = (prc.oneCompany.bitIsActive == 1) ? 'checked' : '';
+        // prc.isActiveNo = (prc.oneCompany.bitIsActive == 1) ? '' : 'checked';
+
         prc.formData = CompanyService.buildUpdateForm(prc, rc);
+
         event.setView( "company/companyCrud" );
     }
 
@@ -27,7 +57,21 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "company/delete";
 
+        // prc.fieldsEnabled = "disabled";
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-person-x-fill";
+        // prc.btnClass = "btn btn-danger mt-2";
+        // prc.crudAction = "Delete";
+        // prc.formTitle = "Delete Company";
+
+        // prc.oneCompany = CompanyService.getOneCompany(rc.intCompanyKey);
+
+        // // For radio buttons
+        // prc.isActiveYes = (prc.oneCompany.bitIsActive == 1) ? 'checked' : '';
+        // prc.isActiveNo = (prc.oneCompany.bitIsActive == 1) ? '' : 'checked';
+
         prc.formData = CompanyService.buildDeleteForm(prc, rc);
+
         event.setView( "company/companyCrud" );
     }
 

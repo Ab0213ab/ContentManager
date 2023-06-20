@@ -2,6 +2,7 @@ component name="EmployeeService"singleton accessors="true"{
 
 	// Properties
     property name="EmployeeGateway" inject="model:EmployeeGateway";
+	property name="CompanyService" inject="model:CompanyService";
 	
 	/**
 	 * Constructor
@@ -87,6 +88,85 @@ component name="EmployeeService"singleton accessors="true"{
 		EmployeeGateway.delete(anEmployee);
 		session.successMessage = "Your employee was successfully deleted."
 
+	}
+
+
+	function buildReadForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "disabled";
+		form.btnEnabled = "disabled";
+		form.btnIcon = "bi bi-book";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Read Only";
+		form.formTitle = "View Employee";
+
+        // Populates the company dropdown in the add form
+        form.allCompanies = CompanyService.getAllCompanies();
+
+        form.oneEmployee = getOneEmployee(rc.intEmployeeID);
+
+		return form;
+	}
+
+
+	function buildCreateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-person-plus";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Create";
+		form.formTitle = "Add Employee";
+
+		form.oneEmployee = getEmptyDomain();
+
+		// Populates the company dropdown in the add form
+        form.allCompanies = CompanyService.getAllCompanies();
+
+		return form;
+	}
+
+
+	function buildUpdateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-pen";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Update";
+		form.formTitle = "Edit Employee";
+
+		// Populates the company dropdown in the add form
+        form.allCompanies = CompanyService.getAllCompanies();
+
+		form.oneEmployee = getOneEmployee(prc.intEmployeeID);
+		
+		return form;
+	}
+
+	function buildDeleteForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "disabled";
+        form.btnEnabled = "";
+        form.btnIcon = "bi bi-person-x-fill";
+        form.btnClass = "btn btn-danger mt-2";
+        form.crudAction = "Delete";
+        form.formTitle = "Delete Employee";
+
+		// Populates the company dropdown in the add form
+        form.allCompanies = CompanyService.getAllCompanies();
+
+		form.oneEmployee = getOneEmployee(prc.intEmployeeID);
+
+		return form;
 	}
 
 

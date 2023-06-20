@@ -12,20 +12,21 @@
                 ELSE 
                   'No'
             END AS 
-              bitIsActive,
+            bitIsActive,
             CASE 
                 WHEN 
                   bitIsAdmin = 1 THEN 'Yes'
                 ELSE 
                   'No'
             END AS 
-              bitIsAdmin,
+            bitIsAdmin,
             intUserID 
         FROM 
-            tblUser;
+            tblUser
+        WHERE
+            bitIsDeleted != 1;
       </cfquery>
       <cfreturn UserQuery>
-  
   </cffunction>
 
 
@@ -56,8 +57,7 @@
           WHERE 
             intUserID = <cfqueryparam value="#arguments.intUserID#" cfsqltype="cf_sql_integer">;
       </cfquery>
-      <cfreturn getOneUserQuery>
-    
+      <cfreturn getOneUserQuery>  
   </cffunction>
 
 
@@ -98,12 +98,11 @@
           bitIsAdmin = <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsAdmin()#">
         WHERE 
           intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
-      </cfquery>
-      
+      </cfquery> 
   </cffunction>
   
 
-  <cffunction name="delete">
+  <!---<cffunction name="delete">
     <cfargument name="User" required="true">
   
       <cfquery name="deleteUserQuery" datasource="contentManager">
@@ -112,8 +111,23 @@
           tblUser 
         WHERE 
           intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
-      </cfquery>
-      
+      </cfquery>      
+  </cffunction>--->
+
+
+  <cffunction name="delete">
+    <cfargument name="User" required="true">
+  
+      <cfquery name="deleteUserQuery" datasource="contentManager">
+  
+        UPDATE 
+          tblUser 
+        SET 
+          bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+        WHERE 
+          intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
+      </cfquery>     
   </cffunction>
+
     
   </cfcomponent>

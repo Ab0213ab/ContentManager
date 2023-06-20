@@ -62,7 +62,7 @@ component singleton accessors="true"{
 		} else {
 			prc.successMessage = "Your new company was successfully created.";
 		}
-	
+
 		return prc.successMessage;
 	}
 
@@ -79,9 +79,81 @@ component singleton accessors="true"{
 			CompanyGateway.create(aCompany);
 		} else {
 			CompanyGateway.update(aCompany);
-		}
-		
+		}	
 	}
+
+	function buildCreateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-person-plus";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Create";
+		form.formTitle = "Add Company";
+
+		form.oneCompany = getEmptyDomain();
+ 
+		// For radio buttons
+		form.isActiveYes = '';
+		form.isActiveNo = '';
+
+		return form;
+	}
+
+
+	function buildUpdateForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "";
+		form.btnEnabled = "";
+		form.btnIcon = "bi bi-pen";
+		form.btnClass = "btn btn-primary mt-2";
+		form.crudAction = "Update";
+		form.formTitle = "Edit Company";
+
+		form.oneCompany = getOneCompany(prc.intCompanyKey);
+		
+		form.isActiveYes = isActiveYesChecked(form.oneCompany.bitIsActive);
+		form.isActiveNo = isActiveNoChecked(form.oneCompany.bitIsActive);
+
+		return form;
+	}
+
+	function buildDeleteForm(event, prc, rc) {
+
+		var form = {};
+
+		form.fieldsEnabled = "disabled";
+        form.btnEnabled = "";
+        form.btnIcon = "bi bi-person-x-fill";
+        form.btnClass = "btn btn-danger mt-2";
+        form.crudAction = "Delete";
+        form.formTitle = "Delete Company";
+
+		form.oneCompany = getOneCompany(prc.intCompanyKey);
+		
+		form.isActiveYes = isActiveYesChecked(form.oneCompany.bitIsActive);
+		form.isActiveNo = isActiveNoChecked(form.oneCompany.bitIsActive);
+
+		return form;
+	}
+
+
+	private function isActiveYesChecked(bitIsActive) {
+
+		return (bitIsActive == 1) ? 'checked' : '';
+	}
+
+
+	private function isActiveNoChecked(bitIsActive) {
+
+		return (bitIsActive == 1) ? '' : 'checked';
+	}
+
+	
 
 
 }

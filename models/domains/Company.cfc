@@ -1,4 +1,4 @@
-component name="User" accessors="true" {
+component name="Company" accessors="true" {
 
     property type="Numeric" name="intCompanyKey" getter=true;
     property type="String" name="vcCompanyName" getter=true;
@@ -9,6 +9,7 @@ component name="User" accessors="true" {
         this.intCompanyKey = 0;
         this.vcCompanyName = "";
         this.bitIsActive = false;
+        
         return this;
     }
 }

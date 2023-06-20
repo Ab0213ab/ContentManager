@@ -21,10 +21,11 @@
             vcNotes, 
             intCompanyKey 
           FROM 
-            tblEmployee;
+            tblEmployee
+          WHERE
+            bitIsDeleted != 1;
         </cfquery>
         <cfreturn employeeQuery>
-
   </cffunction>
 
 
@@ -37,7 +38,6 @@
           tblEmployee;
       </cfquery>
       <cfreturn employeesFirstNameQuery>
-
   </cffunction>
 
 
@@ -68,7 +68,6 @@
           intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">;
     </cfquery>
     <cfreturn getOneEmployeeQuery>
-
   </cffunction>
 
 
@@ -114,7 +113,6 @@
             <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
         )
     </cfquery>
-    
 </cffunction>
 
 
@@ -143,12 +141,11 @@
         intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
       WHERE 
         intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
-    </cfquery>
-    
+    </cfquery> 
 </cffunction>
 
 
-<cffunction name="delete">
+<!---<cffunction name="delete">
   <cfargument name="Employee" required="true">
 
     <cfquery name="deleteEmployeeQuery" datasource="contentManager">
@@ -157,8 +154,21 @@
         tblEmployee 
       WHERE 
         intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
-    </cfquery>
-    
+    </cfquery>  
+</cffunction>--->
+
+<cffunction name="delete">
+  <cfargument name="Employee" required="true">
+
+    <cfquery name="deleteEmployeeQuery" datasource="contentManager">
+
+      UPDATE 
+        tblEmployee 
+      SET 
+        bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+      WHERE 
+        intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
+    </cfquery>   
 </cffunction>
 
 

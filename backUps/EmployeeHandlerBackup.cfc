@@ -38,7 +38,20 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
+        // prc.fieldsEnabled = "disabled";
+        // prc.btnEnabled = "disabled";
+        // prc.btnIcon = "bi bi-book";
+        // prc.btnClass = "btn btn-primary mt-2";
+        // prc.crudAction = "Read Only";
+        // prc.formTitle = "View Employee";
+
+        // // Populates the company dropdown in the add form
+        // prc.allCompanies = CompanyService.getAllCompanies();
+
+        // prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+
         prc.formData = EmployeeService.buildReadForm(prc, rc);
+
         event.setView( "employee/employeeCrud" );
     }
 
@@ -48,7 +61,20 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
+        // prc.fieldsEnabled = "";
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-person-plus";
+        // prc.btnClass = "btn btn-primary mt-2";
+        // prc.crudAction = "Create";
+        // prc.formTitle = "Add Employee";
+
+        // prc.oneEmployee = EmployeeService.getEmptyDomain();
+
+        // // Populates the company dropdown in the add form
+        // prc.allCompanies = CompanyService.getAllCompanies();
+
         prc.formData = EmployeeService.buildCreateForm(prc, rc);
+
         event.setView( "employee/employeeCrud" );
     }
 
@@ -58,7 +84,20 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/save";
 
+        // prc.fieldsEnabled = "";
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-pen";
+        // prc.btnClass = "btn btn-primary mt-2";
+        // prc.crudAction = "Update";
+        // prc.formTitle = "Edit Employee";
+
+        // // Populates the company dropdown in the add form
+        // prc.allCompanies = CompanyService.getAllCompanies();
+
+        // prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+
         prc.formData = EmployeeService.buildUpdateForm(prc, rc);
+
         event.setView( "employee/employeeCrud" );
 
     }
@@ -69,7 +108,20 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "employee/delete";
 
+        // prc.fieldsEnabled = "disabled";
+        // prc.btnEnabled = "";
+        // prc.btnIcon = "bi bi-person-x-fill";
+        // prc.btnClass = "btn btn-danger mt-2";
+        // prc.crudAction = "Delete";
+        // prc.formTitle = "Delete Employee";
+
+        // // Populates the company dropdown in the add form
+        // prc.allCompanies = CompanyService.getAllCompanies();
+
+        // prc.oneEmployee = EmployeeService.getOneEmployee(rc.intEmployeeID);
+
         prc.formData = EmployeeService.buildDeleteForm(prc, rc);
+
         event.setView( "employee/employeeCrud" );
     }
 
