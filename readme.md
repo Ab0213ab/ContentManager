@@ -44,7 +44,8 @@ enterprise development techniques including, but not limited to:
 	<li>Session management</li> 
 	<li>Utilization of services, gateways, and domains</li> 
 	<li>jQuery Datatables</li>
-	<li>Bootstrap modals</li> 
+	<li>Bootstrap modals</li>
+	<li>"Soft" database record deletion</li>
 	<li>User privilege managment</li> 
 	<li>And security focused techniques like SQL query parameter usage</li> 
 </ul>
