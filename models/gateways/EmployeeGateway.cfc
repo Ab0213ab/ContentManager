@@ -29,18 +29,6 @@
   </cffunction>
 
 
-  <!---<cffunction name="getAllEmployeesFirstNames">
-
-    <cfquery name="employeesFirstNameQuery" datasource="contentManager">
-        SELECT 
-          vcFirstName 
-        FROM 
-          tblEmployee;
-      </cfquery>
-      <cfreturn employeesFirstNameQuery>
-  </cffunction>--->
-
-
   <cffunction name="getOneEmployee">
     <cfargument name="intEmployeeID" required="true">
   
@@ -148,18 +136,6 @@
     </cfquery> 
 </cffunction>
 
-
-<!---<cffunction name="delete">
-  <cfargument name="Employee" required="true">
-
-    <cfquery name="deleteEmployeeQuery" datasource="contentManager">
-
-      DELETE FROM 
-        tblEmployee 
-      WHERE 
-        intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
-    </cfquery>  
-</cffunction>--->
 
 <cffunction name="delete">
   <cfargument name="Employee" required="true">

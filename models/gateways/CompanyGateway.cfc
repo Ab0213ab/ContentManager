@@ -110,20 +110,6 @@
     </cffunction>
 
 
-    <!---<cffunction name="delete">
-      <cfargument name="Company" required="true">
-    
-        <cfquery name="deleteCompanyQuery" datasource="contentManager">
-    
-          DELETE FROM 
-            tblCompany 
-          WHERE 
-            intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
-        </cfquery>
-        
-    </cffunction>--->
-
-
     <cffunction name="delete">
       <cfargument name="Company" required="true">
     

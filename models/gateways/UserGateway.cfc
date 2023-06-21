@@ -104,19 +104,6 @@
           intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
       </cfquery> 
   </cffunction>
-  
-
-  <!---<cffunction name="delete">
-    <cfargument name="User" required="true">
-  
-      <cfquery name="deleteUserQuery" datasource="contentManager">
-  
-        DELETE FROM 
-          tblUser 
-        WHERE 
-          intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
-      </cfquery>      
-  </cffunction>--->
 
 
   <cffunction name="delete">
