@@ -25,9 +25,19 @@
 
     <script>
       $(document).ready( function () {
-          $('##companyTable').DataTable();
+          $('##companyTable').DataTable({
+            "pageLength": 5, // Initial no. of records per page
+            "lengthMenu": [[5, 10, 15], [5, 10, 15]] // Options in dropdown
+          });
       } );
     </script>
+
+    <!---<script>
+    $(document).ready( function () {
+        $('##companyTable').DataTable();
+    } );
+    </script>--->
+
     <link rel="stylesheet" type="text/css" href="/includes/css/app.css"/>   
 	</head>
 	<body>

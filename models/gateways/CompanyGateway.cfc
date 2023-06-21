@@ -16,7 +16,7 @@
             FROM 
               tblCompany
             WHERE
-              bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
+              bitIsDeleted = 0;
           </cfquery>
           <cfreturn companyQuery>
     </cffunction>
@@ -38,7 +38,9 @@
           FROM 
             tblCompany
           WHERE 
-            intCompanyKey = <cfqueryparam value="#arguments.intCompanyKey#" cfsqltype="cf_sql_integer">;
+            intCompanyKey = <cfqueryparam value="#arguments.intCompanyKey#" cfsqltype="cf_sql_integer">
+          AND
+            bitIsDeleted = 0;
       </cfquery>
       <cfreturn getOneCompanyQuery>
     
@@ -64,7 +66,7 @@
           WHERE 
               tblCompany.intCompanyKey = <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.intCompanyKey#">
           AND 
-            tblEmployee.bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
+            tblEmployee.bitIsDeleted = 0;
       </cfquery>
 
       <cfreturn employeesByCompanyKeyQuery>
@@ -86,7 +88,7 @@
             VALUES ( 
                 <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Company.getVcCompanyName()#">,
                 <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.Company.getBitIsActive()#">,
-                <cfqueryparam cfsqltype="cf_sql_bit" value="0">
+                0
             )
         </cfquery>   
     </cffunction>
@@ -130,7 +132,7 @@
           UPDATE 
             tblCompany 
           SET 
-            bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+            bitIsDeleted = 1
           WHERE 
             intCompanyKey = <cfqueryparam value="#arguments.Company.getIntCompanyKey()#" cfsqltype="cf_sql_integer">;
         </cfquery>  

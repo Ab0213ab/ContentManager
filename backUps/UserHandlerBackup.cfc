@@ -143,3 +143,90 @@ component extends="coldbox.system.EventHandler" {
     }
   
 }
+
+/*
+
+
+
+component extends="coldbox.system.EventHandler" {
+
+    property name="UserService" inject="model:UserService";
+    property name="UserGateway" inject="model:UserGateway";
+
+    function index() {
+
+        // Exit Handlers
+        prc.xeh.employeeIndex = "employee/index";
+        prc.xeh.updateUser = "user/updateUser";
+        prc.xeh.deleteUser = "user/deleteUser";
+        prc.xeh.addUser = "user/createUser";
+
+        prc.viewData = UserService.buildViewUsers(prc, rc);
+        event.setView( "user/viewUsers" );
+    }
+
+    function createUser(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "user/save";
+
+        prc.formData = UserService.buildCreateForm(prc, rc);
+        event.setView( "user/userCrud" );
+    }
+
+    function updateUser(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "user/save";
+
+        prc.formData = UserService.buildUpdateForm(prc, rc);
+        event.setView( "user/userCrud" );
+
+    }
+
+    function deleteUser(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "user/delete";
+
+        prc.formData = UserService.buildDeleteForm(prc, rc);
+        event.setView( "user/userCrud" );
+    }
+
+
+    function delete(event, rc, prc) {
+
+        prc.aUser = UserService.getEmptyDomain();
+        populateModel(prc.aUser);
+
+        UserService.delete(prc.aUser);
+        relocate('user/index');
+    }
+
+
+    function save(event, rc, prc) {
+
+        prc.aUser = UserService.getEmptyDomain();
+        populateModel(prc.aUser);
+
+        prc.errorMessages = UserService.validate(prc.aUser);
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('user/index');
+        }
+
+        UserService.save(prc.aUser);
+        session.successMessage = UserService.getSuccessMessage(prc.aUser);
+
+        relocate('user/index');
+    }
+  
+}
+
+
+
+
+
+
+
+*/

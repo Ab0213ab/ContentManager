@@ -38,13 +38,13 @@ component singleton accessors="true"{
 		session.successMessage = "Your company was successfully deleted."
 
 	}
-
+	
 
 	function validate(aCompany) {
-
+		
 		prc.errorMessages = [];
-
-		if (aCompany.getVcCompanyName() == "") {
+	
+		if (trim(aCompany.getVcCompanyName()) == "") {
 			arrayAppend(prc.errorMessages, "Company Name field is required.")
 		}
 		if (aCompany.getBitIsActive() == "") {
@@ -53,7 +53,7 @@ component singleton accessors="true"{
 		
 		return prc.errorMessages;
 	}
-	
+
 
 	function getSuccessMessage(aCompany) {
 
@@ -81,77 +81,6 @@ component singleton accessors="true"{
 			CompanyGateway.update(aCompany);
 		}	
 	}
-
-	function buildCreateForm(event, prc, rc) {
-
-		var form = {};
-
-		form.fieldsEnabled = "";
-		form.btnEnabled = "";
-		form.btnIcon = "bi bi-person-plus";
-		form.btnClass = "btn btn-primary mt-2";
-		form.crudAction = "Create";
-		form.formTitle = "Add Company";
-
-		form.oneCompany = getEmptyDomain();
- 
-		form.isActiveYes = '';
-		form.isActiveNo = '';
-
-		return form;
-	}
-
-
-	function buildUpdateForm(event, prc, rc) {
-
-		var form = {};
-
-		form.fieldsEnabled = "";
-		form.btnEnabled = "";
-		form.btnIcon = "bi bi-pen";
-		form.btnClass = "btn btn-primary mt-2";
-		form.crudAction = "Update";
-		form.formTitle = "Edit Company";
-
-		form.oneCompany = getOneCompany(prc.intCompanyKey);
-		
-		form.isActiveYes = isActiveYesChecked(form.oneCompany.bitIsActive);
-		form.isActiveNo = isActiveNoChecked(form.oneCompany.bitIsActive);
-
-		return form;
-	}
-
-	function buildDeleteForm(event, prc, rc) {
-
-		var form = {};
-
-		form.fieldsEnabled = "disabled";
-        form.btnEnabled = "";
-        form.btnIcon = "bi bi-person-x-fill";
-        form.btnClass = "btn btn-danger mt-2";
-        form.crudAction = "Delete";
-        form.formTitle = "Delete Company";
-
-		form.oneCompany = getOneCompany(prc.intCompanyKey);
-		
-		form.isActiveYes = isActiveYesChecked(form.oneCompany.bitIsActive);
-		form.isActiveNo = isActiveNoChecked(form.oneCompany.bitIsActive);
-
-		return form;
-	}
-
-
-	private function isActiveYesChecked(bitIsActive) {
-
-		return (bitIsActive == 1) ? 'checked' : '';
-	}
-
-
-	private function isActiveNoChecked(bitIsActive) {
-
-		return (bitIsActive == 1) ? '' : 'checked';
-	}
-
 	
 
 

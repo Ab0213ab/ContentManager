@@ -5,7 +5,7 @@ function validateCompanyForm() {
     var vcCompanyName = document.getElementById('vcCompanyName');
     var bitIsActive = document.querySelector('input[name="bitIsActive"]:checked');
   
-    if (vcCompanyName.value == "") {
+    if (vcCompanyName.value.trim() == "") {
         document.getElementById('vcCompanyNameMessage').innerHTML = "This field is required.";
         isValid = false;
     }

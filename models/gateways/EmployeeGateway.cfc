@@ -23,13 +23,13 @@
           FROM 
             tblEmployee
           WHERE
-            bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
+            bitIsDeleted = 0;
         </cfquery>
         <cfreturn employeeQuery>
   </cffunction>
 
 
-  <cffunction name="getAllEmployeesFirstNames">
+  <!---<cffunction name="getAllEmployeesFirstNames">
 
     <cfquery name="employeesFirstNameQuery" datasource="contentManager">
         SELECT 
@@ -38,7 +38,7 @@
           tblEmployee;
       </cfquery>
       <cfreturn employeesFirstNameQuery>
-  </cffunction>
+  </cffunction>--->
 
 
   <cffunction name="getOneEmployee">
@@ -65,7 +65,9 @@
         FROM 
           tblEmployee
         WHERE 
-          intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">;
+          intEmployeeID = <cfqueryparam value="#arguments.intEmployeeID#" cfsqltype="cf_sql_integer">
+        AND
+          bitIsDeleted = 0;
     </cfquery>
     <cfreturn getOneEmployeeQuery>
   </cffunction>
@@ -93,7 +95,8 @@
             vcHomePhone, 
             vcExtension, 
             vcNotes, 
-            intCompanyKey
+            intCompanyKey,
+            bitIsDeleted
         )
         VALUES ( 
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcLastName()#">,
@@ -110,7 +113,8 @@
             <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcHomePhone()#">,
             <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getVcExtension()#">,
             <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.Employee.getVcNotes()#">,
-            <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">
+            <cfqueryparam cfsqltype="cf_sql_integer" value="#arguments.Employee.getIntCompanyKey()#">,
+            0
         )
     </cfquery>
 </cffunction>
@@ -165,7 +169,7 @@
       UPDATE 
         tblEmployee 
       SET 
-        bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+        bitIsDeleted = 1
       WHERE 
         intEmployeeID = <cfqueryparam value="#arguments.Employee.getIntEmployeeID()#" cfsqltype="cf_sql_integer">;
     </cfquery>   

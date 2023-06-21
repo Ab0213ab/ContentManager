@@ -7,11 +7,11 @@ function validateUserForm() {
     var bitIsActive = document.querySelector('input[name="bitIsActive"]:checked');
     var bitIsAdmin = document.querySelector('input[name="bitIsAdmin"]:checked');
 
-    if (vcUserName.value == "") {
+    if (vcUserName.value.trim() == "") {
         document.getElementById('vcUserNameMessage').innerHTML = "This field is required.";
         isValid = false;
     }
-    if (vcPassword.value == "") {
+    if (vcPassword.value.trim() == "") {
         document.getElementById('vcPasswordMessage').innerHTML = "This field is required.";
         isValid = false;
     }

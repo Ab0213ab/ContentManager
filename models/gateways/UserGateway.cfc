@@ -24,7 +24,7 @@
         FROM 
             tblUser
         WHERE
-          bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_integer" value="0">;
+          bitIsDeleted = 0;
       </cfquery>
       <cfreturn UserQuery>
   </cffunction>
@@ -55,7 +55,9 @@
           FROM 
             tblUser
           WHERE 
-            intUserID = <cfqueryparam value="#arguments.intUserID#" cfsqltype="cf_sql_integer">;
+            intUserID = <cfqueryparam value="#arguments.intUserID#" cfsqltype="cf_sql_integer">
+          AND
+            bitIsDeleted = 0;
       </cfquery>
       <cfreturn getOneUserQuery>  
   </cffunction>
@@ -72,13 +74,15 @@
               vcUserName,
               vcPassword, 
               bitIsActive,
-              bitIsAdmin
+              bitIsAdmin,
+              bitIsDeleted
           )
           VALUES ( 
               <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.User.getVcUserName()#">,
               <cfqueryparam cfsqltype="cf_sql_varchar" value="#arguments.User.getVcPassword()#">,
               <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsActive()#">,
-              <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsAdmin()#">
+              <cfqueryparam cfsqltype="cf_sql_bit" value="#arguments.User.getBitIsAdmin()#">,
+              0
           )
       </cfquery>   
   </cffunction>
@@ -123,7 +127,7 @@
         UPDATE 
           tblUser 
         SET 
-          bitIsDeleted = <cfqueryparam cfsqltype="cf_sql_bit" value="1">
+          bitIsDeleted = 1
         WHERE 
           intUserID = <cfqueryparam value="#arguments.User.getIntUserID()#" cfsqltype="cf_sql_integer">;
       </cfquery>     

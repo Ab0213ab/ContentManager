@@ -40,22 +40,20 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/save";
 
-        // prc.fieldsEnabled = "";
-        // prc.btnEnabled = "";
-        // prc.btnIcon = "bi bi-person-plus";
-        // prc.btnClass = "btn btn-primary mt-2";
-        // prc.crudAction = "Create";
-        // prc.formTitle = "Add User";
+        prc.fieldsEnabled = "";
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-person-plus";
+        prc.btnClass = "btn btn-primary mt-2";
+        prc.crudAction = "Create";
+        prc.formTitle = "Add User";
 
-        // prc.oneUser = UserService.getEmptyDomain();
+        prc.oneUser = UserService.getEmptyDomain();
 
-        // // For radio buttons
-        // prc.isActiveYes = '';
-        // prc.isActiveNo = '';
-        // prc.isAdminYes = '';
-        // prc.isAdminNo = '';
-
-        prc.formData = UserService.buildCreateForm(prc, rc);
+        // For radio buttons
+        prc.isActiveYes = '';
+        prc.isActiveNo = '';
+        prc.isAdminYes = '';
+        prc.isAdminNo = '';
 
         event.setView( "user/userCrud" );
     }
@@ -65,23 +63,21 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/save";
 
-        // prc.fieldsEnabled = "";
-        // prc.btnEnabled = "";
-        // prc.btnIcon = "bi bi-pen";
-        // prc.btnClass = "btn btn-primary mt-2";
-        // prc.crudAction = "Update";
-        // prc.formTitle = "Edit User";
+        prc.fieldsEnabled = "";
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-pen";
+        prc.btnClass = "btn btn-primary mt-2";
+        prc.crudAction = "Update";
+        prc.formTitle = "Edit User";
 
-        // prc.oneUser = UserService.getOneUser(rc.intUserID);
+        prc.oneUser = UserService.getOneUser(rc.intUserID);
 
-        // // For radio buttons
-        // prc.isActiveYes = (prc.oneUser.bitIsActive == 1) ? 'checked' : '';
-        // prc.isActiveNo = (prc.oneUser.bitIsActive == 1) ? '' : 'checked';
+        // For radio buttons
+        prc.isActiveYes = (prc.oneUser.bitIsActive == 1) ? 'checked' : '';
+        prc.isActiveNo = (prc.oneUser.bitIsActive == 1) ? '' : 'checked';
 
-        // prc.isAdminYes = (prc.oneUser.bitIsAdmin == 1) ? 'checked' : '';
-        // prc.isAdminNo = (prc.oneUser.bitIsAdmin == 1) ? '' : 'checked';
-
-        prc.formData = UserService.buildUpdateForm(prc, rc);
+        prc.isAdminYes = (prc.oneUser.bitIsAdmin == 1) ? 'checked' : '';
+        prc.isAdminNo = (prc.oneUser.bitIsAdmin == 1) ? '' : 'checked';
 
         event.setView( "user/userCrud" );
 
@@ -92,23 +88,21 @@ component extends="coldbox.system.EventHandler" {
         // Exit Handlers
         prc.xeh.save = "user/delete";
 
-        // prc.fieldsEnabled = "disabled";
-        // prc.btnEnabled = "";
-        // prc.btnIcon = "bi bi-person-x-fill";
-        // prc.btnClass = "btn btn-danger mt-2";
-        // prc.crudAction = "Delete";
-        // prc.formTitle = "Delete User";
+        prc.fieldsEnabled = "disabled";
+        prc.btnEnabled = "";
+        prc.btnIcon = "bi bi-person-x-fill";
+        prc.btnClass = "btn btn-danger mt-2";
+        prc.crudAction = "Delete";
+        prc.formTitle = "Delete User";
 
-        // prc.oneUser = UserService.getOneUser(rc.intUserID);
+        prc.oneUser = UserService.getOneUser(rc.intUserID);
 
-        // // For radio buttons
-        // prc.isActiveYes = (prc.oneUser.bitIsActive == 1) ? 'checked' : '';
-        // prc.isActiveNo = (prc.oneUser.bitIsActive == 1) ? '' : 'checked';
+        // For radio buttons
+        prc.isActiveYes = (prc.oneUser.bitIsActive == 1) ? 'checked' : '';
+        prc.isActiveNo = (prc.oneUser.bitIsActive == 1) ? '' : 'checked';
 
-        // prc.isAdminYes = (prc.oneUser.bitIsAdmin == 1) ? 'checked' : '';
-        // prc.isAdminNo = (prc.oneUser.bitIsAdmin == 1) ? '' : 'checked';
-
-        prc.formData = UserService.buildDeleteForm(prc, rc);
+        prc.isAdminYes = (prc.oneUser.bitIsAdmin == 1) ? 'checked' : '';
+        prc.isAdminNo = (prc.oneUser.bitIsAdmin == 1) ? '' : 'checked';
 
         event.setView( "user/userCrud" );
     }

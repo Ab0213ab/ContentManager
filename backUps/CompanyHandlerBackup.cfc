@@ -135,3 +135,92 @@ component extends="coldbox.system.EventHandler" {
         relocate('company/viewCompanies');
     }
 }
+
+
+/*
+
+
+
+
+
+component extends="coldbox.system.EventHandler" {
+
+    property name="CompanyService" inject="model:CompanyService";
+    property name="CompanyGateway" inject="model:CompanyGateway";
+
+
+    function createCompany(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "company/save";
+
+        prc.formData = CompanyService.buildCreateForm(prc, rc);
+        event.setView( "company/companyCrud" );
+    }
+
+    function updateCompany(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "company/save";
+
+        prc.formData = CompanyService.buildUpdateForm(prc, rc);
+        event.setView( "company/companyCrud" );
+    }
+
+    function deleteCompany(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "company/delete";
+
+        prc.formData = CompanyService.buildDeleteForm(prc, rc);
+        event.setView( "company/companyCrud" );
+    }
+
+    function viewCompanies() {
+
+        // Exit Handlers
+        prc.xeh.readEmployee = "employee/readEmployee";
+        prc.xeh.updateCompany = "company/updateCompany";
+        prc.xeh.deleteCompany = "company/deleteCompany";
+        prc.xeh.createCompany = "company/createCompany";
+
+        prc.viewData = CompanyService.buildViewCompanies(prc, rc);
+        event.setView("company/viewCompanies");
+    }
+
+
+    function delete(event, rc, prc) {
+
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
+
+        CompanyService.delete(prc.aCompany);
+        relocate('company/viewCompanies');
+    }
+
+
+    function save(event, rc, prc) {
+
+        prc.aCompany = CompanyService.getEmptyDomain();
+        populateModel(prc.aCompany);
+
+        prc.errorMessages = CompanyService.validate(prc.aCompany);
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('company/ViewCompanies');
+        }
+
+        CompanyService.save(prc.aCompany);
+        session.successMessage = CompanyService.getSuccessMessage(prc.aCompany);
+
+        relocate('company/viewCompanies');
+    }
+}
+
+
+
+
+
+
+
+*/

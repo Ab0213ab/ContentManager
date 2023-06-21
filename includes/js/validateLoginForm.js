@@ -15,7 +15,7 @@ function validateLoginForm() {
             isValid = false;
         }   
     }
-    if (vcPassword.value == "") {
+    if (vcPassword.value.trim() == "") {
         document.getElementById('vcPasswordMessage').innerHTML = "This field cannot be empty.";
         isValid = false;
     }

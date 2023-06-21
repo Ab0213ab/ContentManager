@@ -16,7 +16,7 @@ component extends="coldbox.system.EventHandler" {
 		prc.errorMessage = "";
 		prc.errorClass = "";
 
-		event.noLayout()
+		event.noLayout();
 		event.setView( "main/index" );
 	}
 

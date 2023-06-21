@@ -220,3 +220,123 @@ component extends="coldbox.system.EventHandler" {
     }*/
   
 }
+
+
+/*
+
+
+
+
+component extends="coldbox.system.EventHandler" {
+
+    property name="EmployeeService" inject="model:EmployeeService";
+    property name="EmployeeGateway" inject="model:EmployeeGateway";
+    property name="CompanyService" inject="model:CompanyService";
+
+
+    function index() {
+
+        // Exit Handlers
+        prc.xeh.readEmployee = "employee/readEmployee";
+        prc.xeh.createEmployee = "employee/createEmployee";
+        prc.xeh.updateEmployee = "employee/updateEmployee";
+        prc.xeh.deleteEmployee = "employee/deleteEmployee";
+        prc.xeh.createCompany = "company/createCompany";
+        prc.xeh.createUser = "user/createUser";
+        prc.xeh.employeeIndex = "employee/index";
+
+        prc.viewData = EmployeeService.buildEmployeeIndex(event, prc, rc);
+        event.setView( "employee/index" );
+    }
+
+
+    function readEmployee(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "employee/save";
+
+        prc.formData = EmployeeService.buildReadForm(event, prc, rc);
+        event.setView( "employee/employeeCrud" );
+    }
+
+
+    function createEmployee(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "employee/save";
+
+        prc.formData = EmployeeService.buildCreateForm(prc, rc);
+        event.setView( "employee/employeeCrud" );
+    }
+
+
+    function updateEmployee(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "employee/save";
+
+        prc.formData = EmployeeService.buildUpdateForm(prc, rc);
+        event.setView( "employee/employeeCrud" );
+
+    }
+
+
+    function deleteEmployee(event, rc, prc) {
+
+        // Exit Handlers
+        prc.xeh.save = "employee/delete";
+
+        prc.formData = EmployeeService.buildDeleteForm(prc, rc);
+        event.setView( "employee/employeeCrud" );
+    }
+
+    function viewEmployees() {
+
+        // Exit Handlers
+        prc.xeh.createEmployee = "employee/createEmployee";
+        prc.xeh.updateEmployee = "employee/updateEmployee";
+        prc.xeh.deleteEmployee = "employee/deleteEmployee";
+        prc.xeh.readEmployee = "employee/readEmployee";
+
+        prc.viewData = EmployeeService.buildViewEmployees(prc, rc);
+        event.setView( "employee/viewEmployees" );
+    }
+
+    
+    function delete(event, rc, prc) {
+
+        prc.anEmployee = EmployeeService.getEmptyDomain();
+        populateModel(prc.anEmployee);
+
+        EmployeeService.delete(prc.anEmployee);
+        relocate('employee/viewEmployees');
+    }
+
+
+    function save(event, rc, prc) {
+
+        prc.anEmployee = EmployeeService.getEmptyDomain();
+        populateModel(prc.anEmployee);
+
+        prc.errorMessages = EmployeeService.validate(prc.anEmployee);
+        if (len(prc.errorMessages) != 0) {
+            session.errorMessages = prc.errorMessages;
+            relocate('employee/viewEmployees');
+        }
+
+        EmployeeService.save(prc.anEmployee);
+        session.successMessage = EmployeeService.getSuccessMessage(prc.anEmployee);
+
+        relocate('employee/viewEmployees');
+    }
+
+  
+}
+
+
+
+
+
+
+
+*/
