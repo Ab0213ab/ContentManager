@@ -137,7 +137,7 @@ component extends="coldbox.system.EventHandler" {
         }
 
         UserService.save(prc.aUser);
-        session.successMessage = UserService.getSuccessMessage(prc.aUser);
+        session.successMessage = "Your user was saved successfully.";
 
         relocate('user/index');
     }

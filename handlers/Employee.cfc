@@ -172,15 +172,14 @@ component extends="coldbox.system.EventHandler" {
         }
 
         EmployeeService.save(prc.anEmployee);
-        session.successMessage = EmployeeService.getSuccessMessage(prc.anEmployee);
+        session.successMessage = "Your employee was successfully saved.";
 
         relocate('employee/viewEmployees');
     }
 
 
-
-
     /* From version 1.0, removed in version 2.0
+
     // Replaces all employees' first names that appear on cnn.com with "MOD" 
     function getCnnContent(event, rc, prc) {
 

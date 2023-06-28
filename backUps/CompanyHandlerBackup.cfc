@@ -130,7 +130,7 @@ component extends="coldbox.system.EventHandler" {
         }
 
         CompanyService.save(prc.aCompany);
-        session.successMessage = CompanyService.getSuccessMessage(prc.aCompany);
+        session.successMessage = "Your company has been saved successfully!";
 
         relocate('company/viewCompanies');
     }

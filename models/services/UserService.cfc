@@ -54,18 +54,6 @@ component singleton accessors="true"{
 	}
 
 
-	function getSuccessMessage(aUser) {
-
-		if (aUser.getIntUserID() > 0) {
-			prc.successMessage = "Your user was successfully updated.";
-		} else {
-			prc.successMessage = "Your user was successfully created.";
-		}
-	
-		return prc.successMessage;
-	}
-
-
 	function save(aUser) { 
 
 		if (aUser.getIntUserID() == 0) {

@@ -180,7 +180,7 @@ component extends="coldbox.system.EventHandler" {
         }
 
         EmployeeService.save(prc.anEmployee);
-        session.successMessage = EmployeeService.getSuccessMessage(prc.anEmployee);
+        session.successMessage = "Your employee has been saved successfully.";
 
         relocate('employee/viewEmployees');
     }

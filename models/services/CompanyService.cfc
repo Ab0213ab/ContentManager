@@ -55,18 +55,6 @@ component singleton accessors="true"{
 	}
 
 
-	function getSuccessMessage(aCompany) {
-
-		if (aCompany.getIntCompanyKey() > 0) {
-			prc.successMessage = "Your company was successfully updated.";
-		} else {
-			prc.successMessage = "Your new company was successfully created.";
-		}
-
-		return prc.successMessage;
-	}
-
-
 	function getEmptyDomain() {
 
 		return new models.domains.Company();
