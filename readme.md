@@ -32,7 +32,7 @@ Full CRUD Operation Support   |  Full CRUD Operation Support
 
 ## Application Description
 
-This is a small, but growing web application designed as an interface to perform CRUD 
+This is a small, but fully functional web application designed as an interface to perform CRUD 
 (create, read, update, delete) operations on a custom-built MSSMS database. The application demonstrates many advanced
 enterprise development techniques including, but not limited to: 
 <ul>
