@@ -1,4 +1,4 @@
-# ContentManager (Personal, early career)
+# ContentManager
 
 ## Table of Contents
 1. [Functionality Screenshots](#functionality-screenshots)
